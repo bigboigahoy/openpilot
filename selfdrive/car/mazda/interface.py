@@ -27,6 +27,9 @@ class CarInterface(CarInterfaceBase):
 
     ret.centerToFront = ret.wheelbase * 0.41
 
+    # Enable BSM toggle
+    ret.enableBsm = True
+
     return ret
 
   # returns a car.CarState
