@@ -109,7 +109,7 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("CELead", "0", 1),
   ("CEModelStopTime", "8", 2),
   ("CENavigation", "1", 2),
-  ("CENavigationIntersections", "0", 2),
+  ("CENavigationIntersections", "1", 2),
   ("CENavigationLead", "1", 2),
   ("CENavigationTurns", "1", 2),
   ("CESignalSpeed", "55", 2),
@@ -173,7 +173,6 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("GsmApn", "", 0),
   ("GsmRoaming", "1", 0),
   ("HideAlerts", "0", 2),
-  ("HideCSCUI", "0", 2),
   ("HideLeadMarker", "0", 2),
   ("HideMapIcon", "0", 2),
   ("HideMaxSpeed", "0", 2),
@@ -182,7 +181,7 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("HolidayThemes", "1", 0),
   ("HumanAcceleration", "1", 2),
   ("HumanFollowing", "1", 2),
-  ("IncreasedStoppedDistance", "0", 2),
+  ("IncreasedStoppedDistance", "0", 1),
   ("IncreaseThermalLimits", "0", 2),
   ("IsLdwEnabled", "0", 0),
   ("IsMetric", "0", 0),
@@ -203,9 +202,9 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("LongPitch", "1", 2),
   ("LoudBlindspotAlert", "0", 0),
   ("LowVoltageShutdown", str(VBATT_PAUSE_CHARGING), 2),
-  ("MapAcceleration", "0", 2),
-  ("MapDeceleration", "0", 2),
-  ("MapGears", "0", 2),
+  ("MapAcceleration", "0", 1),
+  ("MapDeceleration", "0", 1),
+  ("MapGears", "0", 1),
   ("MapboxPublicKey", "", 0),
   ("MapboxSecretKey", "", 0),
   ("MapsSelected", "", 0),
@@ -234,7 +233,10 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("Offset1", "5", 0),
   ("Offset2", "5", 0),
   ("Offset3", "5", 0),
-  ("Offset4", "10", 0),
+  ("Offset4", "5", 0),
+  ("Offset5", "10", 0),
+  ("Offset6", "10", 0),
+  ("Offset7", "10", 0),
   ("OneLaneChange", "1", 2),
   ("OnroadDistanceButton", "0", 0),
   ("openpilotMinutes", "0", 0),
@@ -249,7 +251,7 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("PromptDistractedVolume", "101", 2),
   ("PromptVolume", "101", 2),
   ("QOLLateral", "1", 2),
-  ("QOLLongitudinal", "1", 2),
+  ("QOLLongitudinal", "1", 1),
   ("QOLVisuals", "1", 0),
   ("RadarTracksUI", "0", 3),
   ("RainbowPath", "0", 1),
@@ -263,7 +265,7 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("RelaxedJerkSpeed", "100", 3),
   ("RelaxedJerkSpeedDecrease", "100", 3),
   ("RelaxedPersonalityProfile", "1", 2),
-  ("ReverseCruise", "0", 2),
+  ("ReverseCruise", "0", 1),
   ("RoadEdgesWidth", "2", 2),
   ("RoadNameUI", "1", 2),
   ("RotatingWheel", "1", 1),
@@ -274,10 +276,11 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("ScreenTimeout", "30", 2),
   ("ScreenTimeoutOnroad", "30", 2),
   ("SearchInput", "0", 0),
-  ("SetSpeedLimit", "0", 2),
+  ("SetSpeedLimit", "0", 1),
   ("SetSpeedOffset", "0", 2),
   ("ShowCEMStatus", "1", 2),
   ("ShowCPU", "1", 3),
+  ("ShowCSCStatus", "1", 2),
   ("ShowGPU", "0", 3),
   ("ShowIP", "0", 3),
   ("ShowMemoryUsage", "1", 3),
@@ -294,10 +297,10 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("SLCConfirmation", "0", 0),
   ("SLCConfirmationHigher", "0", 0),
   ("SLCConfirmationLower", "0", 0),
-  ("SLCFallback", "2", 2),
-  ("SLCLookaheadHigher", "0", 1),
-  ("SLCLookaheadLower", "0", 1),
-  ("SLCOverride", "1", 2),
+  ("SLCFallback", "2", 1),
+  ("SLCLookaheadHigher", "0", 2),
+  ("SLCLookaheadLower", "0", 2),
+  ("SLCOverride", "1", 1),
   ("SLCPriority1", "Navigation", 2),
   ("SLCPriority2", "Map Data", 2),
   ("SLCPriority3", "Dashboard", 2),
@@ -389,8 +392,7 @@ class FrogPilotVariables:
 
     debug_mode = params.get_bool("DebugMode")
 
-    # tuning_level = params.get_int("TuningLevel") if params.get_bool("TuningLevelConfirmed") else 3
-    tuning_level = 3
+    tuning_level = params.get_int("TuningLevel") if params.get_bool("TuningLevelConfirmed") else 3
 
     toggle.is_metric = params.get_bool("IsMetric")
     distance_conversion = 1 if toggle.is_metric else CV.FOOT_TO_METER
@@ -507,11 +509,11 @@ class FrogPilotVariables:
 
     toggle.curve_speed_controller = openpilot_longitudinal and (params.get_bool("CurveSpeedControl") if tuning_level >= level["CurveSpeedControl"] else default.get_bool("CurveSpeedControl"))
     toggle.curve_sensitivity = params.get_int("CurveSensitivity") / 100 if toggle.curve_speed_controller and tuning_level >= level["CurveSensitivity"] else default.get_int("CurveSensitivity") / 100
-    toggle.hide_csc_ui = toggle.curve_speed_controller and (params.get_bool("HideCSCUI") if tuning_level >= level["HideCSCUI"] else default.get_bool("HideCSCUI")) and not debug_mode
     toggle.turn_aggressiveness = params.get_int("TurnAggressiveness") / 100 if toggle.curve_speed_controller and tuning_level >= level["TurnAggressiveness"] else default.get_int("TurnAggressiveness") / 100
     toggle.map_turn_speed_controller = toggle.curve_speed_controller and (params.get_bool("MapTurnControl") if tuning_level >= level["MapTurnControl"] else default.get_bool("MapTurnControl"))
     toggle.mtsc_curvature_check = toggle.map_turn_speed_controller and (params.get_bool("MTSCCurvatureCheck") if tuning_level >= level["MTSCCurvatureCheck"] else default.get_bool("MTSCCurvatureCheck"))
     toggle.vision_turn_speed_controller = toggle.curve_speed_controller and (params.get_bool("VisionTurnControl") if tuning_level >= level["VisionTurnControl"] else default.get_bool("VisionTurnControl"))
+    toggle.csc_status = toggle.curve_speed_controller and (params.get_bool("ShowCSCStatus") if tuning_level >= level["ShowCSCStatus"] else default.get_bool("ShowCSCStatus")) or debug_mode
 
     toggle.custom_alerts = params.get_bool("CustomAlerts") if tuning_level >= level["CustomAlerts"] else default.get_bool("CustomAlerts")
     toggle.goat_scream_alert = toggle.custom_alerts and (params.get_bool("GoatScream") if tuning_level >= level["GoatScream"] else default.get_bool("GoatScream"))
@@ -560,8 +562,8 @@ class FrogPilotVariables:
     toggle.static_pedals_on_ui = toggle.pedals_on_ui and (params.get_bool("StaticPedalsOnUI") if tuning_level >= level["StaticPedalsOnUI"] else default.get_bool("StaticPedalsOnUI"))
     toggle.rotating_wheel = custom_ui and (params.get_bool("RotatingWheel") if tuning_level >= level["RotatingWheel"] else default.get_bool("RotatingWheel"))
 
-    # toggle.developer_ui = params.get_bool("DeveloperUI") if tuning_level >= level["DeveloperUI"] else default.get_bool("DeveloperUI")
-    toggle.developer_ui = True
+    toggle.developer_ui = params.get_bool("DeveloperUI") if tuning_level >= level["DeveloperUI"] else default.get_bool("DeveloperUI")
+    toggle.adjacent_lead_tracking = has_radar and (params.get_bool("AdjacentLeadsUI") if tuning_level >= level["AdjacentLeadsUI"] else default.get_bool("AdjacentLeadsUI")) or debug_mode
     border_metrics = toggle.developer_ui and (params.get_bool("BorderMetrics") if tuning_level >= level["BorderMetrics"] else default.get_bool("BorderMetrics"))
     toggle.blind_spot_metrics = has_bsm and border_metrics and (params.get_bool("BlindSpotMetrics") if tuning_level >= level["BlindSpotMetrics"] else default.get_bool("BlindSpotMetrics")) or debug_mode
     toggle.signal_metrics = border_metrics and (params.get_bool("SignalMetrics") if tuning_level >= level["SignalMetrics"] else default.get_bool("SignalMetrics")) or debug_mode
@@ -671,7 +673,7 @@ class FrogPilotVariables:
     toggle.classic_model = toggle.model_version in {"v1", "v2", "v3", "v4"}
     toggle.planner_curvature_model = toggle.model_version not in {"v1", "v2", "v3", "v4", "v5"}
     toggle.radarless_model = toggle.model_version in {"v3"}
-    toggle.tinygrad_model = toggle.model_version in {"v7"}
+    toggle.tinygrad_model = toggle.model_version == DEFAULT_TINYGRAD_MODEL_VERSION
 
     toggle.model_ui = params.get_bool("ModelUI") if tuning_level >= level["ModelUI"] else default.get_bool("ModelUI")
     toggle.dynamic_path_width = toggle.model_ui and (params.get_bool("DynamicPathWidth") if tuning_level >= level["DynamicPathWidth"] else default.get_bool("DynamicPathWidth"))
@@ -715,7 +717,7 @@ class FrogPilotVariables:
     map_gears = quality_of_life_longitudinal and (params.get_bool("MapGears") if tuning_level >= level["MapGears"] else default.get_bool("MapGears"))
     toggle.map_acceleration = map_gears and (params.get_bool("MapAcceleration") if tuning_level >= level["MapAcceleration"] else default.get_bool("MapAcceleration"))
     toggle.map_deceleration = map_gears and (params.get_bool("MapDeceleration") if tuning_level >= level["MapDeceleration"] else default.get_bool("MapDeceleration"))
-    toggle.reverse_cruise_increase = quality_of_life_longitudinal and pcm_cruise and (params.get_bool("ReverseCruise") if tuning_level >= level["ReverseCruise"] else default.get_bool("ReverseCruise"))
+    toggle.reverse_cruise_increase = quality_of_life_longitudinal and car_make == "toyota" and pcm_cruise and (params.get_bool("ReverseCruise") if tuning_level >= level["ReverseCruise"] else default.get_bool("ReverseCruise"))
     toggle.set_speed_offset = params.get_int("SetSpeedOffset") * (1 if toggle.is_metric else CV.MPH_TO_KPH) if quality_of_life_longitudinal and not pcm_cruise and tuning_level >= level["SetSpeedOffset"] else default.get_int("SetSpeedOffset") * CV.MPH_TO_KPH
 
     quality_of_life_visuals = params.get_bool("QOLVisuals") if tuning_level >= level["QOLVisuals"] else default.get_bool("QOLVisuals")
@@ -758,6 +760,9 @@ class FrogPilotVariables:
     toggle.speed_limit_offset2 = (params.get_int("Offset2") * speed_conversion if tuning_level >= level["Offset2"] else default.get_int("Offset2") * CV.MPH_TO_MS) if toggle.speed_limit_controller else 0
     toggle.speed_limit_offset3 = (params.get_int("Offset3") * speed_conversion if tuning_level >= level["Offset3"] else default.get_int("Offset3") * CV.MPH_TO_MS) if toggle.speed_limit_controller else 0
     toggle.speed_limit_offset4 = (params.get_int("Offset4") * speed_conversion if tuning_level >= level["Offset4"] else default.get_int("Offset4") * CV.MPH_TO_MS) if toggle.speed_limit_controller else 0
+    toggle.speed_limit_offset5 = (params.get_int("Offset5") * speed_conversion if tuning_level >= level["Offset5"] else default.get_int("Offset5") * CV.MPH_TO_MS) if toggle.speed_limit_controller else 0
+    toggle.speed_limit_offset6 = (params.get_int("Offset6") * speed_conversion if tuning_level >= level["Offset6"] else default.get_int("Offset6") * CV.MPH_TO_MS) if toggle.speed_limit_controller else 0
+    toggle.speed_limit_offset7 = (params.get_int("Offset7") * speed_conversion if tuning_level >= level["Offset7"] else default.get_int("Offset7") * CV.MPH_TO_MS) if toggle.speed_limit_controller else 0
     toggle.speed_limit_priority1 = params.get("SLCPriority1", encoding="utf-8") if toggle.speed_limit_controller and tuning_level >= level["SLCPriority1"] else default.get("SLCPriority1", encoding="utf-8")
     toggle.speed_limit_priority2 = params.get("SLCPriority2", encoding="utf-8") if toggle.speed_limit_controller and tuning_level >= level["SLCPriority2"] else default.get("SLCPriority2", encoding="utf-8")
     toggle.speed_limit_priority3 = params.get("SLCPriority3", encoding="utf-8") if toggle.speed_limit_controller and tuning_level >= level["SLCPriority3"] else default.get("SLCPriority3", encoding="utf-8")
