@@ -337,7 +337,7 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("TrafficJerkSpeedDecrease", "50", 3),
   ("TrafficPersonalityProfile", "1", 2),
   ("TuningInfo", "0", 3),
-  ("TuningLevel", "0", 0),
+  ("TuningLevel", "0", 3),
   ("TuningLevelConfirmed", "0", 0),
   ("TurnAggressiveness", "100", 2),
   ("TurnDesires", "0", 2),
