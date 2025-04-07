@@ -6,8 +6,6 @@ See the LICENSE.md file in the root directory for more details.
 """
 from cereal import car
 
-from openpilot.common.params import Params
-
 AudibleAlert = car.CarControl.HUDControl.AudibleAlert
 
 ALERTS_ALWAYS_PLAY = {
@@ -19,7 +17,6 @@ ALERTS_ALWAYS_PLAY = {
 
 class QuietMode:
   def __init__(self):
-    self.params = Params()
     self.enabled = True
     self._frame = 0
 
