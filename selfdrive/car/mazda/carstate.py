@@ -3,7 +3,7 @@ from openpilot.common.conversions import Conversions as CV
 from opendbc.can.can_define import CANDefine
 from opendbc.can.parser import CANParser
 from openpilot.selfdrive.car.interfaces import CarStateBase
-from openpilot.selfdrive.car.mazda.values import DBC, LKAS_LIMITS, MazdaFlags
+from openpilot.selfdrive.car.mazda.values import DBC, LKAS_LIMITS, MazdaFlags, CAR
 
 class CarState(CarStateBase):
   def __init__(self, CP):
@@ -99,7 +99,13 @@ class CarState(CarStateBase):
     # Check if LKAS is disabled due to lack of driver torque when all other states indicate
     # it should be enabled (steer lockout). Don't warn until we actually get lkas active
     # and lose it again, i.e, after initial lkas activation
-    ret.steerFaultTemporary = self.lkas_allowed_speed and lkas_blocked
+    # ret.steerFaultTemporary = self.lkas_allowed_speed and lkas_blocked
+
+    # Disable noise at 0 mph
+    if self.CP.carFingerprint in [CAR.MAZDA_CX9_2021, CAR.MAZDA_CX5_2022]:
+      ret.steerFaultTemporary = False
+    else:
+      ret.steerFaultTemporary = cp.vl["STEER_RATE"]["HANDS_OFF_5_SECONDS"] == 1
 
     self.acc_active_last = ret.cruiseState.enabled
 
