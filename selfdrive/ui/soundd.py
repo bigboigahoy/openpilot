@@ -216,7 +216,7 @@ class Soundd(QuietMode):
       while True:
         sm.update(0)
 
-        self.load_param
+        self.load_param()
 
         if sm.updated['microphone'] and self.current_alert == AudibleAlert.none: # only update volume filter when not playing alert
           if self.frogpilot_toggles.alert_volume_control:
