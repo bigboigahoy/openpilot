@@ -217,8 +217,8 @@ class Soundd(QuietMode):
         sm.update(0)
 
         if sm.updated['microphone'] and self.current_alert == AudibleAlert.none: # only update volume filter when not playing alert
+          self.spl_filter_weighted.update(sm["microphone"].soundPressureWeightedDb)
           if self.frogpilot_toggles.alert_volume_control:
-            self.spl_filter_weighted.update(sm["microphone"].soundPressureWeightedDb)
             self.auto_volume = self.calculate_volume(float(self.spl_filter_weighted.x))
             self.current_volume = 0.0
           else:
@@ -228,10 +228,15 @@ class Soundd(QuietMode):
         elif self.frogpilot_toggles.alert_volume_control and self.current_alert in self.volume_map:
           self.current_volume = self.volume_map[self.current_alert] / 100.0
           if self.current_volume == 1.01:
-            self.current_volume = self.auto_volume
+            if self.current_alert == AudibleAlert.startup:
+              self.current_volume = MAX_VOLUME
+            else:
+              self.current_volume = self.auto_volume
 
         elif self.current_alert in self.random_events_map:
           self.current_volume = self.random_events_map[self.current_alert]
+        elif self.current_alert == AudibleAlert.startup:
+          self.current_volume = MAX_VOLUME
 
         self.get_audible_alert(sm)
 
@@ -265,6 +270,7 @@ class Soundd(QuietMode):
       AudibleAlert.warningImmediate: self.frogpilot_toggles.warningImmediate_volume,
 
       AudibleAlert.goat: self.frogpilot_toggles.prompt_volume,
+      AudibleAlert.startup: self.frogpilot_toggles.engage_volume,
     }
 
     if self.frogpilot_toggles.sound_pack != "stock":
