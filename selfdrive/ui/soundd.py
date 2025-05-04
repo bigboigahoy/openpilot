@@ -13,8 +13,9 @@ from openpilot.common.retry import retry
 from openpilot.common.swaglog import cloudlog
 
 from openpilot.system import micd
+from openpilot.selfdrive.ui.quiet.quiet_mode import QuietMode
 
-from openpilot.frogpilot.common.frogpilot_variables import ACTIVE_THEME_PATH, ERROR_LOGS_PATH, RANDOM_EVENTS_PATH, get_frogpilot_toggles, params_memory
+from openpilot.selfdrive.frogpilot.frogpilot_variables import ACTIVE_THEME_PATH, ERROR_LOGS_PATH, RANDOM_EVENTS_PATH, get_frogpilot_toggles, params_memory
 
 SAMPLE_RATE = 48000
 SAMPLE_BUFFER = 4096 # (approx 100ms)
@@ -70,7 +71,7 @@ def check_controls_timeout_alert(sm):
   return False
 
 
-class Soundd:
+class Soundd(QuietMode):
   def __init__(self):
     self.current_alert = AudibleAlert.none
     self.current_volume = MIN_VOLUME
@@ -141,7 +142,8 @@ class Soundd:
 
     ret = np.zeros(frames, dtype=np.float32)
 
-    if self.current_alert != AudibleAlert.none:
+    # if self.current_alert != AudibleAlert.none:
+    if self.should_play_sound(self.current_alert) is True:
       num_loops = sound_list[self.current_alert][1]
       sound_data = self.loaded_sounds[self.current_alert]
       written_frames = 0
@@ -179,7 +181,6 @@ class Soundd:
         self.update_alert(AudibleAlert.fart)
       else:
         self.update_alert(AudibleAlert.prompt)
-
       self.openpilot_crashed_played = True
     elif sm.updated['controlsState']:
       new_alert = sm['controlsState'].alertSound.raw
@@ -216,27 +217,21 @@ class Soundd:
         sm.update(0)
 
         if sm.updated['microphone'] and self.current_alert == AudibleAlert.none: # only update volume filter when not playing alert
-          self.spl_filter_weighted.update(sm["microphone"].soundPressureWeightedDb)
-
           if self.frogpilot_toggles.alert_volume_control:
+            self.spl_filter_weighted.update(sm["microphone"].soundPressureWeightedDb)
             self.auto_volume = self.calculate_volume(float(self.spl_filter_weighted.x))
             self.current_volume = 0.0
           else:
+            self.spl_filter_weighted.update(sm["microphone"].soundPressureWeightedDb)
             self.current_volume = self.calculate_volume(float(self.spl_filter_weighted.x))
 
         elif self.frogpilot_toggles.alert_volume_control and self.current_alert in self.volume_map:
           self.current_volume = self.volume_map[self.current_alert] / 100.0
           if self.current_volume == 1.01:
-            if self.current_alert == AudibleAlert.startup:
-              self.current_volume = MAX_VOLUME
-            else:
-              self.current_volume = self.auto_volume
+            self.current_volume = self.auto_volume
 
         elif self.current_alert in self.random_events_map:
           self.current_volume = self.random_events_map[self.current_alert]
-
-        elif self.current_alert == AudibleAlert.startup:
-          self.current_volume = MAX_VOLUME
 
         self.get_audible_alert(sm)
 
@@ -247,7 +242,6 @@ class Soundd:
         # Update FrogPilot parameters
         if sm['frogpilotPlan'].togglesUpdated:
           self.frogpilot_toggles = get_frogpilot_toggles()
-
           self.update_frogpilot_sounds()
 
         if self.restart_stream:
@@ -271,7 +265,6 @@ class Soundd:
       AudibleAlert.warningImmediate: self.frogpilot_toggles.warningImmediate_volume,
 
       AudibleAlert.goat: self.frogpilot_toggles.prompt_volume,
-      AudibleAlert.startup: self.frogpilot_toggles.engage_volume,
     }
 
     if self.frogpilot_toggles.sound_pack != "stock":
