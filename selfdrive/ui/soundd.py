@@ -13,8 +13,9 @@ from openpilot.common.retry import retry
 from openpilot.common.swaglog import cloudlog
 
 from openpilot.system import micd
+from openpilot.selfdrive.ui.quiet.quiet_mode import QuietMode
 
-from openpilot.frogpilot.common.frogpilot_variables import ACTIVE_THEME_PATH, ERROR_LOGS_PATH, RANDOM_EVENTS_PATH, get_frogpilot_toggles, params_memory
+from openpilot.selfdrive.frogpilot.frogpilot_variables import ACTIVE_THEME_PATH, ERROR_LOGS_PATH, RANDOM_EVENTS_PATH, get_frogpilot_toggles, params_memory
 
 SAMPLE_RATE = 48000
 SAMPLE_BUFFER = 4096 # (approx 100ms)
@@ -70,7 +71,7 @@ def check_controls_timeout_alert(sm):
   return False
 
 
-class Soundd:
+class Soundd(QuietMode):
   def __init__(self):
     self.current_alert = AudibleAlert.none
     self.current_volume = MIN_VOLUME
@@ -141,7 +142,8 @@ class Soundd:
 
     ret = np.zeros(frames, dtype=np.float32)
 
-    if self.current_alert != AudibleAlert.none:
+    # if self.current_alert != AudibleAlert.none:
+    if self.should_play_sound(self.current_alert) is True:
       num_loops = sound_list[self.current_alert][1]
       sound_data = self.loaded_sounds[self.current_alert]
       written_frames = 0
