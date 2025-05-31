@@ -241,6 +241,10 @@ class CarInterfaceBase(ABC):
     self.use_nnff_lite = not self.use_nnff and frogpilot_toggles.nnff_lite
 
     self.always_on_lateral_allowed = False
+    self.belowSteerSpeed_shown = False
+    self.disable_belowSteerSpeed = False
+    self.disable_resumeRequired = False
+    self.resumeRequired_shown = False
 
   def get_ff_nn(self, x):
     return self.lat_torque_nn_model.evaluate(x)
@@ -318,11 +322,8 @@ class CarInterfaceBase(ABC):
     elif brand == "hyundai":
       if candidate in CANFD_CAR:
         hda2 = Ecu.adas in [fw.ecu for fw in car_fw]
-
         if 0x1fa in fingerprint[CanBus(None, hda2, fingerprint).ECAN]:
           fp_ret.fpFlags |= HyundaiFrogPilotFlags.NAV_MSG.value
-
-        fp_ret.isHDA2 = hda2
       else:
         if 0x391 in fingerprint[0]:
           fp_ret.fpFlags |= HyundaiFrogPilotFlags.CAN_LFA_BTN.value
