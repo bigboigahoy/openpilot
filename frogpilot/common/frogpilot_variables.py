@@ -58,7 +58,7 @@ DEFAULT_MODEL_NAME = "National Public Radio 👀📡"
 DEFAULT_MODEL_VERSION = "v6"
 
 DEFAULT_TINYGRAD_MODEL = "vegan-filet-o-fish"
-DEFAULT_TINYGRAD_MODEL_NAME = "Vegan Filet-o-Fish 👀📡"
+DEFAULT_TINYGRAD_MODEL_NAME = "Vegetarian Filet-o-Fish 👀📡"
 DEFAULT_TINYGRAD_MODEL_VERSION = "v8"
 
 EXCLUDED_KEYS = {
