@@ -31,8 +31,8 @@ NS_ :
     BU_BO_REL_
     SG_MUL_VAL_
 
-BS_: 
-BU_: MRR 
+BS_:
+BU_: MRR
 BO_ 1073741824 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
    SG_ New_Signal_943 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
    SG_ CAN_SENSOR_VANGLE_OFFSET : 0|8@0+ (0.0625,-8) [-8|7.9375] "deg" Vector__XXX
@@ -3393,7 +3393,7 @@ BA_DEF_DEF_ "NetworkInitializationUsed" "No";
 BA_DEF_DEF_ "PowerType" "Switched";
 BA_DEF_DEF_ "NodeStartUpTime" 250;
 BA_DEF_DEF_ "NodeWakeUpTime" 10;
-BA_DEF_DEF_ "GenMsgBackgroundColor" "#ffffff";
+BA_DEF_DEF_ "GenMsgBackgroundColor" "#cdd6f4";
 BA_DEF_DEF_ "GenMsgForegroundColor" "#000000";
 VAL_ 34 IPMA_PCAN_DataRangeCheck 1 "Fault Present" 0 "No Fault";
 VAL_ 34 IPMA_PCAN_MissingMsg 1 "Fault Present" 0 "No Fault ";

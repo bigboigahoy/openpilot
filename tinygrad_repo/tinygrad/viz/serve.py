@@ -72,7 +72,7 @@ def uop_to_json(x:UOp) -> dict[int, tuple[str, str, list[int], str, str]]:
     for idx,x in enumerate(u.src):
       if x.op is Ops.CONST: label += f"\nCONST{idx} {x.arg:g}"
       if x.op is Ops.DEVICE: label += f"\nDEVICE{idx} {x.arg}"
-    graph[id(u)] = (label, str(u.dtype), [id(x) for x in u.src if x not in excluded], str(u.arg), uops_colors.get(u.op, "#ffffff"))
+    graph[id(u)] = (label, str(u.dtype), [id(x) for x in u.src if x not in excluded], str(u.arg), uops_colors.get(u.op, "#cdd6f4"))
   return graph
 def _replace_uop(base:UOp, replaces:dict[UOp, UOp]) -> UOp:
   if (found:=replaces.get(base)) is not None: return found

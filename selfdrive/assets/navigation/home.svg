@@ -32,7 +32,7 @@
   <defs
      id="defs97" />
   <sodipodi:namedview
-     pagecolor="#ffffff"
+     pagecolor="#cdd6f4"
      bordercolor="#666666"
      borderopacity="1"
      objecttolerance="10"
@@ -55,9 +55,9 @@
      d="m 58.038143,147.98997 c 0,1.11009 0.899932,2.01003 2.010031,2.01003 H 90.19059 v -24.12037 h 24.12035 V 150 h 30.14242 c 1.1101,0 2.01003,-0.89994 2.01003,-2.01003 V 101.76651 H 58.038143 c 0,0 0,46.22346 0,46.22346 z m 95.918637,-57.647675 -7.49259,-6.58406 v -30.22199 c 0,-4.44041 -3.59964,-8.04012 -8.04013,-8.04012 -4.44047,0 -8.04012,3.59971 -8.04012,8.04012 v 16.08023 l -26.67147,-23.39675 c -0.75981,-0.80642 -2.02886,-0.84597 -2.83737,-0.0884 l -0.0884,0.0884 -50.243521,43.92317 c -0.758989,0.81013 -0.717501,2.08216 0.09263,2.84115 0.365504,0.34242 0.84574,0.53603 1.346559,0.54295 l 14.095938,0.201011 h 86.405544 c 1.11011,0.004 2.01302,-0.893251 2.01672,-2.003361 8.4e-4,-0.51306 -0.19282,-1.00727 -0.54377,-1.38155 z"
      id="path92"
      inkscape:connector-curvature="0"
-     style="stroke-width:8.04012012;fill:#ffffff;fill-opacity:1" />
+     style="stroke-width:8.04012012;fill:#cdd6f4;fill-opacity:1" />
   <circle
-     style="fill:none;stroke:#ffffff;stroke-width:3.26192951;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     style="fill:none;stroke:#cdd6f4;stroke-width:3.26192951;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="path104"
      cx="100"
      cy="100"

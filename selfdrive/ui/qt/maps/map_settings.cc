@@ -36,7 +36,7 @@ MapSettings::MapSettings(bool closeable, QWidget *parent) : QFrame(parent) {
       auto *close_btn = new QPushButton("←");
       close_btn->setStyleSheet(R"(
         QPushButton {
-          color: #FFFFFF;
+          color: #cdd6f4;
           font-size: 100px;
           padding-bottom: 8px;
           border 1px grey solid;
@@ -59,7 +59,7 @@ MapSettings::MapSettings(bool closeable, QWidget *parent) : QFrame(parent) {
     heading->setSpacing(16);
     {
       auto *title = new QLabel(tr("NAVIGATION"), this);
-      title->setStyleSheet("color: #FFFFFF; font-size: 54px; font-weight: 600;");
+      title->setStyleSheet("color: #cdd6f4; font-size: 54px; font-weight: 600;");
       heading->addWidget(title);
 
       subtitle = new QLabel(tr("Manage at %1").arg(QString("%1:8082").arg(frogpilotUIState()->wifi->getIp4Address())), this);
@@ -186,10 +186,10 @@ DestinationWidget::DestinationWidget(QWidget *parent) : QPushButton(parent) {
   setFixedHeight(164);
   setStyleSheet(R"(
     DestinationWidget { background-color: #202123; border-radius: 10px; }
-    QLabel { color: #FFFFFF; font-size: 48px; font-weight: 400; }
+    QLabel { color: #cdd6f4; font-size: 48px; font-weight: 400; }
     #icon { background-color: #3B4356; border-radius: 48px; }
     #subtitle { color: #9BA0A5; }
-    #action { border: none; border-radius: 48px; color: #FFFFFF; padding-bottom: 4px; }
+    #action { border: none; border-radius: 48px; color: #cdd6f4; padding-bottom: 4px; }
 
     /* current destination */
     [current="true"] { background-color: #E8E8E8; }
