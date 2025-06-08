@@ -82,12 +82,12 @@ Installer::Installer(QWidget *parent) : QWidget(parent) {
   setStyleSheet(R"(
     * {
       font-family: Inter;
-      color: white;
-      background-color: black;
+      color: #cdd6f4;
+      background-color: #11111b;
     }
     QProgressBar {
       border: none;
-      background-color: #292929;
+      background-color: #313244;
     }
     QProgressBar::chunk {
       background-color: #364DEF;

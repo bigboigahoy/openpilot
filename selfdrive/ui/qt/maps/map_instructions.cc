@@ -38,7 +38,7 @@ MapInstructions::MapInstructions(QWidget *parent) : QWidget(parent) {
 
   setStyleSheet("color:white");
   QPalette pal = palette();
-  pal.setColor(QPalette::Background, QColor(0, 0, 0, 150));
+  pal.setColor(QPalette::Background, QColor(17, 17, 27, 150));
   setAutoFillBackground(true);
   setPalette(pal);
 

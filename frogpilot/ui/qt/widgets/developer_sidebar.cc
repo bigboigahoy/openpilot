@@ -42,7 +42,7 @@ void DeveloperSidebar::showEvent(QShowEvent *event) {
     metricAssignments.push_back(metricId);
   }
 
-  metricColor = frogpilot_scene.use_stock_colors ? QColor(255, 255, 255) : frogpilot_scene.sidebar_color1;
+  metricColor = frogpilot_scene.use_stock_colors ? QColor(205, 214, 244) : frogpilot_scene.sidebar_color1;
 }
 
 void DeveloperSidebar::updateState(const UIState &s, const FrogPilotUIState &fs) {

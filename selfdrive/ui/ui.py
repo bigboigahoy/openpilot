@@ -36,10 +36,10 @@ if __name__ == "__main__":
   win.setObjectName("win")
   win.setStyleSheet("""
     #win {
-      background-color: black;
+      background-color: #11111b;
     }
     QLabel {
-      color: white;
+      color: #cdd6f4;
       font-size: 40px;
     }
   """)

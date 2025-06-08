@@ -41,7 +41,7 @@ MapSettings::MapSettings(bool closeable, QWidget *parent) : QFrame(parent) {
           padding-bottom: 8px;
           border 1px grey solid;
           border-radius: 70px;
-          background-color: #292929;
+          background-color: #313244;
           font-weight: 500;
         }
         QPushButton:pressed {
@@ -193,7 +193,7 @@ DestinationWidget::DestinationWidget(QWidget *parent) : QPushButton(parent) {
 
     /* current destination */
     [current="true"] { background-color: #E8E8E8; }
-    [current="true"] QLabel { color: #000000; }
+    [current="true"] QLabel { color: #11111b; }
     [current="true"] #icon { background-color: #42906B; }
     [current="true"] #subtitle { color: #333333; }
     [current="true"] #action { color: #202123; }

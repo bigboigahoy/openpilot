@@ -25,11 +25,11 @@ void RecordButton::paintEvent(QPaintEvent *event) {
 
   QPoint center(width() / 2, height() / 2);
 
-  QColor bg(isChecked() ? "#FFFFFF" : "#737373");
-  QColor accent(isChecked() ? "#FF0000" : "#FFFFFF");
+  QColor bg(isChecked() ? "#cdd6f4" : "#6c7086");
+  QColor accent(isChecked() ? "#f38ba8" : "#cdd6f4");
   if (!isEnabled()) {
-    bg = QColor("#404040");
-    accent = QColor("#FFFFFF");
+    bg = QColor("#313244");
+    accent = QColor("#cdd6f4");
   }
 
   if (isDown()) {
@@ -85,11 +85,11 @@ void BodyWindow::paintEvent(QPaintEvent *event) {
   QPainter p(this);
   p.setRenderHint(QPainter::Antialiasing);
 
-  p.fillRect(rect(), QColor(0, 0, 0));
+  p.fillRect(rect(), QColor(17, 17, 27));
 
   // battery outline + detail
   p.translate(width() - 136, 16);
-  const QColor gray = QColor("#737373");
+  const QColor gray = QColor("#6c7086");
   p.setBrush(Qt::NoBrush);
   p.setPen(QPen(gray, 4, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
   p.drawRoundedRect(2, 2, 78, 36, 8, 8);
@@ -103,7 +103,7 @@ void BodyWindow::paintEvent(QPaintEvent *event) {
   double fuel = std::clamp(fuel_filter.x(), 0.2f, 1.0f);
   const int m = 5; // manual margin since we can't do an inner border
   p.setPen(Qt::NoPen);
-  p.setBrush(fuel > 0.25 ? QColor("#32D74B") : QColor("#FF453A"));
+  p.setBrush(fuel > 0.25 ? QColor("#a6e3a1") : QColor("#f38ba8"));
   p.drawRoundedRect(2 + m, 2 + m, (78 - 2*m)*fuel, 36 - 2*m, 4, 4);
 
   // charging status

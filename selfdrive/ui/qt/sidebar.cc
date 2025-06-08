@@ -13,13 +13,13 @@ void Sidebar::drawMetric(QPainter &p, const QPair<QString, QString> &label, QCol
   p.drawRoundedRect(QRect(rect.x() + 4, rect.y() + 4, 100, 118), 18, 18);
   p.setClipping(false);
 
-  QPen pen = QPen(QColor(0xff, 0xff, 0xff, 0x55));
+  QPen pen = QPen(QColor(0xcd, 0xd6, 0xf4, 0x55));
   pen.setWidth(2);
   p.setPen(pen);
   p.setBrush(Qt::NoBrush);
   p.drawRoundedRect(rect, 20, 20);
 
-  p.setPen(QColor(0xff, 0xff, 0xff));
+  p.setPen(QColor(0xcd, 0xd6, 0xf4));
   p.setFont(InterFont(35, QFont::DemiBold));
   p.drawText(rect.adjusted(22, 0, 0, 0), Qt::AlignCenter, label.first + "\n" + label.second);
 }
@@ -236,7 +236,7 @@ void Sidebar::paintEvent(QPaintEvent *event) {
   p.setPen(Qt::NoPen);
   p.setRenderHint(QPainter::Antialiasing);
 
-  p.fillRect(rect(), QColor(57, 57, 57));
+  p.fillRect(rect(), QColor(49, 50, 68));
 
   // buttons
   p.setOpacity(settings_pressed ? 0.65 : 1.0);
@@ -263,7 +263,7 @@ void Sidebar::paintEvent(QPaintEvent *event) {
 
   // network
   int x = 58;
-  const QColor gray(0x54, 0x54, 0x54);
+  const QColor gray(0x58, 0x5b, 0x70);
   if (isIP) {
     p.drawText(QRect(x, 196, 225, 27), Qt::AlignLeft | Qt::AlignVCenter, frogpilotUIState()->wifi->getIp4Address());
     p.setFont(InterFont(30));
@@ -276,7 +276,7 @@ void Sidebar::paintEvent(QPaintEvent *event) {
     }
   }
 
-  p.setPen(QColor(0xff, 0xff, 0xff));
+  p.setPen(QColor(0xcd, 0xd6, 0xf4));
   const QRect r = QRect(50, 247, 100, 50);
   p.drawText(r, Qt::AlignCenter, net_type);
 

@@ -107,8 +107,8 @@ void OnroadAlerts::paintEvent(QPaintEvent *event) {
   p.drawRoundedRect(r, radius, radius);
 
   QLinearGradient g(0, r.y(), 0, r.bottom());
-  g.setColorAt(0, QColor::fromRgbF(0, 0, 0, 0.05));
-  g.setColorAt(1, QColor::fromRgbF(0, 0, 0, 0.35));
+  g.setColorAt(0, QColor::fromRgbF(17, 17, 27, 0.05));
+  g.setColorAt(1, QColor::fromRgbF(17, 17, 27, 0.35));
 
   p.setCompositionMode(QPainter::CompositionMode_DestinationOver);
   p.setBrush(QBrush(g));
@@ -117,7 +117,7 @@ void OnroadAlerts::paintEvent(QPaintEvent *event) {
 
   // text
   const QPoint c = r.center();
-  p.setPen(QColor(0xff, 0xff, 0xff));
+  p.setPen(QColor(0xcd, 0xd6, 0xf4));
   p.setRenderHint(QPainter::TextAntialiasing);
   if (alert.size == cereal::ControlsState::AlertSize::SMALL) {
     p.setFont(InterFont(74, QFont::DemiBold));

@@ -33,9 +33,9 @@ class Window(QWidget):
 
     self.setStyleSheet("""
       * {
-        color: white;
+        color: #cdd6f4;
         font-size: 55px;
-        background-color: black;
+        background-color: #11111b;
         font-family: "JetBrains Mono";
       }
     """)

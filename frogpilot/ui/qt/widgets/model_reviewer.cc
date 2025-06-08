@@ -89,7 +89,7 @@ ModelReview::ModelReview(QWidget *parent) : QFrame(parent) {
       font-weight: bold;
       padding: 10px;
       color: #C92231;
-      background-color: #000000;
+      background-color: #11111b;
       border: 2px solid #FFFFFF;
       border-radius: 5px;
     }

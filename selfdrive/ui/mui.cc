@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
   QWidget w;
   setMainWindow(&w);
 
-  w.setStyleSheet("background-color: black;");
+  w.setStyleSheet("background-color: #11111b;");
 
   // our beautiful UI
   QVBoxLayout *layout = new QVBoxLayout(&w);

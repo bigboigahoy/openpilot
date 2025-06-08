@@ -102,7 +102,7 @@ QWidget * Setup::low_voltage() {
   inner_layout->addSpacing(80);
 
   QLabel *title = new QLabel(tr("WARNING: Low Voltage"));
-  title->setStyleSheet("font-size: 90px; font-weight: 500; color: #FF594F;");
+  title->setStyleSheet("font-size: 90px; font-weight: 500; color: #fab387;");
   inner_layout->addWidget(title, 0, Qt::AlignTop | Qt::AlignLeft);
 
   inner_layout->addSpacing(25);
@@ -183,7 +183,7 @@ QWidget * Setup::network_setup() {
 
   // wifi widget
   Networking *networking = new Networking(this, false);
-  networking->setStyleSheet("Networking {background-color: #292929; border-radius: 13px;}");
+  networking->setStyleSheet("Networking {background-color: #313244; border-radius: 13px;}");
   main_layout->addWidget(networking, 1);
 
   main_layout->addSpacing(35);
@@ -242,10 +242,10 @@ QWidget * radio_button(QString title, QButtonGroup *group) {
       font-size: 80px;
       font-weight: 400;
       border-radius: 10px;
-      background-color: #4F4F4F;
+      background-color: #45475a;
     }
     QPushButton:checked {
-      background-color: #465BEA;
+      background-color: #89b4fa;
     }
   )");
 
@@ -439,31 +439,31 @@ Setup::Setup(QWidget *parent) : QStackedWidget(parent) {
   // TODO: revisit pressed bg color
   setStyleSheet(R"(
     * {
-      color: white;
+      color: #cdd6f4;
       font-family: Inter;
     }
     Setup {
-      background-color: black;
+      background-color: #11111b;
     }
     QPushButton#navBtn {
       height: 160;
       font-size: 55px;
       font-weight: 400;
       border-radius: 10px;
-      background-color: #333333;
+      background-color: #313244;
     }
     QPushButton#navBtn:disabled, QPushButton[primary='true']:disabled {
-      color: #808080;
-      background-color: #333333;
+      color: #7f849c;
+      background-color: #313244;
     }
     QPushButton#navBtn:pressed {
-      background-color: #444444;
+      background-color: #45475a;
     }
     QPushButton[primary='true'], #navBtn[primary='true'] {
-      background-color: #465BEA;
+      background-color: #89b4fa;
     }
     QPushButton[primary='true']:pressed, #navBtn:pressed[primary='true'] {
-      background-color: #3049F4;
+      background-color: #89b4fa;
     }
   )");
 }

@@ -73,22 +73,22 @@ Spinner::Spinner(QWidget *parent) : QWidget(parent) {
 
   setStyleSheet(R"(
     Spinner {
-      background-color: black;
+      background-color: #11111b;
     }
     QLabel {
-      color: white;
+      color: #cdd6f4;
       font-size: 80px;
       background-color: transparent;
     }
     QProgressBar {
-      background-color: #373737;
+      background-color: #313244;
       width: 1000px;
-      border solid white;
+      border solid #cdd6f4;
       border-radius: 10px;
     }
     QProgressBar::chunk {
       border-radius: 10px;
-      background-color: rgba(23, 134, 68, 242);
+      background-color: rgba(166, 227, 161, 242);
     }
   )");
 

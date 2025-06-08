@@ -38,7 +38,7 @@ ExperimentalModeButton::ExperimentalModeButton(QWidget *parent) : QPushButton(pa
       font-weight: 300;
       text-align: left;
       font-family: JetBrainsMono;
-      color: #000000;
+      color: #11111b;
     }
   )");
 }
@@ -55,16 +55,16 @@ void ExperimentalModeButton::paintEvent(QPaintEvent *event) {
   bool pressed = isDown();
   QLinearGradient gradient(rect().left(), 0, rect().right(), 0);
   if (experimental_mode) {
-    gradient.setColorAt(0, QColor(255, 155, 63, pressed ? 0xcc : 0xff));
-    gradient.setColorAt(1, QColor(219, 56, 34, pressed ? 0xcc : 0xff));
+    gradient.setColorAt(0, QColor(250, 179, 135, pressed ? 0xcc : 0xff));
+    gradient.setColorAt(1, QColor(235, 160, 172, pressed ? 0xcc : 0xff));
   } else {
-    gradient.setColorAt(0, QColor(20, 255, 171, pressed ? 0xcc : 0xff));
-    gradient.setColorAt(1, QColor(35, 149, 255, pressed ? 0xcc : 0xff));
+    gradient.setColorAt(0, QColor(148, 226, 213, pressed ? 0xcc : 0xff));
+    gradient.setColorAt(1, QColor(137, 180, 250, pressed ? 0xcc : 0xff));
   }
   p.fillPath(path, gradient);
 
   // vertical line
-  p.setPen(QPen(QColor(0, 0, 0, 0x4d), 3, Qt::SolidLine));
+  p.setPen(QPen(QColor(17, 17, 27, 0x4d), 3, Qt::SolidLine));
   int line_x = rect().right() - img_width - (2 * horizontal_padding);
   p.drawLine(line_x, rect().bottom(), line_x, rect().top());
 }

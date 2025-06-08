@@ -55,9 +55,9 @@ protected:
 
   const QRect home_btn = QRect(60, 860, 180, 180);
   const QRect settings_btn = QRect(50, 35, 200, 117);
-  const QColor good_color = QColor(255, 255, 255);
-  const QColor warning_color = QColor(218, 202, 37);
-  const QColor danger_color = QColor(201, 34, 49);
+  const QColor good_color = QColor(205, 214, 244);
+  const QColor warning_color = QColor(249, 226, 175);
+  const QColor danger_color = QColor(243, 139, 168);
 
   ItemStatus connect_status, panda_status, temp_status;
   QString net_type;

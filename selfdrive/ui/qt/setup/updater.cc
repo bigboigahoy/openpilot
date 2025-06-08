@@ -48,10 +48,10 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
     install->setObjectName("navBtn");
     install->setStyleSheet(R"(
       QPushButton {
-        background-color: #465BEA;
+        background-color: #89b4fa;
       }
       QPushButton:pressed {
-        background-color: #3049F4;
+        background-color: #89b4fa;
       }
     )");
     QObject::connect(install, &QPushButton::clicked, this, &Updater::installUpdate);
@@ -65,7 +65,7 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
     layout->setContentsMargins(100, 100, 100, 100);
 
     Networking *networking = new Networking(this, false);
-    networking->setStyleSheet("Networking { background-color: #292929; border-radius: 13px; }");
+    networking->setStyleSheet("Networking { background-color: #313244; border-radius: 13px; }");
     layout->addWidget(networking, 1);
 
     QPushButton *back = new QPushButton(tr("Back"));
@@ -116,30 +116,30 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
 
   setStyleSheet(R"(
     * {
-      color: white;
+      color: #cdd6f4;
       outline: none;
       font-family: Inter;
     }
     Updater {
-      color: white;
-      background-color: black;
+      color: #cdd6f4;
+      background-color: #11111b;
     }
     QPushButton#navBtn {
       height: 160;
       font-size: 55px;
       font-weight: 400;
       border-radius: 10px;
-      background-color: #333333;
+      background-color: #313244;
     }
     QPushButton#navBtn:pressed {
-      background-color: #444444;
+      background-color: #45475a;
     }
     QProgressBar {
       border: none;
-      background-color: #292929;
+      background-color: #313244;
     }
     QProgressBar::chunk {
-      background-color: #364DEF;
+      background-color: #89b4fa;
     }
   )");
 }

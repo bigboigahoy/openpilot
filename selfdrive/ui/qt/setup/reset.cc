@@ -81,10 +81,10 @@ Reset::Reset(ResetMode mode, QWidget *parent) : QWidget(parent) {
   confirmBtn = new QPushButton(tr("Confirm"));
   confirmBtn->setStyleSheet(R"(
     QPushButton {
-      background-color: #465BEA;
+      background-color: #89b4fa;
     }
     QPushButton:pressed {
-      background-color: #3049F4;
+      background-color: #89b4fa;
     }
   )");
   blayout->addWidget(confirmBtn);
@@ -100,8 +100,8 @@ Reset::Reset(ResetMode mode, QWidget *parent) : QWidget(parent) {
   setStyleSheet(R"(
     * {
       font-family: Inter;
-      color: white;
-      background-color: black;
+      color: #cdd6f4;
+      background-color: #11111b;
     }
     QLabel {
       margin-left: 140;
@@ -111,10 +111,10 @@ Reset::Reset(ResetMode mode, QWidget *parent) : QWidget(parent) {
       font-size: 55px;
       font-weight: 400;
       border-radius: 10px;
-      background-color: #333333;
+      background-color: #313244;
     }
     QPushButton:pressed {
-      background-color: #444444;
+      background-color: #45475a;
     }
   )");
 }

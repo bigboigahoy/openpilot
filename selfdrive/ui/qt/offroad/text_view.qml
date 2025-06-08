@@ -42,6 +42,6 @@ Item {
     width: 12
     radius: 6
     height: flickArea.visibleArea.heightRatio * (flickArea.height - flickArea.bottomMargin - flickArea.topMargin)
-    color: "#808080"
+    color: "#7f849c"
   }
 }

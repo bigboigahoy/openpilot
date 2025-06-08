@@ -667,7 +667,7 @@ HelpOverlay::HelpOverlay(MainWindow *parent) : QWidget(parent) {
 
 void HelpOverlay::paintEvent(QPaintEvent *event) {
   QPainter painter(this);
-  painter.fillRect(rect(), QColor(0, 0, 0, 50));
+  painter.fillRect(rect(), QColor(17, 17, 27, 50));
   auto parent = parentWidget();
   drawHelpForWidget(painter, parent->findChild<MessagesWidget *>());
   drawHelpForWidget(painter, parent->findChild<BinaryView *>());

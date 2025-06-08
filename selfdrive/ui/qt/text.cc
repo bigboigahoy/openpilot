@@ -46,15 +46,15 @@ int main(int argc, char *argv[]) {
   window.setStyleSheet(R"(
     * {
       outline: none;
-      color: white;
-      background-color: black;
+      color: #cdd6f4;
+      background-color: #11111b;
       font-size: 60px;
     }
     QPushButton {
       padding: 50px;
       padding-right: 100px;
       padding-left: 100px;
-      border: 2px solid white;
+      border: 2px #cdd6f4;
       border-radius: 20px;
       margin-right: 40px;
     }

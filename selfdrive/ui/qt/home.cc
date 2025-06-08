@@ -145,13 +145,13 @@ OffroadHome::OffroadHome(QWidget* parent) : QFrame(parent) {
 
   update_notif = new QPushButton(tr("UPDATE"));
   update_notif->setVisible(false);
-  update_notif->setStyleSheet("background-color: #364DEF;");
+  update_notif->setStyleSheet("background-color: #89b4fa;");
   QObject::connect(update_notif, &QPushButton::clicked, [=]() { center_layout->setCurrentIndex(1); });
   header_layout->addWidget(update_notif, 0, Qt::AlignHCenter | Qt::AlignLeft);
 
   alert_notif = new QPushButton();
   alert_notif->setVisible(false);
-  alert_notif->setStyleSheet("background-color: #E22C2C;");
+  alert_notif->setStyleSheet("background-color: #f38ba8;");
   QObject::connect(alert_notif, &QPushButton::clicked, [=] { center_layout->setCurrentIndex(2); });
   header_layout->addWidget(alert_notif, 0, Qt::AlignHCenter | Qt::AlignLeft);
 
@@ -232,10 +232,10 @@ OffroadHome::OffroadHome(QWidget* parent) : QFrame(parent) {
 
   setStyleSheet(R"(
     * {
-      color: white;
+      color: #cdd6f4;
     }
     OffroadHome {
-      background-color: black;
+      background-color: #11111b;
     }
     OffroadHome > QPushButton {
       padding: 15px 30px;

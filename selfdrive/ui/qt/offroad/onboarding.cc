@@ -69,7 +69,7 @@ void TrainingGuide::paintEvent(QPaintEvent *event) {
   QPainter painter(this);
 
   QRect bg(0, 0, painter.device()->width(), painter.device()->height());
-  painter.fillRect(bg, QColor("#000000"));
+  painter.fillRect(bg, QColor("#11111b"));
 
   image = loadImage(currentIndex);
   QRect rect(image.rect());
@@ -80,7 +80,7 @@ void TrainingGuide::paintEvent(QPaintEvent *event) {
   if (currentIndex > 0 && currentIndex < (boundingRect.size() - 2)) {
     const int h = 20;
     const int w = (currentIndex / (float)(boundingRect.size() - 2)) * width();
-    painter.fillRect(QRect(0, height() - h, w, h), QColor("#465BEA"));
+    painter.fillRect(QRect(0, height() - h, w, h), QColor("#89b4fa"));
   }
 }
 
@@ -104,7 +104,7 @@ void TermsPage::showEvent(QShowEvent *event) {
   text->setResizeMode(QQuickWidget::SizeRootObjectToView);
   text->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
   text->setAttribute(Qt::WA_AlwaysStackOnTop);
-  text->setClearColor(QColor("#1B1B1B"));
+  text->setClearColor(QColor("#181825"));
 
   QString text_view = util::read_file("../assets/offroad/tc.html").c_str();
   text->rootContext()->setContextProperty("text_view", text_view);
@@ -130,13 +130,13 @@ void TermsPage::showEvent(QShowEvent *event) {
   accept_btn->setEnabled(false);
   accept_btn->setStyleSheet(R"(
     QPushButton {
-      background-color: #465BEA;
+      background-color: #89b4fa;
     }
     QPushButton:pressed {
-      background-color: #3049F4;
+      background-color: #89b4fa;
     }
     QPushButton:disabled {
-      background-color: #4F4F4F;
+      background-color: #45475a;
     }
   )");
   buttons->addWidget(accept_btn);
@@ -173,7 +173,7 @@ void DeclinePage::showEvent(QShowEvent *event) {
   QObject::connect(back_btn, &QPushButton::clicked, this, &DeclinePage::getBack);
 
   QPushButton *uninstall_btn = new QPushButton(tr("Decline, uninstall %1").arg(getBrand()));
-  uninstall_btn->setStyleSheet("background-color: #B73D3D");
+  uninstall_btn->setStyleSheet("background-color: #f38ba8");
   buttons->addWidget(uninstall_btn);
   QObject::connect(uninstall_btn, &QPushButton::clicked, [=]() {
     Params().putBool("DoUninstall", true);
@@ -219,15 +219,15 @@ OnboardingWindow::OnboardingWindow(QWidget *parent) : QStackedWidget(parent) {
 
   setStyleSheet(R"(
     * {
-      color: white;
-      background-color: black;
+      color: #cdd6f4;
+      background-color: #11111b;
     }
     QPushButton {
       height: 160px;
       font-size: 55px;
       font-weight: 400;
       border-radius: 10px;
-      background-color: #4F4F4F;
+      background-color: #45475a;
     }
   )");
   updateActiveScreen();

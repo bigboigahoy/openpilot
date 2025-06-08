@@ -41,7 +41,7 @@ AbstractAlert::AbstractAlert(bool hasRebootBtn, QWidget *parent) : QFrame(parent
     params.putBool("OfflineMode", true);
   });
   QObject::connect(disable_check_btn, &QPushButton::clicked, this, &AbstractAlert::dismiss);
-  disable_check_btn->setStyleSheet(R"(color: white; background-color: #4F4F4F;)");
+  disable_check_btn->setStyleSheet(R"(color: #cdd6f4; background-color: #45475a;)");
 
   snooze_btn = new QPushButton(tr("Snooze Update"));
   snooze_btn->setVisible(false);
@@ -51,7 +51,7 @@ AbstractAlert::AbstractAlert(bool hasRebootBtn, QWidget *parent) : QFrame(parent
     params.putBool("SnoozeUpdate", true);
   });
   QObject::connect(snooze_btn, &QPushButton::clicked, this, &AbstractAlert::dismiss);
-  snooze_btn->setStyleSheet(R"(color: white; background-color: #4F4F4F;)");
+  snooze_btn->setStyleSheet(R"(color: #cdd6f4; background-color: #45475a;)");
 
   if (hasRebootBtn) {
     QPushButton *rebootBtn = new QPushButton(tr("Reboot and Update"));
@@ -63,17 +63,17 @@ AbstractAlert::AbstractAlert(bool hasRebootBtn, QWidget *parent) : QFrame(parent
   setStyleSheet(R"(
     * {
       font-size: 48px;
-      color: white;
+      color: #cdd6f4;
     }
     QFrame {
       border-radius: 30px;
-      background-color: #393939;
+      background-color: #313244;
     }
     QPushButton {
-      color: black;
+      color: #11111b;
       font-weight: 500;
       border-radius: 30px;
-      background-color: white;
+      background-color: #cdd6f4;
     }
   )");
 }
@@ -96,7 +96,7 @@ int OffroadAlert::refresh() {
       alerts[key] = l;
       l->setMargin(60);
       l->setWordWrap(true);
-      l->setStyleSheet(QString("background-color: %1").arg(severity ? "#E22C2C" : "#292929"));
+      l->setStyleSheet(QString("background-color: %1").arg(severity ? "#f38ba8" : "#313244"));
       scrollable_layout->addWidget(l);
     }
     scrollable_layout->addStretch(1);

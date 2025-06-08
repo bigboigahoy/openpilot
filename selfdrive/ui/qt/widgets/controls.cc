@@ -30,7 +30,7 @@ AbstractControl::AbstractControl(const QString &title, const QString &desc, cons
   // value next to control button
   value = new ElidedLabel();
   value->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-  value->setStyleSheet("color: #aaaaaa");
+  value->setStyleSheet("color: #a6adc8");
   hlayout->addWidget(value);
 
   main_layout->addLayout(hlayout);
@@ -38,7 +38,7 @@ AbstractControl::AbstractControl(const QString &title, const QString &desc, cons
   // description
   description = new QLabel(desc);
   description->setContentsMargins(40, 20, 40, 20);
-  description->setStyleSheet("font-size: 40px; color: grey");
+  description->setStyleSheet("font-size: 40px; color: #7f849c");
   description->setWordWrap(true);
   description->setVisible(false);
   main_layout->addWidget(description);
@@ -72,14 +72,14 @@ ButtonControl::ButtonControl(const QString &title, const QString &text, const QS
       border-radius: 50px;
       font-size: 35px;
       font-weight: 500;
-      color: #E4E4E4;
-      background-color: #393939;
+      color: #bac2de;
+      background-color: #313244;
     }
     QPushButton:pressed {
-      background-color: #4a4a4a;
+      background-color: #45475a;
     }
     QPushButton:disabled {
-      color: #33E4E4E4;
+      color: #74c7ec;
     }
   )");
   btn.setFixedSize(250, 100);

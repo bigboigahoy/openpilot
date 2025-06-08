@@ -24,10 +24,10 @@ const QString buttonStyle = R"(
     font-weight: 500;
     height: 100px;
     color: #E4E4E4;
-    background-color: #393939;
+    background-color: #313244;
   }
   QPushButton:pressed {
-    background-color: #4a4a4a;
+    background-color: #45475a;
   }
   QPushButton:checked:enabled {
     background-color: #33Ab4C;

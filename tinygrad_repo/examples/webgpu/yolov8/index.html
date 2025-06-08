@@ -64,7 +64,7 @@
             top: 20px;
             right: 20px;
             background-color: rgba(0, 0, 0, 0.7);
-            color: white;
+            color: #cdd6f4;
             padding: 10px;
             font-size: 18px;
             border-radius: 5px;
@@ -91,7 +91,7 @@
 
         .loading-text {
             font-size: 24px;
-            color: white;
+            color: #cdd6f4;
             margin-bottom: 20px;
         }
     </style>
@@ -253,7 +253,7 @@
             const adapter = await navigator.gpu.requestAdapter();
             return await adapter.requestDevice();
         };
-        
+
         function processOutput(output, img_width, img_height) {
             let boxes = [];
             const numPredictions = Math.pow(modelInputSize/32, 2) * 21;
