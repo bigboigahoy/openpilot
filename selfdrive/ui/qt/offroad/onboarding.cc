@@ -133,7 +133,7 @@ void TermsPage::showEvent(QShowEvent *event) {
       background-color: #89b4fa;
     }
     QPushButton:pressed {
-      background-color: #89b4fa;
+      background-color: #74c7ec;
     }
     QPushButton:disabled {
       background-color: #45475a;

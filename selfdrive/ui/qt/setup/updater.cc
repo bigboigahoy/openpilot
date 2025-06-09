@@ -51,7 +51,7 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
         background-color: #89b4fa;
       }
       QPushButton:pressed {
-        background-color: #89b4fa;
+        background-color: #74c7ec;
       }
     )");
     QObject::connect(install, &QPushButton::clicked, this, &Updater::installUpdate);

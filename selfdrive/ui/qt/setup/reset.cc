@@ -84,7 +84,7 @@ Reset::Reset(ResetMode mode, QWidget *parent) : QWidget(parent) {
       background-color: #89b4fa;
     }
     QPushButton:pressed {
-      background-color: #89b4fa;
+      background-color: #74c7ec;
     }
   )");
   blayout->addWidget(confirmBtn);

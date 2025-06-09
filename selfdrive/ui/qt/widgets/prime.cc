@@ -207,7 +207,7 @@ SetupWidget::SetupWidget(QWidget* parent) : QFrame(parent) {
       padding: 64px;
     }
     QPushButton:pressed {
-      background-color: #89b4fa;
+      background-color: #74c7ec;
     }
   )");
   finishRegistationLayout->addWidget(pair);
