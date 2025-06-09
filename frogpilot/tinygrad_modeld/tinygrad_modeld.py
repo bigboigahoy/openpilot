@@ -26,7 +26,7 @@ from openpilot.common.transformations.model import get_warp_matrix
 from openpilot.system import sentry
 from openpilot.selfdrive.car.car_helpers import get_demo_car_params
 from openpilot.selfdrive.controls.lib.desire_helper import DesireHelper
-from openpilot.selfdrive.controls.lib.drive_helpers import get_accel_from_plan_tomb_raider, smooth_value, get_curvature_from_plan
+from openpilot.selfdrive.controls.lib.drive_helpers import get_accel_from_plan, smooth_value, get_curvature_from_plan
 from openpilot.frogpilot.tinygrad_modeld.parse_model_outputs import Parser
 from openpilot.frogpilot.tinygrad_modeld.fill_model_msg import fill_model_msg, fill_pose_msg, PublishState
 from openpilot.frogpilot.tinygrad_modeld.constants import ModelConstants, Plan
@@ -51,7 +51,7 @@ MIN_LAT_CONTROL_SPEED = 0.3
 def get_action_from_model(model_output: dict[str, np.ndarray], prev_action: log.ModelDataV2.Action,
                           lat_action_t: float, long_action_t: float, v_ego: float) -> log.ModelDataV2.Action:
     plan = model_output['plan'][0]
-    desired_accel, should_stop = get_accel_from_plan_tomb_raider(plan[:,Plan.VELOCITY][:,0],
+    desired_accel, should_stop = get_accel_from_plan(plan[:,Plan.VELOCITY][:,0],
                                                                  plan[:,Plan.ACCELERATION][:,0],
                                                                  ModelConstants.T_IDXS,
                                                                  action_t=long_action_t)
