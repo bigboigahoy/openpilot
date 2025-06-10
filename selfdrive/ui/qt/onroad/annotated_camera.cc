@@ -127,8 +127,8 @@ void AnnotatedCameraWidget::drawHud(QPainter &p, const cereal::FrogPilotPlan::Re
 
   // Header gradient
   QLinearGradient bg(0, UI_HEADER_HEIGHT - (UI_HEADER_HEIGHT / 2.5), 0, UI_HEADER_HEIGHT);
-  bg.setColorAt(0, QColor::fromRgbF(17, 17, 27, 0.45));
-  bg.setColorAt(1, QColor::fromRgbF(17, 17, 27, 0));
+  bg.setColorAt(0, QColor::fromRgbF(0, 0, 0, 0.45));
+  bg.setColorAt(1, QColor::fromRgbF(0, 0, 0, 0));
   p.fillRect(0, 0, width(), UI_HEADER_HEIGHT, bg);
 
   QString speedLimitStr = (speedLimit > 1) ? QString::number(std::nearbyint(speedLimit)) : "–";
@@ -162,23 +162,23 @@ void AnnotatedCameraWidget::drawHud(QPainter &p, const cereal::FrogPilotPlan::Re
     drawRoundedRect(p, set_speed_rect, top_radius, top_radius, bottom_radius, bottom_radius);
 
     // Draw MAX
-    QColor max_color = QColor(0x93, 0x99, 0xb2, 0xff);
+    QColor max_color = QColor(0x80, 0xd8, 0xa6, 0xff);
     QColor set_speed_color = whiteColor();
     if (is_cruise_set) {
       if (status == STATUS_DISENGAGED) {
         max_color = whiteColor();
       } else if (status == STATUS_OVERRIDE) {
-        max_color = QColor(0x93, 0x99, 0xb2, 0xff);
+        max_color = QColor(0x91, 0x9b, 0x95, 0xff);
       } else if (speedLimit > 0) {
         auto interp_color = [=](QColor c1, QColor c2, QColor c3) {
           return speedLimit > 0 ? interpColor(setSpeed, {speedLimit + 5, speedLimit + 15, speedLimit + 25}, {c1, c2, c3}) : c1;
         };
-        max_color = interp_color(max_color, QColor(0xf9, 0xe2, 0xbaf), QColor(0xeb, 0xa0, 0xac));
-        set_speed_color = interp_color(set_speed_color, QColor(0xfa, 0xb3, 0x87), QColor(0xf3, 0x8b, 0xa8));
+        max_color = interp_color(max_color, QColor(0xff, 0xe4, 0xbf), QColor(0xff, 0xbf, 0xbf));
+        set_speed_color = interp_color(set_speed_color, QColor(0xff, 0x95, 0x00), QColor(0xff, 0x00, 0x00));
       }
     } else {
-      max_color = QColor(0xa6, 0xad, 0xc8, 0xff);
-      set_speed_color = QColor(0x6c, 0x70, 0x86, 0xff);
+      max_color = QColor(0xa6, 0xa6, 0xa6, 0xff);
+      set_speed_color = QColor(0x72, 0x72, 0x72, 0xff);
     }
     p.setFont(InterFont(40, QFont::DemiBold));
     p.setPen(max_color);
@@ -270,7 +270,7 @@ void AnnotatedCameraWidget::drawText(QPainter &p, int x, int y, const QString &t
   QRect real_rect = p.fontMetrics().boundingRect(text);
   real_rect.moveCenter({x, y - real_rect.height() / 2});
 
-  p.setPen(QColor(0xcd, 0xd6, 0xf4, alpha));
+  p.setPen(QColor(0xff, 0xff, 0xff, alpha));
   p.drawText(real_rect.x(), real_rect.bottom(), text);
 }
 
@@ -475,9 +475,9 @@ void AnnotatedCameraWidget::drawLead(QPainter &painter, const cereal::RadarState
 
   QPointF glow[] = {{x + (sz * 1.35) + g_xo, y + sz + g_yo}, {x, y - g_yo}, {x - (sz * 1.35) - g_xo, y + sz + g_yo}};
   if (lead_data.getFarLead()) {
-    painter.setBrush(QColor(116, 199, 236, 255));
+    painter.setBrush(QColor(0, 255, 255, 255));
   } else {
-    painter.setBrush(QColor(249, 226, 175, 255));
+    painter.setBrush(QColor(218, 202, 37, 255));
   }
   painter.drawPolygon(glow, std::size(glow));
 
