@@ -23,8 +23,8 @@ const QString buttonStyle = R"(
     font-size: 35px;
     font-weight: 500;
     height: 100px;
-    color: #f5e0dc;
-    background-color: #313244;
+    color: #cdd6f4;
+    background-color: #cba6f7;
   }
   QPushButton:pressed {
     background-color: #45475a;
