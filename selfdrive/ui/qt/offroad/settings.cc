@@ -299,7 +299,7 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
   }
 
   setStyleSheet(R"(
-    #reboot_btn { height: 120px; border-radius: 15px; background-color: #313244; }
+    #reboot_btn { height: 120px; border-radius: 15px; background-color: #b4befe; }
     #reboot_btn:pressed { background-color: #45475a; }
     #poweroff_btn { height: 120px; border-radius: 15px; background-color: #f38ba8; }
     #poweroff_btn:pressed { background-color: #f38ba8; }
@@ -457,7 +457,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
     btn->setChecked(nav_btns->buttons().size() == 0);
     btn->setStyleSheet(R"(
       QPushButton {
-        color: #313244;
+        color: #b4befe;
         border: none;
         background: none;
         font-size: 65px;
