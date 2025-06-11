@@ -31,7 +31,7 @@ DialogBase::DialogBase(QWidget *parent) : QDialog(parent) {
       background-color: #1e1e2e;
     }
     QPushButton:pressed {
-      background-color: #313244;
+      background-color: #1e1e2e;
     }
   )");
 }
@@ -75,7 +75,7 @@ InputDialog::InputDialog(const QString &title, QWidget *parent, const QString &s
       font-size: 48px;
       border-radius: 10px;
       color: #E4E4E4;
-      background-color: #313244;
+      background-color: #1e1e2e;
     }
     QPushButton:pressed {
       background-color: #1e1e2e;

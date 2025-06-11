@@ -111,7 +111,7 @@ Reset::Reset(ResetMode mode, QWidget *parent) : QWidget(parent) {
       font-size: 55px;
       font-weight: 400;
       border-radius: 10px;
-      background-color: #313244;
+      background-color: #1e1e2e;
     }
     QPushButton:pressed {
       background-color: #1e1e2e;

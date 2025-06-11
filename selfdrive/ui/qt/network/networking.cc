@@ -64,7 +64,7 @@ Networking::Networking(QWidget* parent, bool show_advanced) : QFrame(parent) {
       border-width: 0;
       border-radius: 30px;
       color: #cdd6f4;
-      background-color: #313244;
+      background-color: #1e1e2e;
     }
     #back_btn:pressed, #advanced_btn:pressed {
       background-color:  #1e1e2e;
@@ -269,7 +269,7 @@ WifiUI::WifiUI(QWidget *parent, WifiManager* wifi) : QWidget(parent), wifi(wifi)
     #forgetBtn {
       font-size: 32px;
       font-weight: 600;
-      color: #313244;
+      color: #1e1e2e;
       background-color: #bac2de;
       border-width: 1px solid #7f849c;
       border-radius: 5px;

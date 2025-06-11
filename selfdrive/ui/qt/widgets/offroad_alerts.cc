@@ -67,7 +67,7 @@ AbstractAlert::AbstractAlert(bool hasRebootBtn, QWidget *parent) : QFrame(parent
     }
     QFrame {
       border-radius: 30px;
-      background-color: #313244;
+      background-color: #1e1e2e;
     }
     QPushButton {
       color: #11111b;
@@ -96,7 +96,7 @@ int OffroadAlert::refresh() {
       alerts[key] = l;
       l->setMargin(60);
       l->setWordWrap(true);
-      l->setStyleSheet(QString("background-color: %1").arg(severity ? "#f38ba8" : "#313244"));
+      l->setStyleSheet(QString("background-color: %1").arg(severity ? "#f38ba8" : "#1e1e2e"));
       scrollable_layout->addWidget(l);
     }
     scrollable_layout->addStretch(1);

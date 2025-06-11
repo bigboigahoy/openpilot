@@ -65,7 +65,7 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
     layout->setContentsMargins(100, 100, 100, 100);
 
     Networking *networking = new Networking(this, false);
-    networking->setStyleSheet("Networking { background-color: #313244; border-radius: 13px; }");
+    networking->setStyleSheet("Networking { background-color: #1e1e2e; border-radius: 13px; }");
     layout->addWidget(networking, 1);
 
     QPushButton *back = new QPushButton(tr("Back"));
@@ -129,14 +129,14 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
       font-size: 55px;
       font-weight: 400;
       border-radius: 10px;
-      background-color: #313244;
+      background-color: #1e1e2e;
     }
     QPushButton#navBtn:pressed {
       background-color: #1e1e2e;
     }
     QProgressBar {
       border: none;
-      background-color: #313244;
+      background-color: #1e1e2e;
     }
     QProgressBar::chunk {
       background-color: #89b4fa;

@@ -81,7 +81,7 @@ Spinner::Spinner(QWidget *parent) : QWidget(parent) {
       background-color: transparent;
     }
     QProgressBar {
-      background-color: #313244;
+      background-color: #1e1e2e;
       width: 1000px;
       border solid #cdd6f4;
       border-radius: 10px;

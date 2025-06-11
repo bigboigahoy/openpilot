@@ -398,7 +398,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
     QPushButton {
       font-size: 50px;
       border-radius: 25px;
-      background-color: #313244;
+      background-color: #1e1e2e;
       font-weight: 500;
     }
     QPushButton:pressed {
@@ -558,7 +558,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
       background-color: #11111b;
     }
     QStackedWidget, ScrollView {
-      background-color: #313244;
+      background-color: #1e1e2e;
       border-radius: 30px;
     }
   )");

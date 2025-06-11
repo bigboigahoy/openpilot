@@ -169,7 +169,7 @@ PrimeAdWidget::PrimeAdWidget(QWidget* parent) : QFrame(parent) {
   setStyleSheet(R"(
     PrimeAdWidget {
       border-radius: 10px;
-      background-color: #313244;
+      background-color: #1e1e2e;
     }
   )");
 }
@@ -243,7 +243,7 @@ SetupWidget::SetupWidget(QWidget* parent) : QFrame(parent) {
   setStyleSheet(R"(
     #primeWidget {
       border-radius: 10px;
-      background-color: #313244;
+      background-color: #1e1e2e;
     }
   )");
 

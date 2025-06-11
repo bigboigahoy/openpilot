@@ -196,7 +196,7 @@ public:
         height:100px;
         padding: 0 25 0 25;
         color: #cdd6f4;
-        background-color: #313244;
+        background-color: #1e1e2e;
       }
       QPushButton:pressed {
         background-color: #1e1e2e;

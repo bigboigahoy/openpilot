@@ -28,7 +28,7 @@ void RecordButton::paintEvent(QPaintEvent *event) {
   QColor bg(isChecked() ? "#cdd6f4" : "#6c7086");
   QColor accent(isChecked() ? "#f38ba8" : "#cdd6f4");
   if (!isEnabled()) {
-    bg = QColor("#313244");
+    bg = QColor("#1e1e2e");
     accent = QColor("#cdd6f4");
   }
 
