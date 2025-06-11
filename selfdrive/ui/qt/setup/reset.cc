@@ -114,7 +114,7 @@ Reset::Reset(ResetMode mode, QWidget *parent) : QWidget(parent) {
       background-color: #313244;
     }
     QPushButton:pressed {
-      background-color: #45475a;
+      background-color: #1e1e2e;
     }
   )");
 }

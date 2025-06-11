@@ -136,7 +136,7 @@ void TermsPage::showEvent(QShowEvent *event) {
       background-color: #74c7ec;
     }
     QPushButton:disabled {
-      background-color: #45475a;
+      background-color: #1e1e2e;
     }
   )");
   buttons->addWidget(accept_btn);
@@ -227,7 +227,7 @@ OnboardingWindow::OnboardingWindow(QWidget *parent) : QStackedWidget(parent) {
       font-size: 55px;
       font-weight: 400;
       border-radius: 10px;
-      background-color: #45475a;
+      background-color: #1e1e2e;
     }
   )");
   updateActiveScreen();

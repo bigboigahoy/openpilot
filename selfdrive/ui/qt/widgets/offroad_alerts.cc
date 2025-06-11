@@ -41,7 +41,7 @@ AbstractAlert::AbstractAlert(bool hasRebootBtn, QWidget *parent) : QFrame(parent
     params.putBool("OfflineMode", true);
   });
   QObject::connect(disable_check_btn, &QPushButton::clicked, this, &AbstractAlert::dismiss);
-  disable_check_btn->setStyleSheet(R"(color: #cdd6f4; background-color: #45475a;)");
+  disable_check_btn->setStyleSheet(R"(color: #cdd6f4; background-color: #1e1e2e;)");
 
   snooze_btn = new QPushButton(tr("Snooze Update"));
   snooze_btn->setVisible(false);
@@ -51,7 +51,7 @@ AbstractAlert::AbstractAlert(bool hasRebootBtn, QWidget *parent) : QFrame(parent
     params.putBool("SnoozeUpdate", true);
   });
   QObject::connect(snooze_btn, &QPushButton::clicked, this, &AbstractAlert::dismiss);
-  snooze_btn->setStyleSheet(R"(color: #cdd6f4; background-color: #45475a;)");
+  snooze_btn->setStyleSheet(R"(color: #cdd6f4; background-color: #1e1e2e;)");
 
   if (hasRebootBtn) {
     QPushButton *rebootBtn = new QPushButton(tr("Reboot and Update"));

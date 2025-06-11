@@ -242,7 +242,7 @@ QWidget * radio_button(QString title, QButtonGroup *group) {
       font-size: 80px;
       font-weight: 400;
       border-radius: 10px;
-      background-color: #45475a;
+      background-color: #1e1e2e;
     }
     QPushButton:checked {
       background-color: #89b4fa;
@@ -457,7 +457,7 @@ Setup::Setup(QWidget *parent) : QStackedWidget(parent) {
       background-color: #313244;
     }
     QPushButton#navBtn:pressed {
-      background-color: #45475a;
+      background-color: #1e1e2e;
     }
     QPushButton[primary='true'], #navBtn[primary='true'] {
       background-color: #89b4fa;

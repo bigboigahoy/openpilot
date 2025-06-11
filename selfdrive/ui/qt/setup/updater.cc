@@ -132,7 +132,7 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
       background-color: #313244;
     }
     QPushButton#navBtn:pressed {
-      background-color: #45475a;
+      background-color: #1e1e2e;
     }
     QProgressBar {
       border: none;

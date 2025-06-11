@@ -78,7 +78,7 @@ InputDialog::InputDialog(const QString &title, QWidget *parent, const QString &s
       background-color: #313244;
     }
     QPushButton:pressed {
-      background-color: #45475a;
+      background-color: #1e1e2e;
     }
   )");
   header_layout->addWidget(cancel_btn, 0, Qt::AlignRight);
@@ -291,7 +291,7 @@ MultiOptionDialog::MultiOptionDialog(const QString &prompt_text, const QStringLi
       font-size: 55px;
       font-weight: 300;
       border-radius: 10px;
-      background-color: #45475a;
+      background-color: #1e1e2e;
     }
     QPushButton:checked { background-color: #89b4fa; }
   )");
