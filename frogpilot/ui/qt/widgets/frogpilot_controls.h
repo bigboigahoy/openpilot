@@ -30,10 +30,10 @@ const QString buttonStyle = R"(
     background-color: #45475a;
   }
   QPushButton:checked:enabled {
-    background-color: #a6e3a1;
+    background-color: #b4befe;
   }
   QPushButton:disabled {
-    color: #89dceb;
+    color: #a6adc8;
   }
 )";
 
