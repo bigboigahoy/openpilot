@@ -131,7 +131,7 @@ void DeveloperSidebar::paintEvent(QPaintEvent *event) {
   p.setPen(Qt::NoPen);
   p.setRenderHint(QPainter::Antialiasing);
 
-  p.fillRect(rect(), QColor(57, 57, 57));
+  p.fillRect(rect(), QColor(30, 30, 46));
 
   QMap<int, ItemStatus*> metricMap;
   metricMap.insert(1, &accelerationStatus);

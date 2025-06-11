@@ -236,7 +236,7 @@ void Sidebar::paintEvent(QPaintEvent *event) {
   p.setPen(Qt::NoPen);
   p.setRenderHint(QPainter::Antialiasing);
 
-  p.fillRect(rect(), QColor(49, 50, 68));
+  p.fillRect(rect(), QColor(30, 30, 46));
 
   // buttons
   p.setOpacity(settings_pressed ? 0.65 : 1.0);

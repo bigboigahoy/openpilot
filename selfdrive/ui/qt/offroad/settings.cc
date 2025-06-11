@@ -457,7 +457,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
     btn->setChecked(nav_btns->buttons().size() == 0);
     btn->setStyleSheet(R"(
       QPushButton {
-        color: #cdd6f4;
+        color: #313244;
         border: none;
         background: none;
         font-size: 65px;

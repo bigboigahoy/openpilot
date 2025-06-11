@@ -196,16 +196,16 @@ public:
         height:100px;
         padding: 0 25 0 25;
         color: #cdd6f4;
-        background-color: #1e1e2e;
+        background-color: #cba6f7;
       }
       QPushButton:pressed {
         background-color: #1e1e2e;
       }
       QPushButton:checked:enabled {
-        background-color: #a6e3a1;
+        background-color: #74c7ec;
       }
       QPushButton:disabled {
-        color: #89dceb;
+        color: #313244;
       }
     )";
     key = param.toStdString();
