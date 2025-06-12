@@ -398,11 +398,11 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
     QPushButton {
       font-size: 50px;
       border-radius: 25px;
-      background-color: #292929;
+      background-color: #313244;
       font-weight: 500;
     }
     QPushButton:pressed {
-      background-color: #ADADAD;
+      background-color: #a6adc8;
     }
   )");
   close_btn->setFixedSize(300, 125);
@@ -467,7 +467,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
         color: #cdd6f4;
       }
       QPushButton:pressed {
-        color: #ADADAD;
+        color: #a6adc8;
       }
     )");
     btn->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
@@ -558,7 +558,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
       background-color: black;
     }
     QStackedWidget, ScrollView {
-      background-color: #292929;
+      background-color: #313244;
       border-radius: 30px;
     }
   )");

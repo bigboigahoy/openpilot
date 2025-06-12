@@ -269,7 +269,7 @@ WifiUI::WifiUI(QWidget *parent, WifiManager* wifi) : QWidget(parent), wifi(wifi)
     #forgetBtn {
       font-size: 32px;
       font-weight: 600;
-      color: #292929;
+      color: #313244;
       background-color: #BDBDBD;
       border-width: 1px solid #828282;
       border-radius: 5px;

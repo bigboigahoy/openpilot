@@ -41,7 +41,7 @@ MapSettings::MapSettings(bool closeable, QWidget *parent) : QFrame(parent) {
           padding-bottom: 8px;
           border 1px grey solid;
           border-radius: 70px;
-          background-color: #292929;
+          background-color: #313244;
           font-weight: 500;
         }
         QPushButton:pressed {

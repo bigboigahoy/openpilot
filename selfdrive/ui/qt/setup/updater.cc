@@ -65,7 +65,7 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
     layout->setContentsMargins(100, 100, 100, 100);
 
     Networking *networking = new Networking(this, false);
-    networking->setStyleSheet("Networking { background-color: #292929; border-radius: 13px; }");
+    networking->setStyleSheet("Networking { background-color: #313244; border-radius: 13px; }");
     layout->addWidget(networking, 1);
 
     QPushButton *back = new QPushButton(tr("Back"));
@@ -136,7 +136,7 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
     }
     QProgressBar {
       border: none;
-      background-color: #292929;
+      background-color: #313244;
     }
     QProgressBar::chunk {
       background-color: #364DEF;
