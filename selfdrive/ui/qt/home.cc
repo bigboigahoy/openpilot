@@ -237,7 +237,7 @@ OffroadHome::OffroadHome(QWidget* parent) : QFrame(parent) {
       color: #cdd6f4;
     }
     OffroadHome {
-      background-color: black;
+      background-color: #11111b;
     }
     OffroadHome > QPushButton {
       padding: 15px 30px;

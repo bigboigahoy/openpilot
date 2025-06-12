@@ -220,7 +220,7 @@ OnboardingWindow::OnboardingWindow(QWidget *parent) : QStackedWidget(parent) {
   setStyleSheet(R"(
     * {
       color: #cdd6f4;
-      background-color: black;
+      background-color: #11111b;
     }
     QPushButton {
       height: 160px;

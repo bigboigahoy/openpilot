@@ -122,7 +122,7 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
     }
     Updater {
       color: #cdd6f4;
-      background-color: black;
+      background-color: #11111b;
     }
     QPushButton#navBtn {
       height: 160;

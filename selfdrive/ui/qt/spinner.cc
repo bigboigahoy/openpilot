@@ -73,7 +73,7 @@ Spinner::Spinner(QWidget *parent) : QWidget(parent) {
 
   setStyleSheet(R"(
     Spinner {
-      background-color: black;
+      background-color: #11111b;
     }
     QLabel {
       color: #cdd6f4;

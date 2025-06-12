@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
     * {
       outline: none;
       color: #cdd6f4;
-      background-color: black;
+      background-color: #11111b;
       font-size: 60px;
     }
     QPushButton {

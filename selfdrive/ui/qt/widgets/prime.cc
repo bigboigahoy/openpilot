@@ -90,7 +90,7 @@ PairingPopup::PairingPopup(QWidget *parent) : DialogBase(parent) {
     vlayout->addSpacing(30);
 
     QLabel *title = new QLabel(tr("Pair your device to your %1 account").arg(useKonikServer() ? "Konik" : "comma"), this);
-    title->setStyleSheet("font-size: 75px; color: black;");
+    title->setStyleSheet("font-size: 75px; color: #11111b;");
     title->setWordWrap(true);
     vlayout->addWidget(title);
 
@@ -106,7 +106,7 @@ PairingPopup::PairingPopup(QWidget *parent) : DialogBase(parent) {
     .arg(tr("Click \"add new device\" and scan the QR code on the right"))
     .arg(tr("Bookmark %1 to your home screen to use it like an app").arg(serverUrl)), this);
 
-    instructions->setStyleSheet("font-size: 47px; font-weight: bold; color: black;");
+    instructions->setStyleSheet("font-size: 47px; font-weight: bold; color: #11111b;");
     instructions->setWordWrap(true);
     vlayout->addWidget(instructions);
 

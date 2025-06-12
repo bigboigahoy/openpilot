@@ -35,7 +35,7 @@ class Window(QWidget):
       * {
         color: #cdd6f4;
         font-size: 55px;
-        background-color: black;
+        background-color: #11111b;
         font-family: "JetBrains Mono";
       }
     """)

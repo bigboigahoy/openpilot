@@ -288,7 +288,7 @@ WifiUI::WifiUI(QWidget *parent, WifiManager* wifi) : QWidget(parent), wifi(wifi)
       padding: 27px;
       padding-left: 43px;
       padding-right: 43px;
-      background-color: black;
+      background-color: #11111b;
     }
     #ssidLabel {
       text-align: left;

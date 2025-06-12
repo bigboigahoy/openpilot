@@ -83,7 +83,7 @@ Installer::Installer(QWidget *parent) : QWidget(parent) {
     * {
       font-family: Inter;
       color: #cdd6f4;
-      background-color: black;
+      background-color: #11111b;
     }
     QProgressBar {
       border: none;

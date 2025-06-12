@@ -555,7 +555,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
       font-size: 50px;
     }
     SettingsWindow {
-      background-color: black;
+      background-color: #11111b;
     }
     QStackedWidget, ScrollView {
       background-color: #313244;

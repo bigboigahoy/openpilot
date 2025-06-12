@@ -20,7 +20,7 @@ DialogBase::DialogBase(QWidget *parent) : QDialog(parent) {
       font-family: Inter;
     }
     DialogBase {
-      background-color: black;
+      background-color: #11111b;
     }
     QPushButton {
       height: 160;

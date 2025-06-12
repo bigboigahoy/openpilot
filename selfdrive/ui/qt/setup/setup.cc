@@ -443,7 +443,7 @@ Setup::Setup(QWidget *parent) : QStackedWidget(parent) {
       font-family: Inter;
     }
     Setup {
-      background-color: black;
+      background-color: #11111b;
     }
     QPushButton#navBtn {
       height: 160;
