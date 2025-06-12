@@ -245,7 +245,7 @@ QWidget * radio_button(QString title, QButtonGroup *group) {
       background-color: #4F4F4F;
     }
     QPushButton:checked {
-      background-color: #465BEA;
+      background-color: #89b4fa;
     }
   )");
 
@@ -450,17 +450,17 @@ Setup::Setup(QWidget *parent) : QStackedWidget(parent) {
       font-size: 55px;
       font-weight: 400;
       border-radius: 10px;
-      background-color: #333333;
+      background-color: #313244;
     }
     QPushButton#navBtn:disabled, QPushButton[primary='true']:disabled {
       color: #808080;
-      background-color: #333333;
+      background-color: #313244;
     }
     QPushButton#navBtn:pressed {
-      background-color: #444444;
+      background-color: #45475a;
     }
     QPushButton[primary='true'], #navBtn[primary='true'] {
-      background-color: #465BEA;
+      background-color: #89b4fa;
     }
     QPushButton[primary='true']:pressed, #navBtn:pressed[primary='true'] {
       background-color: #3049F4;

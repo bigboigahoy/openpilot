@@ -91,7 +91,7 @@ MapSettings::MapSettings(bool closeable, QWidget *parent) : QFrame(parent) {
   destinations_scroller->setFrameShape(QFrame::NoFrame);
   frame->addWidget(destinations_scroller);
 
-  setStyleSheet("MapSettings { background-color: #333333; }");
+  setStyleSheet("MapSettings { background-color: #313244; }");
   QObject::connect(NavManager::instance(), &NavManager::updated, this, &MapSettings::refresh);
 }
 
@@ -195,7 +195,7 @@ DestinationWidget::DestinationWidget(QWidget *parent) : QPushButton(parent) {
     [current="true"] { background-color: #E8E8E8; }
     [current="true"] QLabel { color: #11111b; }
     [current="true"] #icon { background-color: #42906B; }
-    [current="true"] #subtitle { color: #333333; }
+    [current="true"] #subtitle { color: #313244; }
     [current="true"] #action { color: #202123; }
 
     /* no saved destination */

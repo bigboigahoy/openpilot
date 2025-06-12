@@ -37,8 +37,8 @@ public:
   float speedConversion;
   float speedConversionMetrics;
 
-  QColor blueColor(int alpha = 255) { return QColor(0, 0, 255, alpha); }
-  QColor purpleColor(int alpha = 255) { return QColor(128, 0, 128, alpha); }
+  QColor blueColor(int alpha = 255) { return QColor(137, 180, 250, alpha); }
+  QColor purpleColor(int alpha = 255) { return QColor(180, 190, 254, alpha); }
 
   QPoint dmIconPosition;
   QPoint experimentalButtonPosition;

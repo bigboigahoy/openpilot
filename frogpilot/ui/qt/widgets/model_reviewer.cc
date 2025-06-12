@@ -54,7 +54,7 @@ ModelReview::ModelReview(QWidget *parent) : QFrame(parent) {
 
   setStyleSheet(R"(
     ModelReview {
-      background-color: #333333;
+      background-color: #313244;
       border-radius: 5px;
     }
     QLabel[type="drives"], QLabel[type="question"], QLabel[type="rank"], QLabel[type="score"], QLabel[type="title"] {

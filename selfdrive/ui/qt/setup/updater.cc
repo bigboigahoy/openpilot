@@ -48,7 +48,7 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
     install->setObjectName("navBtn");
     install->setStyleSheet(R"(
       QPushButton {
-        background-color: #465BEA;
+        background-color: #89b4fa;
       }
       QPushButton:pressed {
         background-color: #3049F4;
@@ -129,10 +129,10 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
       font-size: 55px;
       font-weight: 400;
       border-radius: 10px;
-      background-color: #333333;
+      background-color: #313244;
     }
     QPushButton#navBtn:pressed {
-      background-color: #444444;
+      background-color: #45475a;
     }
     QProgressBar {
       border: none;
