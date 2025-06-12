@@ -463,7 +463,7 @@ static QPixmap getDropPixmap(const QPixmap &src) {
   QRectF target_rect(QPointF(radius, radius), src.size() / src.devicePixelRatio());
   p.drawPixmap(target_rect.topLeft(), src);
   p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
-  p.fillRect(target_rect, QColor(0, 0, 0, 200));
+  p.fillRect(target_rect, QColor(17, 17, 27, 200));
   return px;
 }
 

@@ -16,7 +16,7 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
+WHITE = (205, 214, 244)
 
 class UIParams:
   lidar_x, lidar_y, lidar_zoom = 384, 960, 6

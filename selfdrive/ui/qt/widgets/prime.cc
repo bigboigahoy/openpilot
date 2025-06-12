@@ -47,7 +47,7 @@ void PairingQRWidget::updateQrCode(const QString &text) {
   QImage im(sz, sz, QImage::Format_RGB32);
 
   QRgb black = qRgb(0, 0, 0);
-  QRgb white = qRgb(255, 255, 255);
+  QRgb white = qRgb(205, 214, 244);
   for (int y = 0; y < sz; y++) {
     for (int x = 0; x < sz; x++) {
       im.setPixel(x, y, qr.getModule(x, y) ? black : white);
@@ -146,7 +146,7 @@ PrimeAdWidget::PrimeAdWidget(QWidget* parent) : QFrame(parent) {
   main_layout->addSpacing(50);
 
   QLabel *description = new QLabel(tr("Become a comma prime member at connect.comma.ai"));
-  description->setStyleSheet("font-size: 56px; font-weight: light; color: white;");
+  description->setStyleSheet("font-size: 56px; font-weight: light; color: #cdd6f4;");
   description->setWordWrap(true);
   main_layout->addWidget(description, 0, Qt::AlignTop);
 

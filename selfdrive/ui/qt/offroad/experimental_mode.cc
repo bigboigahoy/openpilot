@@ -38,7 +38,7 @@ ExperimentalModeButton::ExperimentalModeButton(QWidget *parent) : QPushButton(pa
       font-weight: 300;
       text-align: left;
       font-family: JetBrainsMono;
-      color: #000000;
+      color: #11111b;
     }
   )");
 }
@@ -64,7 +64,7 @@ void ExperimentalModeButton::paintEvent(QPaintEvent *event) {
   p.fillPath(path, gradient);
 
   // vertical line
-  p.setPen(QPen(QColor(0, 0, 0, 0x4d), 3, Qt::SolidLine));
+  p.setPen(QPen(QColor(17, 17, 27, 0x4d), 3, Qt::SolidLine));
   int line_x = rect().right() - img_width - (2 * horizontal_padding);
   p.drawLine(line_x, rect().bottom(), line_x, rect().top());
 }

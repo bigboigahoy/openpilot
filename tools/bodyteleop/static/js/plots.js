@@ -29,17 +29,17 @@ function getChartConfig(pts, color, title, ymax=100) {
           },
           ticks: {
             source: 'data',
-            fontColor: 'rgba(255, 255, 255, 1.0)', // Y-axis label color
+            fontColor: 'rgba(205, 214, 244, 1.0)', // Y-axis label color
           }
         },
         y: {
           beginAtZero: true,
           max: ymax,
           grid: {
-            color: 'rgba(255, 255, 255, 0.1)', // Grid lines color
+            color: 'rgba(205, 214, 244, 0.1)', // Grid lines color
           },
           ticks: {
-            fontColor: 'rgba(255, 255, 255, 0.7)', // Y-axis label color
+            fontColor: 'rgba(205, 214, 244, 0.7)', // Y-axis label color
           }
         }
       }

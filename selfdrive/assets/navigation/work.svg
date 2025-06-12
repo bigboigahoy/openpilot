@@ -32,7 +32,7 @@
   <defs
      id="defs97" />
   <sodipodi:namedview
-     pagecolor="#ffffff"
+     pagecolor="#cdd6f4"
      bordercolor="#666666"
      borderopacity="1"
      objecttolerance="10"
@@ -52,7 +52,7 @@
      inkscape:window-maximized="0"
      inkscape:current-layer="home-15" />
   <ellipse
-     style="fill:none;stroke:#ffffff;stroke-width:3.26200008;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     style="fill:none;stroke:#cdd6f4;stroke-width:3.26200008;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="path104"
      cx="100"
      cy="99.999969"
@@ -62,5 +62,5 @@
      inkscape:connector-curvature="0"
      id="path17"
      d="M 130,74 V 58 c 0,-8 -8,-8 -8,-8 H 82.3976 c 0,0 -8.8312,0.016 -8.3976,8 V 74 H 58 c 0,0 -8,0 -8,8 v 56 c 0,8 8,8 8,8 h 88 c 0,0 8,0 8,-8 V 82 c 0,-8 -8,-8 -8,-8 z M 86,62 h 32 V 74 H 86 Z"
-     style="fill:#ffffff;stroke-width:8;fill-opacity:1" />
+     style="fill:#cdd6f4;stroke-width:8;fill-opacity:1" />
 </svg>

@@ -439,7 +439,7 @@ Setup::Setup(QWidget *parent) : QStackedWidget(parent) {
   // TODO: revisit pressed bg color
   setStyleSheet(R"(
     * {
-      color: white;
+      color: #cdd6f4;
       font-family: Inter;
     }
     Setup {

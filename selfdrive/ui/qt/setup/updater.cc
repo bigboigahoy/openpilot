@@ -116,12 +116,12 @@ Updater::Updater(const QString &updater_path, const QString &manifest_path, QWid
 
   setStyleSheet(R"(
     * {
-      color: white;
+      color: #cdd6f4;
       outline: none;
       font-family: Inter;
     }
     Updater {
-      color: white;
+      color: #cdd6f4;
       background-color: black;
     }
     QPushButton#navBtn {

@@ -270,7 +270,7 @@ def overlay_class_names(image, predictions):
     s = template.format(label, score)
     x, y = int(x), int(y)
     cv2.putText(
-        image, s, (x, y), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 255, 255), 1
+        image, s, (x, y), cv2.FONT_HERSHEY_SIMPLEX, .5, (205, 214, 244), 1
     )
 
   return image

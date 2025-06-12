@@ -134,7 +134,7 @@ def draw_bounding_boxes_and_save(orig_img_paths, output_img_paths, all_predictio
       text_size, _ = cv2.getTextSize(label, font, font_scale, 1)
       label_y, bg_y = (y1 - 4, y1 - text_size[1] - 4) if y1 - text_size[1] - 4 > 0 else (y1 + text_size[1], y1)
       cv2.rectangle(orig_img, (x1, bg_y), (x1 + text_size[0], bg_y + text_size[1]), color, -1)
-      font_color = (0, 0, 0) if is_bright_color(color) else (255, 255, 255)
+      font_color = (0, 0, 0) if is_bright_color(color) else (205, 214, 244)
       cv2.putText(orig_img, label, (x1, label_y), font, font_scale, font_color, 1, cv2.LINE_AA)
 
     for class_id, pred_list in grouped_preds.items():

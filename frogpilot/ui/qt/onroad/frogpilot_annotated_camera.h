@@ -85,10 +85,10 @@ private:
 
   Params params_memory{"/dev/shm/params"};
 
-  QColor blackColor(int alpha = 255) { return QColor(0, 0, 0, alpha); }
-  QColor greenColor(int alpha = 242) { return QColor(23, 134, 68, alpha); }
-  QColor redColor(int alpha = 255) { return QColor(201, 34, 49, alpha); }
-  QColor whiteColor(int alpha = 255) { return QColor(255, 255, 255, alpha); }
+  QColor blackColor(int alpha = 255) { return QColor(17, 17, 27, alpha); }
+  QColor greenColor(int alpha = 242) { return QColor(166, 227, 161, alpha); }
+  QColor redColor(int alpha = 255) { return QColor(243, 139, 168, alpha); }
+  QColor whiteColor(int alpha = 255) { return QColor(205, 214, 244, alpha); }
 
   QElapsedTimer pendingLimitTimer;
   QElapsedTimer standstillTimer;

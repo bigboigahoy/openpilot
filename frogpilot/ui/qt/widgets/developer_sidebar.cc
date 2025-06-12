@@ -9,13 +9,13 @@ void DeveloperSidebar::drawMetric(QPainter &p, const QPair<QString, QString> &la
   p.drawRoundedRect(QRect(rect.x() + rect.width() - 4 - 100, rect.y() + 4, 100, 118), 18, 18);
   p.setClipping(false);
 
-  QPen pen = QPen(QColor(0xff, 0xff, 0xff, 0x55));
+  QPen pen = QPen(QColor(0xcd, 0xd6, 0xf4, 0x55));
   pen.setWidth(2);
   p.setPen(pen);
   p.setBrush(Qt::NoBrush);
   p.drawRoundedRect(rect, 20, 20);
 
-  p.setPen(QColor(0xff, 0xff, 0xff));
+  p.setPen(QColor(0xcd, 0xd6, 0xf4));
   p.setFont(InterFont(35, QFont::DemiBold));
   p.drawText(rect.adjusted(0, 0, -22, 0), Qt::AlignCenter, label.first + "\n" + label.second);
 }
@@ -48,7 +48,7 @@ void DeveloperSidebar::updateTheme() {
     metricAssignments.push_back(metricId);
   }
 
-  metricColor = frogpilot_scene.use_stock_colors ? QColor(255, 255, 255) : frogpilot_scene.sidebar_color1;
+  metricColor = frogpilot_scene.use_stock_colors ? QColor(205, 214, 244) : frogpilot_scene.sidebar_color1;
 }
 
 void DeveloperSidebar::resetVariables() {
@@ -140,7 +140,7 @@ void DeveloperSidebar::paintEvent(QPaintEvent *event) {
   p.setPen(Qt::NoPen);
   p.setRenderHint(QPainter::Antialiasing);
 
-  p.fillRect(rect(), QColor(57, 57, 57));
+  p.fillRect(rect(), QColor(30, 30, 46));
 
   QMap<int, ItemStatus*> metricMap;
   metricMap.insert(1, &accelerationStatus);

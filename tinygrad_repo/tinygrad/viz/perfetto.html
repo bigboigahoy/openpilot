@@ -43,7 +43,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: white;
+      color: #cdd6f4;
       font-family: Arial, sans-serif;
       z-index: 1;
     }
@@ -101,7 +101,7 @@
     .btn:hover {
       background-color: #2a2b36;
       border-color: #5a5b66;
-      color: #ffffff;
+      color: #cdd6f4;
       transform: translateY(-1px);
     }
   </style>
@@ -116,7 +116,7 @@
     <div class="loader" id="spinner"></div>
     <div id="loading_text">Loading trace data...</div>
   </div>
-  
+
   <iframe id="perfetto_frame" src="https://ui.perfetto.dev" allow="clipboard-write"></iframe>
 
   <script type="text/javascript">
@@ -132,12 +132,12 @@
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const jsonData = await response.json();
-        
+
         // Convert JSON to string and then to blob
         const jsonString = JSON.stringify(jsonData);
         const blob = new Blob([jsonString], { type: 'application/json' });
         const arrayBuffer = await blob.arrayBuffer();
-        
+
         openTrace(arrayBuffer);
       } catch (error) {
         document.getElementById('spinner').remove();

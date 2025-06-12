@@ -39,7 +39,7 @@ if __name__ == "__main__":
       background-color: black;
     }
     QLabel {
-      color: white;
+      color: #cdd6f4;
       font-size: 40px;
     }
   """)

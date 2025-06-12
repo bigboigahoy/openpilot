@@ -244,7 +244,7 @@ void CanData::compute(const MessageId &msg_id, const uint8_t *can_data, const in
 
   if (dat.size() != size) {
     dat.resize(size);
-    colors.assign(size, QColor(0, 0, 0, 0));
+    colors.assign(size, QColor(17, 17, 27, 0));
     last_changes.resize(size);
     std::for_each(last_changes.begin(), last_changes.end(), [current_sec](auto &c) { c.ts = current_sec; });
   } else {

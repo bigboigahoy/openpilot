@@ -16,7 +16,7 @@ DialogBase::DialogBase(QWidget *parent) : QDialog(parent) {
   setStyleSheet(R"(
     * {
       outline: none;
-      color: white;
+      color: #cdd6f4;
       font-family: Inter;
     }
     DialogBase {
@@ -27,7 +27,7 @@ DialogBase::DialogBase(QWidget *parent) : QDialog(parent) {
       font-size: 55px;
       font-weight: 400;
       border-radius: 10px;
-      color: white;
+      color: #cdd6f4;
       background-color: #333333;
     }
     QPushButton:pressed {
@@ -74,7 +74,7 @@ InputDialog::InputDialog(const QString &title, QWidget *parent, const QString &s
     QPushButton {
       font-size: 48px;
       border-radius: 10px;
-      color: #E4E4E4;
+      color: #cdd6f4;
       background-color: #333333;
     }
     QPushButton:pressed {

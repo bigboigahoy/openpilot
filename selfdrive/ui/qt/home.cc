@@ -234,7 +234,7 @@ OffroadHome::OffroadHome(QWidget* parent) : QFrame(parent) {
 
   setStyleSheet(R"(
     * {
-      color: white;
+      color: #cdd6f4;
     }
     OffroadHome {
       background-color: black;

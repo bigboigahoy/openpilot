@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
   window.setStyleSheet(R"(
     * {
       outline: none;
-      color: white;
+      color: #cdd6f4;
       background-color: black;
       font-size: 60px;
     }

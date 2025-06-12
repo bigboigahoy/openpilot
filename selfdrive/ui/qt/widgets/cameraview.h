@@ -67,7 +67,7 @@ protected:
   GLuint textures[2];
   mat4 frame_mat = {};
   std::unique_ptr<QOpenGLShaderProgram> program;
-  QColor bg = QColor("#000000");
+  QColor bg = QColor("#11111b");
 
 #ifdef QCOM2
   std::map<int, EGLImageKHR> egl_images;

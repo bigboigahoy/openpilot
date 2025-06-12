@@ -69,7 +69,7 @@ void TrainingGuide::paintEvent(QPaintEvent *event) {
   QPainter painter(this);
 
   QRect bg(0, 0, painter.device()->width(), painter.device()->height());
-  painter.fillRect(bg, QColor("#000000"));
+  painter.fillRect(bg, QColor("#11111b"));
 
   image = loadImage(currentIndex);
   QRect rect(image.rect());
@@ -219,7 +219,7 @@ OnboardingWindow::OnboardingWindow(QWidget *parent) : QStackedWidget(parent) {
 
   setStyleSheet(R"(
     * {
-      color: white;
+      color: #cdd6f4;
       background-color: black;
     }
     QPushButton {

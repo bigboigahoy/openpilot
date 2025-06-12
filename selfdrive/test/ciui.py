@@ -33,7 +33,7 @@ class Window(QWidget):
 
     self.setStyleSheet("""
       * {
-        color: white;
+        color: #cdd6f4;
         font-size: 55px;
         background-color: black;
         font-family: "JetBrains Mono";

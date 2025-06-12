@@ -117,7 +117,7 @@ void OnroadAlerts::paintEvent(QPaintEvent *event) {
 
   // text
   const QPoint c = r.center();
-  p.setPen(QColor(0xff, 0xff, 0xff));
+  p.setPen(QColor(0xcd, 0xd6, 0xf4));
   p.setRenderHint(QPainter::TextAntialiasing);
   if (alert.size == cereal::ControlsState::AlertSize::SMALL) {
     p.setFont(InterFont(74, QFont::DemiBold));

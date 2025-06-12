@@ -76,7 +76,7 @@ Spinner::Spinner(QWidget *parent) : QWidget(parent) {
       background-color: black;
     }
     QLabel {
-      color: white;
+      color: #cdd6f4;
       font-size: 80px;
       background-color: transparent;
     }
@@ -88,7 +88,7 @@ Spinner::Spinner(QWidget *parent) : QWidget(parent) {
     }
     QProgressBar::chunk {
       border-radius: 10px;
-      background-color: rgba(23, 134, 68, 242);
+      background-color: rgba(166, 227, 161, 242);
     }
   )");
 

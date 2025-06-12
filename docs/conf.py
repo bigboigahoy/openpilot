@@ -142,6 +142,6 @@ html_theme_options = {
   'logo_only': False,
   'display_version': True,
   'vcs_pageview_mode': 'blob',
-  'style_nav_header_background': '#000000',
+  'style_nav_header_background': '#11111b',
 }
 html_extra_path = ['_static']

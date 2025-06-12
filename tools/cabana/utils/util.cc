@@ -229,10 +229,10 @@ void setTheme(int theme) {
       new_palette.setColor(QPalette::Highlight, QColor("#2f65ca"));
       new_palette.setColor(QPalette::HighlightedText, QColor("#bbbbbb"));
       new_palette.setColor(QPalette::BrightText, QColor("#f0f0f0"));
-      new_palette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor("#777777"));
-      new_palette.setColor(QPalette::Disabled, QPalette::WindowText, QColor("#777777"));
-      new_palette.setColor(QPalette::Disabled, QPalette::Text, QColor("#777777"));
-      new_palette.setColor(QPalette::Light, QColor("#777777"));
+      new_palette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor("#6c7086"));
+      new_palette.setColor(QPalette::Disabled, QPalette::WindowText, QColor("#6c7086"));
+      new_palette.setColor(QPalette::Disabled, QPalette::Text, QColor("#6c7086"));
+      new_palette.setColor(QPalette::Light, QColor("#6c7086"));
       new_palette.setColor(QPalette::Dark, QColor("#353535"));
     } else {
       new_palette = style->standardPalette();
