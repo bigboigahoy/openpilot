@@ -90,11 +90,11 @@ def fill_model_msg(base_msg: capnp._DynamicStructBuilder, extended_msg: capnp._D
   fill_xyzt(modelV2.orientationRate, ModelConstants.T_IDXS, *net_output_data['plan'][0,:,Plan.ORIENTATION_RATE].T)
 
   # temporal pose
-  temporal_pose = modelV2.temporalPose
-  temporal_pose.trans = net_output_data['sim_pose'][0,:ModelConstants.POSE_WIDTH//2].tolist()
-  temporal_pose.transStd = net_output_data['sim_pose_stds'][0,:ModelConstants.POSE_WIDTH//2].tolist()
-  temporal_pose.rot = net_output_data['sim_pose'][0,ModelConstants.POSE_WIDTH//2:].tolist()
-  temporal_pose.rotStd = net_output_data['sim_pose_stds'][0,ModelConstants.POSE_WIDTH//2:].tolist()
+  #temporal_pose = modelV2.temporalPose
+  #temporal_pose.trans = net_output_data['sim_pose'][0,:ModelConstants.POSE_WIDTH//2].tolist()
+  #temporal_pose.transStd = net_output_data['sim_pose_stds'][0,:ModelConstants.POSE_WIDTH//2].tolist()
+  #temporal_pose.rot = net_output_data['sim_pose'][0,ModelConstants.POSE_WIDTH//2:].tolist()
+  #temporal_pose.rotStd = net_output_data['sim_pose_stds'][0,ModelConstants.POSE_WIDTH//2:].tolist()
 
   # poly path
   fill_xyz_poly(driving_model_data.path, ModelConstants.POLY_PATH_DEGREE, *net_output_data['plan'][0,:,Plan.POSITION].T)
@@ -106,19 +106,10 @@ def fill_model_msg(base_msg: capnp._DynamicStructBuilder, extended_msg: capnp._D
   LINE_T_IDXS: list[float] = []
 
   # lane lines
-  modelV2.init('laneLines', 6)
-  for i in range(6):
+  modelV2.init('laneLines', 4)
+  for i in range(4):
     lane_line = modelV2.laneLines[i]
-    if i < 4:
-      fill_xyzt(lane_line, LINE_T_IDXS, np.array(ModelConstants.X_IDXS), net_output_data['lane_lines'][0,i,:,0], net_output_data['lane_lines'][0,i,:,1])
-    elif i == 4:
-      leftLane_x = 0.5 * (net_output_data['lane_lines'][0,0,:,0] + net_output_data['lane_lines'][0,1,:,0])
-      leftLane_y = 0.5 * (net_output_data['lane_lines'][0,0,:,1] + net_output_data['lane_lines'][0,1,:,1])
-      fill_xyzt(lane_line, LINE_T_IDXS, np.array(ModelConstants.X_IDXS), leftLane_x, leftLane_y)
-    elif i == 5:
-      rightLane_x = 0.5 * (net_output_data['lane_lines'][0,2,:,0] + net_output_data['lane_lines'][0,3,:,0])
-      rightLane_y = 0.5 * (net_output_data['lane_lines'][0,2,:,1] + net_output_data['lane_lines'][0,3,:,1])
-      fill_xyzt(lane_line, LINE_T_IDXS, np.array(ModelConstants.X_IDXS), rightLane_x, rightLane_y)
+    fill_xyzt(lane_line, LINE_T_IDXS, np.array(ModelConstants.X_IDXS), net_output_data['lane_lines'][0,i,:,0], net_output_data['lane_lines'][0,i,:,1])
   modelV2.laneLineStds = net_output_data['lane_lines_stds'][0,:,0,0].tolist()
   modelV2.laneLineProbs = net_output_data['lane_lines_prob'][0,1::2].tolist()
 
