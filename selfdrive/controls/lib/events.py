@@ -316,12 +316,9 @@ def modeld_lagging_alert(CP: car.CarParams, CS: car.CarState, sm: messaging.SubM
 
 
 def wrong_car_mode_alert(CP: car.CarParams, CS: car.CarState, sm: messaging.SubMaster, metric: bool, soft_disable_time: int, frogpilot_toggles: SimpleNamespace) -> Alert:
-  if frogpilot_toggles.has_cc_long:
-    text = "Enable Cruise Control to Engage"
-  elif CP.carName == "honda":
+  text = "Enable Adaptive Cruise to Engage"
+  if CP.carName == "honda":
     text = "Enable Main Switch to Engage"
-  else:
-    text = "Enable Adaptive Cruise to Engage"
   return NoEntryAlert(text)
 
 
@@ -358,7 +355,7 @@ def holiday_alert(CP: car.CarParams, CS: car.CarState, sm: messaging.SubMaster, 
     "easter_week": "Happy Easter! 🐰",
     "may_the_fourth": "May the 4th be with you! 🚀",
     "cinco_de_mayo": "¡Feliz Cinco de Mayo! 🌮",
-    "stitch_day": "Happy Stitch Day! 💙",
+    "stitch_day": "Ohana means family. Family means—Happy Stitch Day! 💙",
     "fourth_of_july": "Happy Fourth of July! 🎆",
     "halloween_week": "Happy Halloween! 🎃",
     "thanksgiving_week": "Happy Thanksgiving! 🦃",
