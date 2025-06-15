@@ -334,6 +334,8 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("StandardPersonalityProfile", "1", 2),
   ("StandbyMode", "0", 2),
   ("StaticPedalsOnUI", "0", 2),
+  ("SteerDelay", "0", 3),
+  ("SteerDelayStock", "0", 3),
   ("SteerFriction", "0", 3),
   ("SteerFrictionStock", "0", 3),
   ("SteerKP", "0", 3),
@@ -391,7 +393,7 @@ class FrogPilotVariables:
     self.vetting_branch = self.short_branch == "FrogPilot-Vetting"
 
     self.frogpilot_toggles.frogs_go_moo = Path("/persist/frogsgomoo.py").is_file()
-    self.frogpilot_toggles.block_user = self.development_branch and not self.frogpilot_toggles.frogs_go_moo
+    self.frogpilot_toggles.block_user = (self.development_branch or self.vetting_branch) and not self.frogpilot_toggles.frogs_go_moo
 
     self.frogpilot_toggles.use_konik_server = params.get_bool("UseKonikServer")
     self.frogpilot_toggles.use_konik_server |= Path("/data/openpilot/not_vetted").is_file()
@@ -442,7 +444,7 @@ class FrogPilotVariables:
         car_model = CP.carFingerprint
         has_auto_tune = car_make in {"hyundai", "toyota"} and CP.lateralTuning.which() == "torque"
         has_bsm = CP.enableBsm
-        has_cc_long = bool(CP.flags & GMFlags.CC_LONG.value)
+        toggle.has_cc_long = bool(CP.flags & GMFlags.CC_LONG.value)
         has_pedal = CP.enableGasInterceptor
         has_radar = not CP.radarUnavailable
         is_torque_car = CP.lateralTuning.which() == "torque"
@@ -460,7 +462,7 @@ class FrogPilotVariables:
       car_model = "MOCK"
       has_auto_tune = False
       has_bsm = False
-      has_cc_long = False
+      toggle.has_cc_long = False
       has_pedal = False
       has_radar = False
       is_torque_car = False
@@ -497,6 +499,11 @@ class FrogPilotVariables:
     advanced_lateral_tuning = params.get_bool("AdvancedLateralTune") if tuning_level >= level["AdvancedLateralTune"] else default.get_bool("AdvancedLateralTune")
     toggle.force_auto_tune = advanced_lateral_tuning and not has_auto_tune and is_torque_car and (params.get_bool("ForceAutoTune") if tuning_level >= level["ForceAutoTune"] else default.get_bool("ForceAutoTune"))
     toggle.force_auto_tune_off = advanced_lateral_tuning and has_auto_tune and is_torque_car and (params.get_bool("ForceAutoTuneOff") if tuning_level >= level["ForceAutoTuneOff"] else default.get_bool("ForceAutoTuneOff"))
+
+    stock_steer_delay = params.get_float("SteerDelayStock")
+    toggle.steer_delay = np.clip(params.get_float("SteerDelay") if advanced_lateral_tuning and tuning_level >= level["SteerDelay"] else stock_steer_delay, stock_steer_delay * 0.5, stock_steer_delay * 1.5)
+    toggle.use_custom_steer_delay = bool(toggle.steer_delay != stock_steer_delay)
+
     stock_steer_friction = params.get_float("SteerFrictionStock")
     toggle.steer_friction = np.clip(params.get_float("SteerFriction") if advanced_lateral_tuning and tuning_level >= level["SteerFriction"] else stock_steer_friction, 0, 0.5)
     toggle.use_custom_steer_friction = toggle.steer_friction != stock_steer_friction and is_torque_car and not toggle.force_auto_tune or toggle.force_auto_tune_off
@@ -524,7 +531,7 @@ class FrogPilotVariables:
     toggle.always_on_lateral_main = toggle.always_on_lateral_set and not toggle.use_lkas_for_aol and (params.get_bool("AlwaysOnLateralMain") if tuning_level >= level["AlwaysOnLateralMain"] else default.get_bool("AlwaysOnLateralMain"))
     toggle.always_on_lateral_pause_speed = params.get_int("PauseAOLOnBrake") if toggle.always_on_lateral_set and tuning_level >= level["PauseAOLOnBrake"] else default.get_int("PauseAOLOnBrake")
 
-    toggle.automatic_updates = params.get_bool("AutomaticUpdates") if tuning_level >= level["AutomaticUpdates"] else default.get_bool("AutomaticUpdates")
+    toggle.automatic_updates = params.get_bool("AutomaticUpdates") if tuning_level >= level["AutomaticUpdates"] else default.get_bool("AutomaticUpdates") or self.testing_branch
 
     toggle.car_model = params.get("CarModel", encoding="utf-8") or car_model
 
@@ -621,14 +628,14 @@ class FrogPilotVariables:
     toggle.storage_left_metrics = toggle.sidebar_metrics and (params.get_bool("ShowStorageLeft") if tuning_level >= level["ShowStorageLeft"] else default.get_bool("ShowStorageLeft")) and not toggle.debug_mode
     toggle.storage_used_metrics = toggle.sidebar_metrics and (params.get_bool("ShowStorageUsed") if tuning_level >= level["ShowStorageUsed"] else default.get_bool("ShowStorageUsed")) and not toggle.debug_mode
     toggle.use_si_metrics = developer_metrics and (params.get_bool("UseSI") if tuning_level >= level["UseSI"] else default.get_bool("UseSI")) or toggle.debug_mode
-    toggle.developer_sidebar = toggle.developer_ui and (params.get_bool("DeveloperSidebar") if tuning_level >= level["DeveloperSidebar"] else default.get_bool("DeveloperSidebar"))
-    toggle.developer_sidebar_metric1 = params.get_int("DeveloperSidebarMetric1") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric1"] else default.get_float("DeveloperSidebarMetric1")
-    toggle.developer_sidebar_metric2 = params.get_int("DeveloperSidebarMetric2") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric2"] else default.get_float("DeveloperSidebarMetric2")
-    toggle.developer_sidebar_metric3 = params.get_int("DeveloperSidebarMetric3") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric3"] else default.get_float("DeveloperSidebarMetric3")
-    toggle.developer_sidebar_metric4 = params.get_int("DeveloperSidebarMetric4") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric4"] else default.get_float("DeveloperSidebarMetric4")
-    toggle.developer_sidebar_metric5 = params.get_int("DeveloperSidebarMetric5") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric5"] else default.get_float("DeveloperSidebarMetric5")
-    toggle.developer_sidebar_metric6 = params.get_int("DeveloperSidebarMetric6") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric6"] else default.get_float("DeveloperSidebarMetric6")
-    toggle.developer_sidebar_metric7 = params.get_int("DeveloperSidebarMetric7") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric7"] else default.get_float("DeveloperSidebarMetric7")
+    toggle.developer_sidebar = toggle.developer_ui and (params.get_bool("DeveloperSidebar") if tuning_level >= level["DeveloperSidebar"] else default.get_bool("DeveloperSidebar")) or toggle.debug_mode
+    toggle.developer_sidebar_metric1 = params.get_int("DeveloperSidebarMetric1") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric1"] else 1 if toggle.debug_mode else default.get_float("DeveloperSidebarMetric1")
+    toggle.developer_sidebar_metric2 = params.get_int("DeveloperSidebarMetric2") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric2"] else 3 if toggle.debug_mode else default.get_float("DeveloperSidebarMetric2")
+    toggle.developer_sidebar_metric3 = params.get_int("DeveloperSidebarMetric3") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric3"] else 4 if toggle.debug_mode else default.get_float("DeveloperSidebarMetric3")
+    toggle.developer_sidebar_metric4 = params.get_int("DeveloperSidebarMetric4") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric4"] else 5 if toggle.debug_mode else default.get_float("DeveloperSidebarMetric4")
+    toggle.developer_sidebar_metric5 = params.get_int("DeveloperSidebarMetric5") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric5"] else 6 if toggle.debug_mode else default.get_float("DeveloperSidebarMetric5")
+    toggle.developer_sidebar_metric6 = params.get_int("DeveloperSidebarMetric6") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric6"] else 7 if toggle.debug_mode else default.get_float("DeveloperSidebarMetric6")
+    toggle.developer_sidebar_metric7 = params.get_int("DeveloperSidebarMetric7") if toggle.developer_sidebar and tuning_level >= level["DeveloperSidebarMetric7"] else 11 if toggle.debug_mode else default.get_float("DeveloperSidebarMetric7")
     developer_widgets = toggle.developer_ui and params.get_bool("DeveloperWidgets") if tuning_level >= level["DeveloperWidgets"] else default.get_bool("DeveloperWidgets")
     toggle.adjacent_lead_tracking = has_radar and ((developer_widgets and params.get_bool("AdjacentLeadsUI") if tuning_level >= level["AdjacentLeadsUI"] else default.get_bool("AdjacentLeadsUI")) or toggle.debug_mode)
     toggle.radar_tracks = has_radar and ((developer_widgets and params.get_bool("RadarTracksUI") if tuning_level >= level["RadarTracksUI"] else default.get_bool("RadarTracksUI")) or toggle.debug_mode)
@@ -776,7 +783,7 @@ class FrogPilotVariables:
     toggle.show_speed_limits = toggle.navigation_ui and (params.get_bool("ShowSpeedLimits") if tuning_level >= level["ShowSpeedLimits"] else default.get_bool("ShowSpeedLimits"))
     toggle.speed_limit_vienna = toggle.navigation_ui and (params.get_bool("UseVienna") if tuning_level >= level["UseVienna"] else default.get_bool("UseVienna"))
 
-    toggle.old_long_api = openpilot_longitudinal and car_make == "gm" and has_cc_long and not has_pedal
+    toggle.old_long_api = openpilot_longitudinal and car_make == "gm" and toggle.has_cc_long and not has_pedal
     toggle.old_long_api |= openpilot_longitudinal and car_make == "hyundai" and not (params.get_bool("NewLongAPI") if tuning_level >= level["NewLongAPI"] else default.get_bool("NewLongAPI"))
 
     personalize_openpilot = params.get_bool("PersonalizeOpenpilot") if tuning_level >= level["PersonalizeOpenpilot"] else default.get_bool("PersonalizeOpenpilot")
