@@ -139,9 +139,9 @@ def frogpilot_boot_functions(build_metadata, params_cache):
       params.put("DongleId", params.get("KonikDongleId", encoding="utf8"))
     else:
       params.put("KonikDongleId", register(show_spinner=True, register_konik=True))
-      HARDWARE.reboot()
-  elif params.get("StockDongleId", encoding="utf8") != None:
-    params.put("DongleId", params.get("StockDongleId", encoding="utf8"))
+      params.put("DongleId", params.get("KonikDongleId", encoding="utf8"))
+  elif params.get("DongleId", encoding="utf8") == params.get("KonikDongleId", encoding="utf8"):
+    params.remove("DongleId")
 
   def backup_thread():
     while not system_time_valid():
