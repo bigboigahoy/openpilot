@@ -29,7 +29,7 @@ DriveStats::DriveStats(QWidget *parent) : QFrame(parent) {
 
   setStyleSheet(R"(
     DriveStats {
-      background-color: #333333;
+      background-color: #313244;
       border-radius: 10px;
     }
 

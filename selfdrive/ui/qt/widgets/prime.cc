@@ -47,7 +47,7 @@ void PairingQRWidget::updateQrCode(const QString &text) {
   QImage im(sz, sz, QImage::Format_RGB32);
 
   QRgb black = qRgb(0, 0, 0);
-  QRgb white = qRgb(255, 255, 255);
+  QRgb white = qRgb(205, 214, 244);
   for (int y = 0; y < sz; y++) {
     for (int x = 0; x < sz; x++) {
       im.setPixel(x, y, qr.getModule(x, y) ? black : white);
@@ -90,7 +90,7 @@ PairingPopup::PairingPopup(QWidget *parent) : DialogBase(parent) {
     vlayout->addSpacing(30);
 
     QLabel *title = new QLabel(tr("Pair your device to your %1 account").arg(useKonikServer() ? "Konik" : "comma"), this);
-    title->setStyleSheet("font-size: 75px; color: black;");
+    title->setStyleSheet("font-size: 75px; color: #11111b;");
     title->setWordWrap(true);
     vlayout->addWidget(title);
 
@@ -106,7 +106,7 @@ PairingPopup::PairingPopup(QWidget *parent) : DialogBase(parent) {
     .arg(tr("Click \"add new device\" and scan the QR code on the right"))
     .arg(tr("Bookmark %1 to your home screen to use it like an app").arg(serverUrl)), this);
 
-    instructions->setStyleSheet("font-size: 47px; font-weight: bold; color: black;");
+    instructions->setStyleSheet("font-size: 47px; font-weight: bold; color: #11111b;");
     instructions->setWordWrap(true);
     vlayout->addWidget(instructions);
 
@@ -146,7 +146,7 @@ PrimeAdWidget::PrimeAdWidget(QWidget* parent) : QFrame(parent) {
   main_layout->addSpacing(50);
 
   QLabel *description = new QLabel(tr("Become a comma prime member at connect.comma.ai"));
-  description->setStyleSheet("font-size: 56px; font-weight: light; color: white;");
+  description->setStyleSheet("font-size: 56px; font-weight: light; color: #cdd6f4;");
   description->setWordWrap(true);
   main_layout->addWidget(description, 0, Qt::AlignTop);
 
@@ -159,7 +159,7 @@ PrimeAdWidget::PrimeAdWidget(QWidget* parent) : QFrame(parent) {
 
   QVector<QString> bullets = {tr("Remote access"), tr("24/7 LTE connectivity"), tr("1 year of drive storage"), tr("Turn-by-turn navigation")};
   for (auto &b : bullets) {
-    const QString check = "<b><font color='#465BEA'>✓</font></b> ";
+    const QString check = "<b><font color='#89b4fa'>✓</font></b> ";
     QLabel *l = new QLabel(check + b);
     l->setAlignment(Qt::AlignLeft);
     l->setStyleSheet("font-size: 50px; margin-bottom: 15px;");
@@ -169,7 +169,7 @@ PrimeAdWidget::PrimeAdWidget(QWidget* parent) : QFrame(parent) {
   setStyleSheet(R"(
     PrimeAdWidget {
       border-radius: 10px;
-      background-color: #333333;
+      background-color: #313244;
     }
   )");
 }
@@ -203,7 +203,7 @@ SetupWidget::SetupWidget(QWidget* parent) : QFrame(parent) {
       font-size: 55px;
       font-weight: 500;
       border-radius: 10px;
-      background-color: #465BEA;
+      background-color: #89b4fa;
       padding: 64px;
     }
     QPushButton:pressed {
@@ -243,7 +243,7 @@ SetupWidget::SetupWidget(QWidget* parent) : QFrame(parent) {
   setStyleSheet(R"(
     #primeWidget {
       border-radius: 10px;
-      background-color: #333333;
+      background-color: #313244;
     }
   )");
 

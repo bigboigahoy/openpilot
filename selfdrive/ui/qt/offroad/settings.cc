@@ -299,8 +299,8 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
   }
 
   setStyleSheet(R"(
-    #reboot_btn { height: 120px; border-radius: 15px; background-color: #393939; }
-    #reboot_btn:pressed { background-color: #4a4a4a; }
+    #reboot_btn { height: 120px; border-radius: 15px; background-color: #1e1e2e; }
+    #reboot_btn:pressed { background-color: #313244; }
     #poweroff_btn { height: 120px; border-radius: 15px; background-color: #E22C2C; }
     #poweroff_btn:pressed { background-color: #FF2424; }
   )");
@@ -398,11 +398,11 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
     QPushButton {
       font-size: 50px;
       border-radius: 25px;
-      background-color: #292929;
+      background-color: #313244;
       font-weight: 500;
     }
     QPushButton:pressed {
-      background-color: #ADADAD;
+      background-color: #a6adc8;
     }
   )");
   close_btn->setFixedSize(300, 125);
@@ -464,10 +464,10 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
         font-weight: 500;
       }
       QPushButton:checked {
-        color: white;
+        color: #cdd6f4;
       }
       QPushButton:pressed {
-        color: #ADADAD;
+        color: #a6adc8;
       }
     )");
     btn->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
@@ -551,14 +551,14 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
 
   setStyleSheet(R"(
     * {
-      color: white;
+      color: #cdd6f4;
       font-size: 50px;
     }
     SettingsWindow {
-      background-color: black;
+      background-color: #11111b;
     }
     QStackedWidget, ScrollView {
-      background-color: #292929;
+      background-color: #313244;
       border-radius: 30px;
     }
   )");

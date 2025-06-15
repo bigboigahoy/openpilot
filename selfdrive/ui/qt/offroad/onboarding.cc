@@ -69,7 +69,7 @@ void TrainingGuide::paintEvent(QPaintEvent *event) {
   QPainter painter(this);
 
   QRect bg(0, 0, painter.device()->width(), painter.device()->height());
-  painter.fillRect(bg, QColor("#000000"));
+  painter.fillRect(bg, QColor("#11111b"));
 
   image = loadImage(currentIndex);
   QRect rect(image.rect());
@@ -80,7 +80,7 @@ void TrainingGuide::paintEvent(QPaintEvent *event) {
   if (currentIndex > 0 && currentIndex < (boundingRect.size() - 2)) {
     const int h = 20;
     const int w = (currentIndex / (float)(boundingRect.size() - 2)) * width();
-    painter.fillRect(QRect(0, height() - h, w, h), QColor("#465BEA"));
+    painter.fillRect(QRect(0, height() - h, w, h), QColor("#89b4fa"));
   }
 }
 
@@ -130,7 +130,7 @@ void TermsPage::showEvent(QShowEvent *event) {
   accept_btn->setEnabled(false);
   accept_btn->setStyleSheet(R"(
     QPushButton {
-      background-color: #465BEA;
+      background-color: #89b4fa;
     }
     QPushButton:pressed {
       background-color: #3049F4;
@@ -219,8 +219,8 @@ OnboardingWindow::OnboardingWindow(QWidget *parent) : QStackedWidget(parent) {
 
   setStyleSheet(R"(
     * {
-      color: white;
-      background-color: black;
+      color: #cdd6f4;
+      background-color: #11111b;
     }
     QPushButton {
       height: 160px;

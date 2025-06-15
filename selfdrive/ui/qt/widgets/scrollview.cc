@@ -22,7 +22,7 @@ ScrollView::ScrollView(QWidget *w, QWidget *parent) : QScrollArea(parent) {
     QScrollBar::handle:vertical {
       min-height: 0px;
       border-radius: 5px;
-      background-color: white;
+      background-color: #cdd6f4;
     }
     QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
       height: 0px;

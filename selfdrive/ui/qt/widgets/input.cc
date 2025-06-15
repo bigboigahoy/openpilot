@@ -16,22 +16,22 @@ DialogBase::DialogBase(QWidget *parent) : QDialog(parent) {
   setStyleSheet(R"(
     * {
       outline: none;
-      color: white;
+      color: #cdd6f4;
       font-family: Inter;
     }
     DialogBase {
-      background-color: black;
+      background-color: #11111b;
     }
     QPushButton {
       height: 160;
       font-size: 55px;
       font-weight: 400;
       border-radius: 10px;
-      color: white;
-      background-color: #333333;
+      color: #cdd6f4;
+      background-color: #313244;
     }
     QPushButton:pressed {
-      background-color: #444444;
+      background-color: #45475a;
     }
   )");
 }
@@ -74,11 +74,11 @@ InputDialog::InputDialog(const QString &title, QWidget *parent, const QString &s
     QPushButton {
       font-size: 48px;
       border-radius: 10px;
-      color: #E4E4E4;
-      background-color: #333333;
+      color: #cdd6f4;
+      background-color: #313244;
     }
     QPushButton:pressed {
-      background-color: #444444;
+      background-color: #45475a;
     }
   )");
   header_layout->addWidget(cancel_btn, 0, Qt::AlignRight);
@@ -210,7 +210,7 @@ ConfirmationDialog::ConfirmationDialog(const QString &prompt_text, const QString
   QFrame *container = new QFrame(this);
   container->setStyleSheet(R"(
     QFrame { background-color: #1B1B1B; color: #C9C9C9; }
-    #confirm_btn { background-color: #465BEA; }
+    #confirm_btn { background-color: #89b4fa; }
     #confirm_btn:pressed { background-color: #3049F4; }
   )");
   QVBoxLayout *main_layout = new QVBoxLayout(container);
@@ -268,7 +268,7 @@ MultiOptionDialog::MultiOptionDialog(const QString &prompt_text, const QStringLi
   container->setStyleSheet(R"(
     QFrame { background-color: #1B1B1B; }
     #confirm_btn[enabled="false"] { background-color: #2B2B2B; }
-    #confirm_btn:enabled { background-color: #465BEA; }
+    #confirm_btn:enabled { background-color: #89b4fa; }
     #confirm_btn:enabled:pressed { background-color: #3049F4; }
   )");
 
@@ -293,7 +293,7 @@ MultiOptionDialog::MultiOptionDialog(const QString &prompt_text, const QStringLi
       border-radius: 10px;
       background-color: #4F4F4F;
     }
-    QPushButton:checked { background-color: #465BEA; }
+    QPushButton:checked { background-color: #89b4fa; }
   )");
 
   QButtonGroup *group = new QButtonGroup(listWidget);

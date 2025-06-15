@@ -54,43 +54,43 @@ ModelReview::ModelReview(QWidget *parent) : QFrame(parent) {
 
   setStyleSheet(R"(
     ModelReview {
-      background-color: #333333;
+      background-color: #313244;
       border-radius: 5px;
     }
     QLabel[type="drives"], QLabel[type="question"], QLabel[type="rank"], QLabel[type="score"], QLabel[type="title"] {
       font-size: 50px;
       font-weight: semi-bold;
-      color: #FFFFFF;
+      color: #cdd6f4;
     }
     QLabel[type="model"] {
       font-size: 75px;
       font-weight: bold;
-      color: #FFFFFF;
+      color: #cdd6f4;
     }
     QLabel[type="blacklist_message"] {
       font-size: 40px;
       font-weight: bold;
-      color: #C92231;
+      color: #f38ba8;
     }
     QPushButton[type="rating_button"] {
       font-size: 75px;
       font-weight: bold;
       padding: 10px;
-      color: #FFFFFF;
-      background-color: #555555;
-      border: 2px solid #FFFFFF;
+      color: #cdd6f4;
+      background-color: #585b70;
+      border: 2px solid #cdd6f4;
       border-radius: 5px;
     }
     QPushButton[type="rating_button"]:hover {
-      background-color: #777777;
+      background-color: #6c7086;
     }
     QPushButton[type="blacklist_button"] {
       font-size: 50px;
       font-weight: bold;
       padding: 10px;
-      color: #C92231;
-      background-color: #000000;
-      border: 2px solid #FFFFFF;
+      color: #f38ba8;
+      background-color: #11111b;
+      border: 2px solid #cdd6f4;
       border-radius: 5px;
     }
   )");

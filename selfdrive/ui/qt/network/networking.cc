@@ -63,11 +63,11 @@ Networking::Networking(QWidget* parent, bool show_advanced) : QFrame(parent) {
       padding: 15px;
       border-width: 0;
       border-radius: 30px;
-      color: #dddddd;
-      background-color: #393939;
+      color: #cdd6f4;
+      background-color: #1e1e2e;
     }
     #back_btn:pressed, #advanced_btn:pressed {
-      background-color:  #4a4a4a;
+      background-color:  #313244;
     }
   )");
   main_layout->setCurrentWidget(wifiScreen);
@@ -269,7 +269,7 @@ WifiUI::WifiUI(QWidget *parent, WifiManager* wifi) : QWidget(parent), wifi(wifi)
     #forgetBtn {
       font-size: 32px;
       font-weight: 600;
-      color: #292929;
+      color: #313244;
       background-color: #BDBDBD;
       border-width: 1px solid #828282;
       border-radius: 5px;
@@ -283,12 +283,12 @@ WifiUI::WifiUI(QWidget *parent, WifiManager* wifi) : QWidget(parent), wifi(wifi)
     #connecting {
       font-size: 32px;
       font-weight: 600;
-      color: white;
+      color: #cdd6f4;
       border-radius: 0;
       padding: 27px;
       padding-left: 43px;
       padding-right: 43px;
-      background-color: black;
+      background-color: #11111b;
     }
     #ssidLabel {
       text-align: left;

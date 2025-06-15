@@ -46,8 +46,8 @@ int main(int argc, char *argv[]) {
   window.setStyleSheet(R"(
     * {
       outline: none;
-      color: white;
-      background-color: black;
+      color: #cdd6f4;
+      background-color: #11111b;
       font-size: 60px;
     }
     QPushButton {

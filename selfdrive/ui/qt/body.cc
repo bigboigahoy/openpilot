@@ -25,11 +25,11 @@ void RecordButton::paintEvent(QPaintEvent *event) {
 
   QPoint center(width() / 2, height() / 2);
 
-  QColor bg(isChecked() ? "#FFFFFF" : "#737373");
-  QColor accent(isChecked() ? "#FF0000" : "#FFFFFF");
+  QColor bg(isChecked() ? "#cdd6f4" : "#737373");
+  QColor accent(isChecked() ? "#FF0000" : "#cdd6f4");
   if (!isEnabled()) {
     bg = QColor("#404040");
-    accent = QColor("#FFFFFF");
+    accent = QColor("#cdd6f4");
   }
 
   if (isDown()) {
@@ -85,7 +85,7 @@ void BodyWindow::paintEvent(QPaintEvent *event) {
   QPainter p(this);
   p.setRenderHint(QPainter::Antialiasing);
 
-  p.fillRect(rect(), QColor(0, 0, 0));
+  p.fillRect(rect(), QColor(17, 17, 27));
 
   // battery outline + detail
   p.translate(width() - 136, 16);

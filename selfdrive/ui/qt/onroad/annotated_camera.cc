@@ -168,7 +168,7 @@ void AnnotatedCameraWidget::drawHud(QPainter &p, const cereal::FrogPilotPlan::Re
       if (status == STATUS_DISENGAGED) {
         max_color = whiteColor();
       } else if (status == STATUS_OVERRIDE) {
-        max_color = QColor(0x91, 0x9b, 0x95, 0xff);
+        max_color = QColor(0x93, 0x99, 0xb2, 0xff);
       } else if (speedLimit > 0) {
         auto interp_color = [=](QColor c1, QColor c2, QColor c3) {
           return speedLimit > 0 ? interpColor(setSpeed, {speedLimit + 5, speedLimit + 15, speedLimit + 25}, {c1, c2, c3}) : c1;
@@ -270,7 +270,7 @@ void AnnotatedCameraWidget::drawText(QPainter &p, int x, int y, const QString &t
   QRect real_rect = p.fontMetrics().boundingRect(text);
   real_rect.moveCenter({x, y - real_rect.height() / 2});
 
-  p.setPen(QColor(0xff, 0xff, 0xff, alpha));
+  p.setPen(QColor(0xcd, 0xd6, 0xf4, alpha));
   p.drawText(real_rect.x(), real_rect.bottom(), text);
 }
 
@@ -475,7 +475,7 @@ void AnnotatedCameraWidget::drawLead(QPainter &painter, const cereal::RadarState
 
   QPointF glow[] = {{x + (sz * 1.35) + g_xo, y + sz + g_yo}, {x, y - g_yo}, {x - (sz * 1.35) - g_xo, y + sz + g_yo}};
   if (lead_data.getFarLead()) {
-    painter.setBrush(QColor(0, 255, 255, 255));
+    painter.setBrush(QColor(0, 205, 214, 244));
   } else {
     painter.setBrush(QColor(218, 202, 37, 255));
   }

@@ -38,9 +38,9 @@ private:
 
   BlockingQueue<QImage> imageQueue{UI_FREQ};
 
-  QColor blackColor(int alpha = 255) { return QColor(0, 0, 0, alpha); }
-  QColor redColor(int alpha = 255) { return QColor(201, 34, 49, alpha); }
-  QColor whiteColor(int alpha = 255) { return QColor(255, 255, 255, alpha); }
+  QColor blackColor(int alpha = 255) { return QColor(17, 17, 27, alpha); }
+  QColor redColor(int alpha = 255) { return QColor(243, 139, 168, alpha); }
+  QColor whiteColor(int alpha = 255) { return QColor(205, 214, 244, alpha); }
 
   QImage synthesizeFrame(const QImage &frame1, const QImage &frame2, double alpha);
 

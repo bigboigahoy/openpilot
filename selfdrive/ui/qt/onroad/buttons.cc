@@ -88,7 +88,7 @@ void ExperimentalButton::updateBackgroundColor() {
   FrogPilotUIScene &frogpilot_scene = fs.frogpilot_scene;
 
   static const QMap<QString, QColor> status_color_map {
-    {"default", QColor(0, 0, 0, 166)},
+    {"default", QColor(17, 17, 27, 166)},
     {"always_on_lateral_active", bg_colors[STATUS_ALWAYS_ON_LATERAL_ACTIVE]},
     {"conditional_overridden", bg_colors[STATUS_CONDITIONAL_OVERRIDDEN]},
     {"experimental_mode_enabled", bg_colors[STATUS_EXPERIMENTAL_MODE_ENABLED]},
@@ -150,5 +150,5 @@ MapSettingsButton::MapSettingsButton(QWidget *parent) : QPushButton(parent) {
 
 void MapSettingsButton::paintEvent(QPaintEvent *event) {
   QPainter p(this);
-  drawIcon(p, QPoint(btn_size / 2, btn_size / 2 + (road_name_ui ? 0 : UI_BORDER_SIZE)), settings_img, QColor(0, 0, 0, 166), isDown() ? 0.6 : 1.0);
+  drawIcon(p, QPoint(btn_size / 2, btn_size / 2 + (road_name_ui ? 0 : UI_BORDER_SIZE)), settings_img, QColor(17, 17, 27, 166), isDown() ? 0.6 : 1.0);
 }
