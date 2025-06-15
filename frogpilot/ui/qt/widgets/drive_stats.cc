@@ -34,9 +34,9 @@ DriveStats::DriveStats(QWidget *parent) : QFrame(parent) {
     }
 
     QLabel[type="title"] { font-size: 50px; font-weight: 500; }
-    QLabel[type="frogpilot_title"] { font-size: 50px; font-weight: 500; color: #178643; }
+    QLabel[type="frogpilot_title"] { font-size: 50px; font-weight: 500; color: #a6e3a1; }
     QLabel[type="number"] { font-size: 65px; font-weight: 400; }
-    QLabel[type="unit"] { font-size: 50px; font-weight: 300; color: #A0A0A0; }
+    QLabel[type="unit"] { font-size: 50px; font-weight: 300; color: #cdd6f4; }
   )");
 }
 
