@@ -301,8 +301,8 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
   setStyleSheet(R"(
     #reboot_btn { height: 120px; border-radius: 15px; background-color: #1e1e2e; }
     #reboot_btn:pressed { background-color: #313244; }
-    #poweroff_btn { height: 120px; border-radius: 15px; background-color: #E22C2C; }
-    #poweroff_btn:pressed { background-color: #FF2424; }
+    #poweroff_btn { height: 120px; border-radius: 15px; background-color: #f38ba8; }
+    #poweroff_btn:pressed { background-color: #eba0ac; }
   )");
   addItem(power_layout);
 }
