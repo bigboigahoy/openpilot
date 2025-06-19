@@ -56,7 +56,8 @@ T_IDXS = np.array(T_IDXS_LST)
 FCW_IDXS = T_IDXS < 5.0
 T_DIFFS = np.diff(T_IDXS, prepend=[0.])
 COMFORT_BRAKE = 2.5
-STOP_DISTANCE = 6.0
+# Tinygrad model change from commaai/openpilot pull request #35567
+STOP_DISTANCE = 4.0
 
 def get_jerk_factor(aggressive_jerk_acceleration=0.5, aggressive_jerk_danger=0.5, aggressive_jerk_speed=0.5,
                     standard_jerk_acceleration=1.0, standard_jerk_danger=1.0, standard_jerk_speed=1.0,
@@ -355,7 +356,7 @@ class LongitudinalMpc:
     self.cruise_min_a = min_a
     self.max_a = max_a
 
-  def update(self, lead_one, lead_two, v_cruise, x, v, a, j, radarless_model, t_follow, trafficMode, personality=log.LongitudinalPersonality.standard):
+  def update(self, lead_one, lead_two, v_cruise, x, v, a, j, t_follow, trafficMode, personality=log.LongitudinalPersonality.standard):
     v_ego = self.x0[1]
     self.status = lead_one.status or lead_two.status
 
@@ -421,7 +422,7 @@ class LongitudinalMpc:
     self.params[:,4] = t_follow
 
     self.run()
-    lead_probability = lead_one.prob if radarless_model else lead_one.modelProb
+    lead_probability = lead_one.modelProb
     if (np.any(lead_xv_0[FCW_IDXS,0] - self.x_sol[FCW_IDXS,0] < CRASH_DISTANCE) and lead_probability > 0.9):
       self.crash_cnt += 1
     else:

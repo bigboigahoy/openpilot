@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import json
-import math
 import numpy as np
 import random
 
@@ -33,7 +32,6 @@ CRUISING_SPEED = 5                        # Roughly the speed cars go when not t
 EARTH_RADIUS = 6378137                    # Radius of the Earth in meters
 PLANNER_TIME = ModelConstants.T_IDXS[-1]  # Length of time the model projects out for
 THRESHOLD = 0.63                          # Requires the condition to be true for ~1 second
-TO_RADIANS = math.pi / 180                # Conversion factor from degrees to radians
 
 ACTIVE_THEME_PATH = Path(__file__).parents[1] / "assets/active_theme"
 METADATAS_PATH = Path(__file__).parents[1] / "assets/model_metadata"
@@ -110,7 +108,7 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("CECurves", "1", 1),
   ("CECurvesLead", "0", 1),
   ("CELead", "0", 1),
-  ("CEModelStopTime", "8", 2),
+  ("CEModelStopTime", str(PLANNER_TIME - 2), 2),
   ("CENavigation", "1", 2),
   ("CENavigationIntersections", "1", 2),
   ("CENavigationLead", "1", 2),
@@ -270,11 +268,11 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("RecordFront", "0", 0),
   ("RefuseVolume", "101", 2),
   ("RelaxedFollow", "1.75", 2),
-  ("RelaxedJerkAcceleration", "100", 3),
+  ("RelaxedJerkAcceleration", "50", 3),
   ("RelaxedJerkDanger", "100", 3),
-  ("RelaxedJerkDeceleration", "100", 3),
-  ("RelaxedJerkSpeed", "100", 3),
-  ("RelaxedJerkSpeedDecrease", "100", 3),
+  ("RelaxedJerkDeceleration", "50", 3),
+  ("RelaxedJerkSpeed", "50", 3),
+  ("RelaxedJerkSpeedDecrease", "50", 3),
   ("RelaxedPersonalityProfile", "1", 2),
   ("ReverseCruise", "0", 1),
   ("RoadEdgesWidth", "2", 2),
@@ -326,11 +324,11 @@ frogpilot_default_params: list[tuple[str, str | bytes, int]] = [
   ("StartupMessageBottom", "Human-tested, frog-approved 🐸", 0),
   ("StartupMessageTop", "Hop in and buckle up!", 0),
   ("StandardFollow", "1.45", 2),
-  ("StandardJerkAcceleration", "100", 3),
+  ("StandardJerkAcceleration", "50", 3),
   ("StandardJerkDanger", "100", 3),
-  ("StandardJerkDeceleration", "100", 3),
-  ("StandardJerkSpeed", "100", 3),
-  ("StandardJerkSpeedDecrease", "100", 3),
+  ("StandardJerkDeceleration", "50", 3),
+  ("StandardJerkSpeed", "50", 3),
+  ("StandardJerkSpeedDecrease", "50", 3),
   ("StandardPersonalityProfile", "1", 2),
   ("StandbyMode", "0", 2),
   ("StaticPedalsOnUI", "0", 2),
@@ -379,6 +377,9 @@ misc_tuning_levels: list[tuple[str, str | bytes, int]] = [
   ("SLCPriority", "", 2),
   ("WheelControls", "", 2)
 ]
+
+def scale_threshold(v_ego):
+  return 0.0 if v_ego > 31.3 else np.interp(v_ego, [0, 17.9, 26.8, 35.8, 44.7], [0.63, 0.63, 0.65, 0.95, 0.95])
 
 class FrogPilotVariables:
   def __init__(self):
@@ -484,8 +485,6 @@ class FrogPilotVariables:
 
     if not toggle.use_lkas_for_aol:
       params.remove("AlwaysOnLateralLKAS")
-
-    toggle.allow_far_lead_tracking = has_radar
 
     advanced_custom_ui = params.get_bool("AdvancedCustomUI") if tuning_level >= level["AdvancedCustomUI"] else default.get_bool("AdvancedCustomUI")
     toggle.hide_alerts = advanced_custom_ui and (params.get_bool("HideAlerts") if tuning_level >= level["HideAlerts"] else default.get_bool("HideAlerts")) and not toggle.debug_mode
@@ -762,7 +761,6 @@ class FrogPilotVariables:
       toggle.model_version = DEFAULT_CLASSIC_MODEL_VERSION
     toggle.classic_model = toggle.model_version in {"v1", "v2", "v3", "v4"}
     toggle.planner_curvature_model = toggle.model_version not in {"v1", "v2", "v3", "v4", "v5"}
-    toggle.radarless_model = toggle.model_version in {"v3"}
     toggle.tinygrad_model = toggle.model_version in {"v7"}
 
     toggle.model_ui = params.get_bool("ModelUI") if tuning_level >= level["ModelUI"] else default.get_bool("ModelUI")

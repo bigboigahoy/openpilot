@@ -43,8 +43,8 @@ POLICY_PKL_PATH = Path(__file__).parent / 'models/driving_policy_tinygrad.pkl'
 VISION_METADATA_PATH = Path(__file__).parent / 'models/driving_vision_metadata.pkl'
 POLICY_METADATA_PATH = Path(__file__).parent / 'models/driving_policy_metadata.pkl'
 
-LAT_SMOOTH_SECONDS = 0.2
-LONG_SMOOTH_SECONDS = 0.2
+LAT_SMOOTH_SECONDS = 0.1
+LONG_SMOOTH_SECONDS = 0.3
 MIN_LAT_CONTROL_SPEED = 0.3
 
 
@@ -174,6 +174,8 @@ class ModelState:
     # TODO model only uses last value now
     self.full_prev_desired_curv[0,:-1] = self.full_prev_desired_curv[0,1:]
     self.full_prev_desired_curv[0,-1,:] = policy_outputs_dict['desired_curvature'][0, :]
+    # same thing here. setting generation via json would alow you to just say if not generation == 11 else for this and above
+    # self.numpy_inputs['prev_desired_curv'][:] = self.full_prev_desired_curv[0, self.temporal_idxs]
     self.numpy_inputs['prev_desired_curv'][:] = 0*self.full_prev_desired_curv[0, self.temporal_idxs]
 
     combined_outputs_dict = {**vision_outputs_dict, **policy_outputs_dict}
@@ -250,7 +252,6 @@ def main(demo=False):
 
   # TODO this needs more thought, use .2s extra for now to estimate other delays
   # TODO Move smooth seconds to action function
-  lat_delay = CP.steerActuatorDelay + .2 + LAT_SMOOTH_SECONDS
   long_delay = CP.longitudinalActuatorDelay + LONG_SMOOTH_SECONDS
   prev_action = log.ModelDataV2.Action()
 
@@ -297,7 +298,7 @@ def main(demo=False):
     is_rhd = sm["driverMonitoringState"].isRHD
     frame_id = sm["roadCameraState"].frameId
     v_ego = max(sm["carState"].vEgo, 0.)
-    # lat_delay = sm["liveDelay"].lateralDelay + LAT_SMOOTH_SECONDS
+    lat_delay = sm["liveDelay"].lateralDelay + LAT_SMOOTH_SECONDS
     lateral_control_params = np.array([v_ego, lat_delay], dtype=np.float32)
     if sm.updated["liveCalibration"] and sm.seen['roadCameraState'] and sm.seen['deviceState']:
       device_from_calib_euler = np.array(sm["liveCalibration"].rpyCalib, dtype=np.float32)
