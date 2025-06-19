@@ -59,7 +59,7 @@ DEFAULT_MODEL_VERSION = "v6"
 
 DEFAULT_TINYGRAD_MODEL = "tomb-raider"
 DEFAULT_TINYGRAD_MODEL_NAME = "Vikander 👀📡"
-DEFAULT_TINYGRAD_MODEL_VERSION = "v8"
+DEFAULT_TINYGRAD_MODEL_VERSION = "v7"
 
 EXCLUDED_KEYS = {
   "AvailableModels", "AvailableModelNames", "CarParamsPersistent", "ExperimentalLongitudinalEnabled",
