@@ -38,15 +38,17 @@ def plannerd_thread():
   frogpilot_toggles = get_frogpilot_toggles()
 
   classic_model = frogpilot_toggles.classic_model
+  radarless_model = frogpilot_toggles.radarless_model
+  tomb_raider = frogpilot_toggles.model == "down-to-ride-v3"
 
   while True:
     sm.update()
     if sm.updated['modelV2']:
-      longitudinal_planner.update(sm, frogpilot_toggles)
-      longitudinal_planner.publish(classic_model, sm, pm, frogpilot_toggles)
+      longitudinal_planner.update(radarless_model, tomb_raider, sm, frogpilot_toggles)
+      longitudinal_planner.publish(classic_model, tomb_raider, sm, pm, frogpilot_toggles)
       publish_ui_plan(sm, pm, longitudinal_planner)
 
-    # Update FrogPilot variables
+    # Update FrogPilot parameters
     if sm['frogpilotPlan'].togglesUpdated:
       frogpilot_toggles = get_frogpilot_toggles()
 
