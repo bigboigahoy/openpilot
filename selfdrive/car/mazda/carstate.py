@@ -93,7 +93,7 @@ class CarState(CarStateBase):
       ret.cruiseState.available = cp.vl["CRZ_CTRL"]["CRZ_AVAILABLE"] == 1
       ret.cruiseState.enabled = cp.vl["CRZ_CTRL"]["CRZ_ACTIVE"] == 1
     elif self.CP.openpilotLongitudinalControl:
-      ret.cruiseState.available = cp.vl["CRZ_EVENTS"]["CRZ_AVAILABLE"] == 1
+      ret.cruiseState.available = cp.vl["PEDALS"]["CRZ_AVAILABLE"] == 1
       ret.cruiseState.enabled = cp.vl["CRZ_EVENTS"]["CRUISE_ACTIVE_CAR_MOVING"] == 1
 
 
