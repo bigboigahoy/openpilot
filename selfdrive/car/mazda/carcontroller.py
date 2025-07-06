@@ -20,12 +20,13 @@ class CarController(CarControllerBase):
     can_sends = []
 
     apply_steer = 0
-
+    # steering torque
+    self.params = CarControllerParams(self.CP, CS.out.vEgoRaw, frogpilot_toggles)
     if CC.latActive:
       # calculate steer and also set limits due to driver torque
-      new_steer = int(round(CC.actuators.steer * CarControllerParams.STEER_MAX))
+      new_steer = int(round(CC.actuators.steer * self.params.STEER_MAX))
       apply_steer = apply_driver_steer_torque_limits(new_steer, self.apply_steer_last,
-                                                     CS.out.steeringTorque, CarControllerParams)
+                                                     CS.out.steeringTorque, self.params)
 
     if CC.cruiseControl.cancel:
       # If brake is pressed, let us wait >70ms before trying to disable crz to avoid
@@ -59,7 +60,7 @@ class CarController(CarControllerBase):
                                                       self.frame, apply_steer, CS.cam_lkas))
 
     new_actuators = CC.actuators.as_builder()
-    new_actuators.steer = apply_steer / CarControllerParams.STEER_MAX
+    new_actuators.steer = apply_steer / self.params.STEER_MAX
     new_actuators.steerOutputCan = apply_steer
 
     self.frame += 1
