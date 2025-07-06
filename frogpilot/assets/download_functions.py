@@ -7,8 +7,8 @@ from pathlib import Path
 
 from openpilot.frogpilot.common.frogpilot_utilities import delete_file, is_url_pingable
 
-GITHUB_URL = "https://raw.githubusercontent.com/FrogAi/FrogPilot-Resources"
-GITLAB_URL = "https://gitlab.com/FrogAi/FrogPilot-Resources/-/raw"
+GITHUB_URL = "https://raw.githubusercontent.com/bigboigahoy/FrogPilot-Resources"
+GITLAB_URL = "https://gitlab.com/scottbresnahan/FrogPilot-Resources/-/raw"
 
 def check_github_rate_limit():
   try:
