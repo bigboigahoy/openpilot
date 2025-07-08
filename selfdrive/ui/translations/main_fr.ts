@@ -15,10 +15,6 @@
         <source>Reboot and Update</source>
         <translation>Redémarrer et mettre à jour</translation>
     </message>
-    <message>
-        <source>Disable Internet Check</source>
-        <translation type="gpt-4o-generated">Désactiver la vérification Internet</translation>
-    </message>
 </context>
 <context>
     <name>AdvancedNetworking</name>
@@ -890,12 +886,12 @@
         <translation type="gpt-4o-generated">secondes</translation>
     </message>
     <message>
-        <source>Disable Internet Requirement</source>
-        <translation type="gpt-4o-generated">Désactiver l'exigence d'Internet</translation>
+        <source>High Bitrate Recording</source>
+        <translation type="gpt-4o-generated">Enregistrement à haut débit binaire</translation>
     </message>
     <message>
-        <source>Allow the device to work indefinitely without an internet connection.</source>
-        <translation type="gpt-4o-generated">Permettre à l'appareil de fonctionner indéfiniment sans connexion Internet.</translation>
+        <source>Record driving footage at double the standard bitrate for improved video quality in driving logs.</source>
+        <translation type="gpt-4o-generated">Enregistrez les séquences de conduite à un débit binaire double du débit standard pour améliorer la qualité vidéo dans les journaux de conduite.</translation>
     </message>
 </context>
 <context>
@@ -1968,56 +1964,120 @@
         <translation type="gpt-4o-generated">Décalage de vitesse cible appliqué pour les limites affichées entre 120 et 140 km/h.</translation>
     </message>
     <message>
-        <source>Curve Speed Control</source>
-        <translation type="gpt-4o-generated">Contrôle de la vitesse en courbe</translation>
+        <source>Advanced Longitudinal Tuning</source>
+        <translation type="gpt-4o-generated">Réglage longitudinal avancé</translation>
     </message>
     <message>
-        <source>Automatically slow down for upcoming curves using downloaded maps or the driving model.</source>
-        <translation type="gpt-4o-generated">Ralentissez automatiquement pour les virages à venir en utilisant des cartes téléchargées ou le modèle de conduite.</translation>
+        <source>Advanced settings for customizing how openpilot handles acceleration and braking.</source>
+        <translation type="gpt-4o-generated">Paramètres avancés pour personnaliser la gestion de l'accélération et du freinage par openpilot.</translation>
     </message>
     <message>
-        <source>Curve Detection Method</source>
-        <translation type="gpt-4o-generated">Méthode de détection de courbes</translation>
+        <source>Actuator Delay (Default: %1)</source>
+        <translation type="gpt-4o-generated">Délai de l'actionneur (Par défaut : %1)</translation>
     </message>
     <message>
-        <source>How curves are detected. &lt;b&gt;Map-Based&lt;/b&gt; uses downloaded map data to identify curves and determine the appropriate speed in which to handle them at, while &lt;b&gt;Vision&lt;/b&gt; relies solely on the driving model.</source>
-        <translation type="gpt-4o-generated">Comment les courbes sont détectées. &lt;b&gt;Basé sur la carte&lt;/b&gt; utilise les données de carte téléchargées pour identifier les courbes et déterminer la vitesse appropriée pour les aborder, tandis que &lt;b&gt;Vision&lt;/b&gt; repose uniquement sur le modèle de conduite.</translation>
+        <source>Actuator Delay</source>
+        <translation type="gpt-4o-generated">Délai de l'actionneur</translation>
     </message>
     <message>
-        <source>Curve Detection Failsafe</source>
-        <translation type="gpt-4o-generated">Système de sécurité pour la détection des courbes</translation>
+        <source>Delay before throttle or brake takes effect. Higher values smooth slow actuators but can feel laggy; lower values react quicker but may overshoot.</source>
+        <translation type="gpt-4o-generated">Délai avant que l'accélérateur ou le frein n'entre en action. Des valeurs plus élevées adoucissent les actionneurs lents mais peuvent sembler lentes ; des valeurs plus basses réagissent plus rapidement mais peuvent dépasser la cible.</translation>
     </message>
     <message>
-        <source>Only trigger &lt;b&gt;Curve Speed Control&lt;/b&gt; if a curve is detected with the model while using the &lt;b&gt;Map-Based&lt;/b&gt; method. Useful to help prevent false positives.</source>
-        <translation type="gpt-4o-generated">Déclencher &lt;b&gt;Curve Speed Control&lt;/b&gt; uniquement si une courbe est détectée avec le modèle lors de l'utilisation de la méthode &lt;b&gt;Map-Based&lt;/b&gt;. Utile pour aider à prévenir les faux positifs.</translation>
+        <source>Start Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">Démarrer l'accélération (Par défaut : %1)</translation>
     </message>
     <message>
-        <source>Curve Detection Sensitivity</source>
-        <translation type="gpt-4o-generated">Sensibilité de détection des courbes</translation>
+        <source>Start Acceleration</source>
+        <translation type="gpt-4o-generated">Démarrer l'accélération</translation>
     </message>
     <message>
-        <source>How sensitive openpilot is when detecting curves. Higher values trigger earlier responses at the risk of triggering too often, while lower values increase confidence at the risk of triggering too infrequently.</source>
-        <translation type="gpt-4o-generated">La sensibilité d'openpilot lors de la détection des courbes. Des valeurs plus élevées déclenchent des réponses plus tôt au risque de déclenchements trop fréquents, tandis que des valeurs plus basses augmentent la confiance au risque de déclenchements trop rares.</translation>
+        <source>Extra acceleration applied when pulling away from a stop. Increase for snappier launches at the cost of smoothness; decrease for gentler starts.</source>
+        <translation type="gpt-4o-generated">Accélération supplémentaire appliquée lors du démarrage à partir d'un arrêt. Augmentez pour des lancements plus vifs au détriment de la douceur ; diminuez pour des départs plus doux.</translation>
     </message>
     <message>
-        <source>Curve Speed Aggressiveness</source>
-        <translation type="gpt-4o-generated">Agressivité de la vitesse en courbe</translation>
+        <source>Start Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">Vitesse de démarrage (Par défaut : %1)</translation>
     </message>
     <message>
-        <source>How aggressive openpilot is when navigating through curves. Higher values result in faster turns but may reduce comfort or stability, while lower values result in slower, smoother turns at the risk of being overly cautious.</source>
-        <translation type="gpt-4o-generated">Degré d'agressivité d'openpilot lors de la navigation dans les virages. Des valeurs plus élevées entraînent des virages plus rapides mais peuvent réduire le confort ou la stabilité, tandis que des valeurs plus faibles entraînent des virages plus lents et plus doux au risque d'être trop prudents.</translation>
+        <source>Start Speed</source>
+        <translation type="gpt-4o-generated">Démarrer la vitesse</translation>
     </message>
     <message>
-        <source>Map Based</source>
-        <translation type="gpt-4o-generated">Basé sur la carte</translation>
+        <source>Speed where openpilot begins to exit the stopped state. Higher values avoid creeping but may feel sluggish; lower values move sooner but risk creeping.</source>
+        <translation type="gpt-4o-generated">Vitesse à laquelle openpilot commence à sortir de l'état arrêté. Des valeurs plus élevées évitent le rampement mais peuvent sembler lentes ; des valeurs plus basses se déplacent plus tôt mais risquent de ramper.</translation>
     </message>
     <message>
-        <source>Vision</source>
-        <translation type="gpt-4o-generated">Vision</translation>
+        <source>Stop Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">Arrêter l'accélération (Par défaut : %1)</translation>
     </message>
     <message>
-        <source>The &lt;b&gt;Map Based&lt;/b&gt; option is only available when some &lt;b&gt;Map Data&lt;/b&gt; has been downloaded!</source>
-        <translation type="gpt-4o-generated">L'option &lt;b&gt;Basée sur la carte&lt;/b&gt; est uniquement disponible lorsque des &lt;b&gt;Données de carte&lt;/b&gt; ont été téléchargées !</translation>
+        <source>Stop Acceleration</source>
+        <translation type="gpt-4o-generated">Arrêter l'accélération</translation>
+    </message>
+    <message>
+        <source>Brake force applied to hold the vehicle still. Larger values prevent creeping on hills but might jerk to a stop. Smaller values can feel smoother but may allow rolling.</source>
+        <translation type="gpt-4o-generated">Force de freinage appliquée pour maintenir le véhicule immobile. Des valeurs plus élevées empêchent de glisser sur les pentes mais peuvent provoquer un arrêt brusque. Des valeurs plus faibles peuvent sembler plus douces mais peuvent permettre de rouler.</translation>
+    </message>
+    <message>
+        <source>Stopping Rate (Default: %1)</source>
+        <translation type="gpt-4o-generated">Taux d'arrêt (Par défaut : %1)</translation>
+    </message>
+    <message>
+        <source>Stopping Rate</source>
+        <translation type="gpt-4o-generated">Taux d'arrêt</translation>
+    </message>
+    <message>
+        <source>How quickly braking ramps up when stopping. Faster rates shorten stopping distance but can be harsh; slower rates are smoother but need more room.</source>
+        <translation type="gpt-4o-generated">La rapidité avec laquelle le freinage s'intensifie lors de l'arrêt. Des taux plus rapides raccourcissent la distance d'arrêt mais peuvent être brutaux ; des taux plus lents sont plus doux mais nécessitent plus d'espace.</translation>
+    </message>
+    <message>
+        <source>Stop Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">Arrêter la vitesse (Par défaut : %1)</translation>
+    </message>
+    <message>
+        <source>Stop Speed</source>
+        <translation type="gpt-4o-generated">Arrêter la vitesse</translation>
+    </message>
+    <message>
+        <source>Speed where openpilot beings to enter the stopped state. Higher values brake earlier for smoother stops but might stop too soon; lower values wait longer and can overshoot.</source>
+        <translation type="gpt-4o-generated">Vitesse à laquelle openpilot commence à entrer dans l'état d'arrêt. Des valeurs plus élevées freinent plus tôt pour des arrêts plus doux mais peuvent s'arrêter trop tôt ; des valeurs plus basses attendent plus longtemps et peuvent dépasser.</translation>
+    </message>
+    <message>
+        <source>Curve Speed Controller</source>
+        <translation type="gpt-4o-generated">Contrôleur de vitesse en courbe</translation>
+    </message>
+    <message>
+        <source>Automatically slows down for upcoming curves using data from your own driving, adapting to curves just like you would.</source>
+        <translation type="gpt-4o-generated">Ralentit automatiquement pour les virages à venir en utilisant les données de votre propre conduite, s'adaptant aux virages comme vous le feriez.</translation>
+    </message>
+    <message>
+        <source>Calibrated Lateral Acceleration</source>
+        <translation type="gpt-4o-generated">Accélération latérale calibrée</translation>
+    </message>
+    <message>
+        <source>Displays the learned lateral acceleration target based on your driving.</source>
+        <translation type="gpt-4o-generated">Affiche la cible d'accélération latérale apprise en fonction de votre conduite.</translation>
+    </message>
+    <message>
+        <source>Calibration Progress</source>
+        <translation type="gpt-4o-generated">Progression de l'étalonnage</translation>
+    </message>
+    <message>
+        <source>How much driving data has been collected to personalize the vehicle's curve handling behavior.</source>
+        <translation type="gpt-4o-generated">Combien de données de conduite ont été collectées pour personnaliser le comportement du véhicule dans les virages.</translation>
+    </message>
+    <message>
+        <source>Reset Curve Data</source>
+        <translation type="gpt-4o-generated">Réinitialiser les données de courbe</translation>
+    </message>
+    <message>
+        <source>Reset collected user data for &lt;b&gt;Curve Speed Control&lt;/b&gt;.</source>
+        <translation type="gpt-4o-generated">Réinitialiser les données utilisateur collectées pour &lt;b&gt;Curve Speed Control&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to completely reset your curvature data?</source>
+        <translation type="gpt-4o-generated">Êtes-vous sûr de vouloir réinitialiser complètement vos données de courbure ?</translation>
     </message>
 </context>
 <context>

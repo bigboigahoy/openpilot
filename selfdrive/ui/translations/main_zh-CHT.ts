@@ -15,10 +15,6 @@
         <source>Reboot and Update</source>
         <translation>重啟並更新</translation>
     </message>
-    <message>
-        <source>Disable Internet Check</source>
-        <translation type="gpt-4o-generated">停用網路檢查</translation>
-    </message>
 </context>
 <context>
     <name>AdvancedNetworking</name>
@@ -890,12 +886,12 @@
         <translation type="gpt-4o-generated">秒</translation>
     </message>
     <message>
-        <source>Disable Internet Requirement</source>
-        <translation type="gpt-4o-generated">停用網際網路需求</translation>
+        <source>High Bitrate Recording</source>
+        <translation type="gpt-4o-generated">高比特率錄音</translation>
     </message>
     <message>
-        <source>Allow the device to work indefinitely without an internet connection.</source>
-        <translation type="gpt-4o-generated">允許設備在沒有網路連接的情況下無限期運作。</translation>
+        <source>Record driving footage at double the standard bitrate for improved video quality in driving logs.</source>
+        <translation type="gpt-4o-generated">在行車記錄中以標準比特率的兩倍錄製行車影像，以提高視頻質量。</translation>
     </message>
 </context>
 <context>
@@ -1968,56 +1964,120 @@
         <translation type="gpt-4o-generated">目標速度偏移適用於限速介於120至140公里/小時之間。</translation>
     </message>
     <message>
-        <source>Curve Speed Control</source>
-        <translation type="gpt-4o-generated">曲線速度控制</translation>
+        <source>Advanced Longitudinal Tuning</source>
+        <translation type="gpt-4o-generated">先進縱向調諧</translation>
     </message>
     <message>
-        <source>Automatically slow down for upcoming curves using downloaded maps or the driving model.</source>
-        <translation type="gpt-4o-generated">使用下載的地圖或駕駛模型自動減速以應對即將到來的彎道。</translation>
+        <source>Advanced settings for customizing how openpilot handles acceleration and braking.</source>
+        <translation type="gpt-4o-generated">進階設定以自訂 openpilot 如何處理加速和制動。</translation>
     </message>
     <message>
-        <source>Curve Detection Method</source>
-        <translation type="gpt-4o-generated">曲線檢測方法</translation>
+        <source>Actuator Delay (Default: %1)</source>
+        <translation type="gpt-4o-generated">致動器延遲（預設：%1）</translation>
     </message>
     <message>
-        <source>How curves are detected. &lt;b&gt;Map-Based&lt;/b&gt; uses downloaded map data to identify curves and determine the appropriate speed in which to handle them at, while &lt;b&gt;Vision&lt;/b&gt; relies solely on the driving model.</source>
-        <translation type="gpt-4o-generated">如何檢測曲線。&lt;b&gt;基於地圖&lt;/b&gt;使用下載的地圖數據來識別曲線並確定適當的處理速度，而&lt;b&gt;視覺&lt;/b&gt;則完全依賴於駕駛模型。</translation>
+        <source>Actuator Delay</source>
+        <translation type="gpt-4o-generated">致動器延遲</translation>
     </message>
     <message>
-        <source>Curve Detection Failsafe</source>
-        <translation type="gpt-4o-generated">曲線檢測故障保護</translation>
+        <source>Delay before throttle or brake takes effect. Higher values smooth slow actuators but can feel laggy; lower values react quicker but may overshoot.</source>
+        <translation type="gpt-4o-generated">節流閥或剎車生效前的延遲。較高的值可以平滑緩慢的執行器，但可能感覺遲緩；較低的值反應更快，但可能超出預期。</translation>
     </message>
     <message>
-        <source>Only trigger &lt;b&gt;Curve Speed Control&lt;/b&gt; if a curve is detected with the model while using the &lt;b&gt;Map-Based&lt;/b&gt; method. Useful to help prevent false positives.</source>
-        <translation type="gpt-4o-generated">只有在使用&lt;b&gt;基於地圖&lt;/b&gt;方法時，模型檢測到曲線時才觸發&lt;b&gt;曲線速度控制&lt;/b&gt;。有助於防止誤報。</translation>
+        <source>Start Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">開始加速（預設值：%1）</translation>
     </message>
     <message>
-        <source>Curve Detection Sensitivity</source>
-        <translation type="gpt-4o-generated">曲線檢測靈敏度</translation>
+        <source>Start Acceleration</source>
+        <translation type="gpt-4o-generated">開始加速</translation>
     </message>
     <message>
-        <source>How sensitive openpilot is when detecting curves. Higher values trigger earlier responses at the risk of triggering too often, while lower values increase confidence at the risk of triggering too infrequently.</source>
-        <translation type="gpt-4o-generated">openpilot 在檢測曲線時的敏感度。較高的值會在風險過於頻繁觸發的情況下觸發更早的反應，而較低的值則會在風險過於不頻繁觸發的情況下增加信心。</translation>
+        <source>Extra acceleration applied when pulling away from a stop. Increase for snappier launches at the cost of smoothness; decrease for gentler starts.</source>
+        <translation type="gpt-4o-generated">從停止狀態起步時施加額外加速。增加以獲得更迅速的起步，但會犧牲平順性；減少以獲得更柔和的起步。</translation>
     </message>
     <message>
-        <source>Curve Speed Aggressiveness</source>
-        <translation type="gpt-4o-generated">曲線速度激進性</translation>
+        <source>Start Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">開始速度（預設：%1）</translation>
     </message>
     <message>
-        <source>How aggressive openpilot is when navigating through curves. Higher values result in faster turns but may reduce comfort or stability, while lower values result in slower, smoother turns at the risk of being overly cautious.</source>
-        <translation type="gpt-4o-generated">openpilot 在通過彎道時的激進程度。較高的值會導致轉彎速度更快，但可能會降低舒適性或穩定性，而較低的值會導致轉彎速度較慢、更平穩，但可能過於謹慎。</translation>
+        <source>Start Speed</source>
+        <translation type="gpt-4o-generated">開始速度</translation>
     </message>
     <message>
-        <source>Map Based</source>
-        <translation type="gpt-4o-generated">基於地圖</translation>
+        <source>Speed where openpilot begins to exit the stopped state. Higher values avoid creeping but may feel sluggish; lower values move sooner but risk creeping.</source>
+        <translation type="gpt-4o-generated">openpilot開始退出停止狀態的速度。較高的值可避免緩慢移動，但可能感覺遲緩；較低的值則較早移動，但有緩慢移動的風險。</translation>
     </message>
     <message>
-        <source>Vision</source>
-        <translation type="gpt-4o-generated">視覺</translation>
+        <source>Stop Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">停止加速（預設：%1）</translation>
     </message>
     <message>
-        <source>The &lt;b&gt;Map Based&lt;/b&gt; option is only available when some &lt;b&gt;Map Data&lt;/b&gt; has been downloaded!</source>
-        <translation type="gpt-4o-generated">&lt;b&gt;地圖為基礎&lt;/b&gt;的選項僅在下載了一些&lt;b&gt;地圖數據&lt;/b&gt;後才可用！</translation>
+        <source>Stop Acceleration</source>
+        <translation type="gpt-4o-generated">停止加速</translation>
+    </message>
+    <message>
+        <source>Brake force applied to hold the vehicle still. Larger values prevent creeping on hills but might jerk to a stop. Smaller values can feel smoother but may allow rolling.</source>
+        <translation type="gpt-4o-generated">施加制動力以保持車輛靜止。較大的數值可防止在坡道上滑動，但可能會突然停下。較小的數值感覺較平穩，但可能會允許滾動。</translation>
+    </message>
+    <message>
+        <source>Stopping Rate (Default: %1)</source>
+        <translation type="gpt-4o-generated">停止率（預設：%1）</translation>
+    </message>
+    <message>
+        <source>Stopping Rate</source>
+        <translation type="gpt-4o-generated">停止率</translation>
+    </message>
+    <message>
+        <source>How quickly braking ramps up when stopping. Faster rates shorten stopping distance but can be harsh; slower rates are smoother but need more room.</source>
+        <translation type="gpt-4o-generated">剎車時加速的速度。較快的速度縮短了停止距離，但可能會較為劇烈；較慢的速度較為平穩，但需要更多空間。</translation>
+    </message>
+    <message>
+        <source>Stop Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">停止速度（預設：%1）</translation>
+    </message>
+    <message>
+        <source>Stop Speed</source>
+        <translation type="gpt-4o-generated">停止速度</translation>
+    </message>
+    <message>
+        <source>Speed where openpilot beings to enter the stopped state. Higher values brake earlier for smoother stops but might stop too soon; lower values wait longer and can overshoot.</source>
+        <translation type="gpt-4o-generated">openpilot開始進入停止狀態的速度。較高的值會較早煞車以實現更平滑的停止，但可能會過早停止；較低的值則會等待較久，可能會超出。</translation>
+    </message>
+    <message>
+        <source>Curve Speed Controller</source>
+        <translation type="gpt-4o-generated">曲線速度控制器</translation>
+    </message>
+    <message>
+        <source>Automatically slows down for upcoming curves using data from your own driving, adapting to curves just like you would.</source>
+        <translation type="gpt-4o-generated">使用您自己的駕駛數據自動減速以應對即將到來的彎道，像您一樣適應彎道。</translation>
+    </message>
+    <message>
+        <source>Calibrated Lateral Acceleration</source>
+        <translation type="gpt-4o-generated">校準橫向加速度</translation>
+    </message>
+    <message>
+        <source>Displays the learned lateral acceleration target based on your driving.</source>
+        <translation type="gpt-4o-generated">顯示根據您的駕駛學習的橫向加速度目標。</translation>
+    </message>
+    <message>
+        <source>Calibration Progress</source>
+        <translation type="gpt-4o-generated">校準進度</translation>
+    </message>
+    <message>
+        <source>How much driving data has been collected to personalize the vehicle's curve handling behavior.</source>
+        <translation type="gpt-4o-generated">已收集多少駕駛數據來個性化車輛的曲線處理行為。</translation>
+    </message>
+    <message>
+        <source>Reset Curve Data</source>
+        <translation type="gpt-4o-generated">重置曲線數據</translation>
+    </message>
+    <message>
+        <source>Reset collected user data for &lt;b&gt;Curve Speed Control&lt;/b&gt;.</source>
+        <translation type="gpt-4o-generated">重置&lt;b&gt;曲線速度控制&lt;/b&gt;的收集用戶數據。</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to completely reset your curvature data?</source>
+        <translation type="gpt-4o-generated">您確定要完全重置您的曲率數據嗎？</translation>
     </message>
 </context>
 <context>

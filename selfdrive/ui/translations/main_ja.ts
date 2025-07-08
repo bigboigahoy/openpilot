@@ -15,10 +15,6 @@
         <source>Reboot and Update</source>
         <translation>再起動してアップデート</translation>
     </message>
-    <message>
-        <source>Disable Internet Check</source>
-        <translation type="gpt-4o-generated">インターネットチェックを無効にする</translation>
-    </message>
 </context>
 <context>
     <name>AdvancedNetworking</name>
@@ -890,12 +886,12 @@
         <translation type="gpt-4o-generated">秒</translation>
     </message>
     <message>
-        <source>Disable Internet Requirement</source>
-        <translation type="gpt-4o-generated">インターネット要件を無効にする</translation>
+        <source>High Bitrate Recording</source>
+        <translation type="gpt-4o-generated">高ビットレート録音</translation>
     </message>
     <message>
-        <source>Allow the device to work indefinitely without an internet connection.</source>
-        <translation type="gpt-4o-generated">デバイスがインターネット接続なしで無期限に動作することを許可します。</translation>
+        <source>Record driving footage at double the standard bitrate for improved video quality in driving logs.</source>
+        <translation type="gpt-4o-generated">運転ログのビデオ品質を向上させるために、標準ビットレートの2倍で運転映像を記録します。</translation>
     </message>
 </context>
 <context>
@@ -1968,56 +1964,120 @@
         <translation type="gpt-4o-generated">120 km/hから140 km/hの制限速度に対して目標速度オフセットが適用されました。</translation>
     </message>
     <message>
-        <source>Curve Speed Control</source>
-        <translation type="gpt-4o-generated">カーブ速度制御</translation>
+        <source>Advanced Longitudinal Tuning</source>
+        <translation type="gpt-4o-generated">高度な縦調整</translation>
     </message>
     <message>
-        <source>Automatically slow down for upcoming curves using downloaded maps or the driving model.</source>
-        <translation type="gpt-4o-generated">ダウンロードした地図や運転モデルを使用して、これからのカーブに自動的に減速します。</translation>
+        <source>Advanced settings for customizing how openpilot handles acceleration and braking.</source>
+        <translation type="gpt-4o-generated">オープンパイロットが加速とブレーキを処理する方法をカスタマイズするための詳細設定。</translation>
     </message>
     <message>
-        <source>Curve Detection Method</source>
-        <translation type="gpt-4o-generated">曲線検出法</translation>
+        <source>Actuator Delay (Default: %1)</source>
+        <translation type="gpt-4o-generated">アクチュエータ遅延（デフォルト: %1）</translation>
     </message>
     <message>
-        <source>How curves are detected. &lt;b&gt;Map-Based&lt;/b&gt; uses downloaded map data to identify curves and determine the appropriate speed in which to handle them at, while &lt;b&gt;Vision&lt;/b&gt; relies solely on the driving model.</source>
-        <translation type="gpt-4o-generated">カーブの検出方法。&lt;b&gt;地図ベース&lt;/b&gt;はダウンロードされた地図データを使用してカーブを識別し、それに対処するための適切な速度を決定します。一方、&lt;b&gt;ビジョン&lt;/b&gt;は運転モデルのみに依存します。</translation>
+        <source>Actuator Delay</source>
+        <translation type="gpt-4o-generated">アクチュエータ遅延</translation>
     </message>
     <message>
-        <source>Curve Detection Failsafe</source>
-        <translation type="gpt-4o-generated">カーブ検出フェイルセーフ</translation>
+        <source>Delay before throttle or brake takes effect. Higher values smooth slow actuators but can feel laggy; lower values react quicker but may overshoot.</source>
+        <translation type="gpt-4o-generated">スロットルまたはブレーキが効き始めるまでの遅延。高い値は遅いアクチュエータをスムーズにしますが、遅れを感じることがあります。低い値は反応が速くなりますが、オーバーシュートする可能性があります。</translation>
     </message>
     <message>
-        <source>Only trigger &lt;b&gt;Curve Speed Control&lt;/b&gt; if a curve is detected with the model while using the &lt;b&gt;Map-Based&lt;/b&gt; method. Useful to help prevent false positives.</source>
-        <translation type="gpt-4o-generated">カーブがモデルで検出された場合にのみ、&lt;b&gt;マップベース&lt;/b&gt;方式を使用して&lt;b&gt;カーブ速度制御&lt;/b&gt;をトリガーします。誤検知を防ぐのに役立ちます。</translation>
+        <source>Start Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">開始加速（デフォルト: %1）</translation>
     </message>
     <message>
-        <source>Curve Detection Sensitivity</source>
-        <translation type="gpt-4o-generated">曲線検出感度</translation>
+        <source>Start Acceleration</source>
+        <translation type="gpt-4o-generated">加速開始</translation>
     </message>
     <message>
-        <source>How sensitive openpilot is when detecting curves. Higher values trigger earlier responses at the risk of triggering too often, while lower values increase confidence at the risk of triggering too infrequently.</source>
-        <translation type="gpt-4o-generated">カーブを検出する際のopenpilotの感度。高い値は、頻繁にトリガーされるリスクがあるが、早期の反応を引き起こし、低い値は、トリガーがあまりにも少ないリスクがあるが、信頼性を高める。</translation>
+        <source>Extra acceleration applied when pulling away from a stop. Increase for snappier launches at the cost of smoothness; decrease for gentler starts.</source>
+        <translation type="gpt-4o-generated">停止からの発進時に追加の加速を適用します。スムーズさを犠牲にしてより素早い発進を求める場合は増加させ、穏やかなスタートを求める場合は減少させます。</translation>
     </message>
     <message>
-        <source>Curve Speed Aggressiveness</source>
-        <translation type="gpt-4o-generated">カーブ速度の攻撃性</translation>
+        <source>Start Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">開始速度 (デフォルト: %1)</translation>
     </message>
     <message>
-        <source>How aggressive openpilot is when navigating through curves. Higher values result in faster turns but may reduce comfort or stability, while lower values result in slower, smoother turns at the risk of being overly cautious.</source>
-        <translation type="gpt-4o-generated">openpilotがカーブを通過する際の攻撃性。値が高いほど速いターンになりますが、快適性や安定性が低下する可能性があります。一方、値が低いほど遅く滑らかなターンになりますが、慎重すぎるリスクがあります。</translation>
+        <source>Start Speed</source>
+        <translation type="gpt-4o-generated">開始速度</translation>
     </message>
     <message>
-        <source>Map Based</source>
-        <translation type="gpt-4o-generated">地図ベース</translation>
+        <source>Speed where openpilot begins to exit the stopped state. Higher values avoid creeping but may feel sluggish; lower values move sooner but risk creeping.</source>
+        <translation type="gpt-4o-generated">openpilotが停止状態を終了し始める速度。高い値はクリープを避けますが、鈍く感じることがあります。低い値は早く動き始めますが、クリープのリスクがあります。</translation>
     </message>
     <message>
-        <source>Vision</source>
-        <translation type="gpt-4o-generated">ビジョン</translation>
+        <source>Stop Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">加速停止（デフォルト: %1）</translation>
     </message>
     <message>
-        <source>The &lt;b&gt;Map Based&lt;/b&gt; option is only available when some &lt;b&gt;Map Data&lt;/b&gt; has been downloaded!</source>
-        <translation type="gpt-4o-generated">&lt;b&gt;マップベース&lt;/b&gt;オプションは、&lt;b&gt;マップデータ&lt;/b&gt;がダウンロードされている場合にのみ利用可能です！</translation>
+        <source>Stop Acceleration</source>
+        <translation type="gpt-4o-generated">加速を止める</translation>
+    </message>
+    <message>
+        <source>Brake force applied to hold the vehicle still. Larger values prevent creeping on hills but might jerk to a stop. Smaller values can feel smoother but may allow rolling.</source>
+        <translation type="gpt-4o-generated">ブレーキ力が適用され、車両を静止させます。大きな値は坂道でのクリープを防ぎますが、急に停止することがあります。小さな値はよりスムーズに感じられますが、転がる可能性があります。</translation>
+    </message>
+    <message>
+        <source>Stopping Rate (Default: %1)</source>
+        <translation type="gpt-4o-generated">停止率（デフォルト: %1）</translation>
+    </message>
+    <message>
+        <source>Stopping Rate</source>
+        <translation type="gpt-4o-generated">停止率</translation>
+    </message>
+    <message>
+        <source>How quickly braking ramps up when stopping. Faster rates shorten stopping distance but can be harsh; slower rates are smoother but need more room.</source>
+        <translation type="gpt-4o-generated">停止時にブレーキがどれだけ速く効くか。速い速度は停止距離を短くしますが、厳しい場合があります。遅い速度はスムーズですが、より多くのスペースが必要です。</translation>
+    </message>
+    <message>
+        <source>Stop Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">停止速度 (デフォルト: %1)</translation>
+    </message>
+    <message>
+        <source>Stop Speed</source>
+        <translation type="gpt-4o-generated">速度を止める</translation>
+    </message>
+    <message>
+        <source>Speed where openpilot beings to enter the stopped state. Higher values brake earlier for smoother stops but might stop too soon; lower values wait longer and can overshoot.</source>
+        <translation type="gpt-4o-generated">openpilotが停止状態に入る速度。高い値はスムーズな停止のために早めにブレーキをかけますが、早すぎる可能性があります。低い値は待機時間が長くなり、行き過ぎることがあります。</translation>
+    </message>
+    <message>
+        <source>Curve Speed Controller</source>
+        <translation type="gpt-4o-generated">カーブ速度コントローラー</translation>
+    </message>
+    <message>
+        <source>Automatically slows down for upcoming curves using data from your own driving, adapting to curves just like you would.</source>
+        <translation type="gpt-4o-generated">自分の運転データを使用して、カーブに差し掛かると自動的に減速し、自分が運転するようにカーブに適応します。</translation>
+    </message>
+    <message>
+        <source>Calibrated Lateral Acceleration</source>
+        <translation type="gpt-4o-generated">較正された横加速度</translation>
+    </message>
+    <message>
+        <source>Displays the learned lateral acceleration target based on your driving.</source>
+        <translation type="gpt-4o-generated">運転に基づいて学習された横加速度の目標を表示します。</translation>
+    </message>
+    <message>
+        <source>Calibration Progress</source>
+        <translation type="gpt-4o-generated">キャリブレーション進行中</translation>
+    </message>
+    <message>
+        <source>How much driving data has been collected to personalize the vehicle's curve handling behavior.</source>
+        <translation type="gpt-4o-generated">車両のカーブハンドリング動作をパーソナライズするために、どれだけの運転データが収集されましたか。</translation>
+    </message>
+    <message>
+        <source>Reset Curve Data</source>
+        <translation type="gpt-4o-generated">カーブデータをリセット</translation>
+    </message>
+    <message>
+        <source>Reset collected user data for &lt;b&gt;Curve Speed Control&lt;/b&gt;.</source>
+        <translation type="gpt-4o-generated">&lt;b&gt;カーブスピードコントロール&lt;/b&gt;の収集されたユーザーデータをリセットします。</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to completely reset your curvature data?</source>
+        <translation type="gpt-4o-generated">カーブデータを完全にリセットしてもよろしいですか？</translation>
     </message>
 </context>
 <context>

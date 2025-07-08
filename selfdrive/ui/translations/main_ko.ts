@@ -15,10 +15,6 @@
         <source>Reboot and Update</source>
         <translation>업데이트 및 재부팅</translation>
     </message>
-    <message>
-        <source>Disable Internet Check</source>
-        <translation type="gpt-4o-generated">인터넷 확인 비활성화</translation>
-    </message>
 </context>
 <context>
     <name>AdvancedNetworking</name>
@@ -890,12 +886,12 @@
         <translation type="gpt-4o-generated">초</translation>
     </message>
     <message>
-        <source>Disable Internet Requirement</source>
-        <translation type="gpt-4o-generated">인터넷 요구 사항 비활성화</translation>
+        <source>High Bitrate Recording</source>
+        <translation type="gpt-4o-generated">고비트레이트 녹음</translation>
     </message>
     <message>
-        <source>Allow the device to work indefinitely without an internet connection.</source>
-        <translation type="gpt-4o-generated">장치가 인터넷 연결 없이 무기한 작동하도록 허용하십시오.</translation>
+        <source>Record driving footage at double the standard bitrate for improved video quality in driving logs.</source>
+        <translation type="gpt-4o-generated">운전 기록에서 향상된 비디오 품질을 위해 표준 비트레이트의 두 배로 운전 영상을 기록하십시오.</translation>
     </message>
 </context>
 <context>
@@ -1968,56 +1964,120 @@
         <translation type="gpt-4o-generated">120에서 140km/h 사이의 게시된 제한 속도에 대해 목표 속도 오프셋이 적용됩니다.</translation>
     </message>
     <message>
-        <source>Curve Speed Control</source>
-        <translation type="gpt-4o-generated">곡선 속도 제어</translation>
+        <source>Advanced Longitudinal Tuning</source>
+        <translation type="gpt-4o-generated">고급 종단 조정</translation>
     </message>
     <message>
-        <source>Automatically slow down for upcoming curves using downloaded maps or the driving model.</source>
-        <translation type="gpt-4o-generated">다운로드된 지도 또는 주행 모델을 사용하여 다가오는 커브에 자동으로 속도를 줄입니다.</translation>
+        <source>Advanced settings for customizing how openpilot handles acceleration and braking.</source>
+        <translation type="gpt-4o-generated">openpilot이 가속 및 제동을 처리하는 방식을 사용자 정의하는 고급 설정.</translation>
     </message>
     <message>
-        <source>Curve Detection Method</source>
-        <translation type="gpt-4o-generated">곡선 감지 방법</translation>
+        <source>Actuator Delay (Default: %1)</source>
+        <translation type="gpt-4o-generated">액추에이터 지연 (기본값: %1)</translation>
     </message>
     <message>
-        <source>How curves are detected. &lt;b&gt;Map-Based&lt;/b&gt; uses downloaded map data to identify curves and determine the appropriate speed in which to handle them at, while &lt;b&gt;Vision&lt;/b&gt; relies solely on the driving model.</source>
-        <translation type="gpt-4o-generated">곡선이 감지되는 방법. &lt;b&gt;지도 기반&lt;/b&gt;은 다운로드된 지도 데이터를 사용하여 곡선을 식별하고 이를 처리하기 위한 적절한 속도를 결정하는 반면, &lt;b&gt;비전&lt;/b&gt;은 오직 주행 모델에만 의존합니다.</translation>
+        <source>Actuator Delay</source>
+        <translation type="gpt-4o-generated">액추에이터 지연</translation>
     </message>
     <message>
-        <source>Curve Detection Failsafe</source>
-        <translation type="gpt-4o-generated">곡선 감지 페일세이프</translation>
+        <source>Delay before throttle or brake takes effect. Higher values smooth slow actuators but can feel laggy; lower values react quicker but may overshoot.</source>
+        <translation type="gpt-4o-generated">스로틀 또는 브레이크가 작동하기 전의 지연. 높은 값은 느린 액추에이터를 부드럽게 하지만 지연이 느껴질 수 있으며, 낮은 값은 더 빠르게 반응하지만 과도하게 작동할 수 있습니다.</translation>
     </message>
     <message>
-        <source>Only trigger &lt;b&gt;Curve Speed Control&lt;/b&gt; if a curve is detected with the model while using the &lt;b&gt;Map-Based&lt;/b&gt; method. Useful to help prevent false positives.</source>
-        <translation type="gpt-4o-generated">곡선이 &lt;b&gt;지도 기반&lt;/b&gt; 방법을 사용할 때 모델로 감지된 경우에만 &lt;b&gt;곡선 속도 제어&lt;/b&gt;를 트리거합니다. 오탐 방지에 유용합니다.</translation>
+        <source>Start Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">가속 시작 (기본값: %1)</translation>
     </message>
     <message>
-        <source>Curve Detection Sensitivity</source>
-        <translation type="gpt-4o-generated">곡선 감지 민감도</translation>
+        <source>Start Acceleration</source>
+        <translation type="gpt-4o-generated">가속 시작</translation>
     </message>
     <message>
-        <source>How sensitive openpilot is when detecting curves. Higher values trigger earlier responses at the risk of triggering too often, while lower values increase confidence at the risk of triggering too infrequently.</source>
-        <translation type="gpt-4o-generated">openpilot이 곡선을 감지할 때의 민감도. 높은 값은 너무 자주 트리거될 위험이 있지만 더 빠른 반응을 유발하며, 낮은 값은 너무 드물게 트리거될 위험이 있지만 신뢰도를 높입니다.</translation>
+        <source>Extra acceleration applied when pulling away from a stop. Increase for snappier launches at the cost of smoothness; decrease for gentler starts.</source>
+        <translation type="gpt-4o-generated">정지 상태에서 출발할 때 추가 가속이 적용됩니다. 부드러움을 희생하고 더 빠른 출발을 원할 경우 증가시키고, 부드러운 출발을 원할 경우 감소시킵니다.</translation>
     </message>
     <message>
-        <source>Curve Speed Aggressiveness</source>
-        <translation type="gpt-4o-generated">곡선 속도 공격성</translation>
+        <source>Start Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">시작 속도 (기본값: %1)</translation>
     </message>
     <message>
-        <source>How aggressive openpilot is when navigating through curves. Higher values result in faster turns but may reduce comfort or stability, while lower values result in slower, smoother turns at the risk of being overly cautious.</source>
-        <translation type="gpt-4o-generated">openpilot이 곡선을 탐색할 때 얼마나 공격적인지. 높은 값은 더 빠른 회전을 유도하지만 편안함이나 안정성을 감소시킬 수 있으며, 낮은 값은 더 느리고 부드러운 회전을 유도하지만 지나치게 신중할 위험이 있습니다.</translation>
+        <source>Start Speed</source>
+        <translation type="gpt-4o-generated">시작 속도</translation>
     </message>
     <message>
-        <source>Map Based</source>
-        <translation type="gpt-4o-generated">지도 기반</translation>
+        <source>Speed where openpilot begins to exit the stopped state. Higher values avoid creeping but may feel sluggish; lower values move sooner but risk creeping.</source>
+        <translation type="gpt-4o-generated">openpilot이 정지 상태에서 벗어나기 시작하는 속도입니다. 높은 값은 크리핑을 피하지만 느리게 느껴질 수 있으며, 낮은 값은 더 빨리 움직이지만 크리핑 위험이 있습니다.</translation>
     </message>
     <message>
-        <source>Vision</source>
-        <translation type="gpt-4o-generated">비전</translation>
+        <source>Stop Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">가속 중지 (기본값: %1)</translation>
     </message>
     <message>
-        <source>The &lt;b&gt;Map Based&lt;/b&gt; option is only available when some &lt;b&gt;Map Data&lt;/b&gt; has been downloaded!</source>
-        <translation type="gpt-4o-generated">&lt;b&gt;지도 기반&lt;/b&gt; 옵션은 일부 &lt;b&gt;지도 데이터&lt;/b&gt;가 다운로드된 경우에만 사용할 수 있습니다!</translation>
+        <source>Stop Acceleration</source>
+        <translation type="gpt-4o-generated">가속 중지</translation>
+    </message>
+    <message>
+        <source>Brake force applied to hold the vehicle still. Larger values prevent creeping on hills but might jerk to a stop. Smaller values can feel smoother but may allow rolling.</source>
+        <translation type="gpt-4o-generated">차량을 정지 상태로 유지하기 위해 적용된 제동력. 더 큰 값은 언덕에서의 크리핑을 방지하지만 갑작스럽게 멈출 수 있습니다. 더 작은 값은 부드럽게 느껴질 수 있지만 구를 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Stopping Rate (Default: %1)</source>
+        <translation type="gpt-4o-generated">정지 비율 (기본값: %1)</translation>
+    </message>
+    <message>
+        <source>Stopping Rate</source>
+        <translation type="gpt-4o-generated">정지율</translation>
+    </message>
+    <message>
+        <source>How quickly braking ramps up when stopping. Faster rates shorten stopping distance but can be harsh; slower rates are smoother but need more room.</source>
+        <translation type="gpt-4o-generated">정지할 때 제동이 얼마나 빨리 증가하는지. 더 빠른 속도는 정지 거리를 단축하지만 거칠 수 있으며, 더 느린 속도는 부드럽지만 더 많은 공간이 필요합니다.</translation>
+    </message>
+    <message>
+        <source>Stop Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">정지 속도 (기본값: %1)</translation>
+    </message>
+    <message>
+        <source>Stop Speed</source>
+        <translation type="gpt-4o-generated">속도 중지</translation>
+    </message>
+    <message>
+        <source>Speed where openpilot beings to enter the stopped state. Higher values brake earlier for smoother stops but might stop too soon; lower values wait longer and can overshoot.</source>
+        <translation type="gpt-4o-generated">openpilot이 정지 상태로 들어가기 시작하는 속도입니다. 높은 값은 더 부드러운 정지를 위해 더 일찍 브레이크를 밟지만 너무 일찍 멈출 수 있습니다. 낮은 값은 더 오래 기다리며 초과할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Curve Speed Controller</source>
+        <translation type="gpt-4o-generated">곡선 속도 제어기</translation>
+    </message>
+    <message>
+        <source>Automatically slows down for upcoming curves using data from your own driving, adapting to curves just like you would.</source>
+        <translation type="gpt-4o-generated">자동으로 곡선에 다가갈 때 자신의 운전 데이터를 사용하여 속도를 줄이며, 마치 당신이 운전하는 것처럼 곡선에 적응합니다.</translation>
+    </message>
+    <message>
+        <source>Calibrated Lateral Acceleration</source>
+        <translation type="gpt-4o-generated">보정된 횡가속도</translation>
+    </message>
+    <message>
+        <source>Displays the learned lateral acceleration target based on your driving.</source>
+        <translation type="gpt-4o-generated">운전에 기반하여 학습된 횡가속도 목표를 표시합니다.</translation>
+    </message>
+    <message>
+        <source>Calibration Progress</source>
+        <translation type="gpt-4o-generated">보정 진행 상황</translation>
+    </message>
+    <message>
+        <source>How much driving data has been collected to personalize the vehicle's curve handling behavior.</source>
+        <translation type="gpt-4o-generated">차량의 곡선 주행 성능을 개인화하기 위해 얼마나 많은 주행 데이터가 수집되었습니까?</translation>
+    </message>
+    <message>
+        <source>Reset Curve Data</source>
+        <translation type="gpt-4o-generated">곡선 데이터 재설정</translation>
+    </message>
+    <message>
+        <source>Reset collected user data for &lt;b&gt;Curve Speed Control&lt;/b&gt;.</source>
+        <translation type="gpt-4o-generated">&lt;b&gt;커브 속도 제어&lt;/b&gt;에 대한 수집된 사용자 데이터를 재설정합니다.</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to completely reset your curvature data?</source>
+        <translation type="gpt-4o-generated">곡률 데이터를 완전히 재설정하시겠습니까?</translation>
     </message>
 </context>
 <context>
