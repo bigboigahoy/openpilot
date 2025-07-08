@@ -5,7 +5,7 @@ import wave
 
 from pathlib import Path
 
-from cereal import car, messaging
+from cereal import car, custom, messaging
 from openpilot.common.basedir import BASEDIR
 from openpilot.common.filter_simple import FirstOrderFilter
 from openpilot.common.realtime import Ratekeeper
@@ -27,6 +27,7 @@ AMBIENT_DB = 30 # DB where MIN_VOLUME is applied
 DB_SCALE = 30 # AMBIENT_DB + DB_SCALE is where MAX_VOLUME is applied
 
 AudibleAlert = car.CarControl.HUDControl.AudibleAlert
+FrogPilotAudibleAlert = custom.FrogPilotCarControl.HUDControl.AudibleAlert
 
 
 sound_list: dict[int, tuple[str, int | None, float]] = {
@@ -43,21 +44,20 @@ sound_list: dict[int, tuple[str, int | None, float]] = {
   AudibleAlert.warningImmediate: ("warning_immediate.wav", None, MAX_VOLUME),
 
   # FrogPilot sounds
-  AudibleAlert.angry: ("angry.wav", 1, MAX_VOLUME),
-  AudibleAlert.continued: ("continued.wav", 1, MAX_VOLUME),
-  AudibleAlert.dejaVu: ("dejaVu.wav", 1, MAX_VOLUME),
-  AudibleAlert.doc: ("doc.wav", 1, MAX_VOLUME),
-  AudibleAlert.fart: ("fart.wav", 1, MAX_VOLUME),
-  AudibleAlert.firefox: ("firefox.wav", 1, MAX_VOLUME),
-  AudibleAlert.goat: ("goat.wav", None, MAX_VOLUME),
-  AudibleAlert.hal9000: ("hal9000.wav", 1, MAX_VOLUME),
-  AudibleAlert.mail: ("mail.wav", 1, MAX_VOLUME),
-  AudibleAlert.nessie: ("nessie.wav", 1, MAX_VOLUME),
-  AudibleAlert.noice: ("noice.wav", 1, MAX_VOLUME),
-  AudibleAlert.promptRepeat: ("prompt_repeat.wav", None, MAX_VOLUME),
-  AudibleAlert.startup: ("startup.wav", 1, MAX_VOLUME),
-  AudibleAlert.thisIsFine: ("this_is_fine.wav", 1, MAX_VOLUME),
-  AudibleAlert.uwu: ("uwu.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.angry: ("angry.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.continued: ("continued.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.dejaVu: ("dejaVu.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.doc: ("doc.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.fart: ("fart.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.firefox: ("firefox.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.goat: ("goat.wav", None, MAX_VOLUME),
+  FrogPilotAudibleAlert.hal9000: ("hal9000.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.mail: ("mail.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.nessie: ("nessie.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.noice: ("noice.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.startup: ("startup.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.thisIsFine: ("this_is_fine.wav", 1, MAX_VOLUME),
+  FrogPilotAudibleAlert.uwu: ("uwu.wav", 1, MAX_VOLUME),
 }
 
 def check_controls_timeout_alert(sm):
@@ -83,15 +83,15 @@ class Soundd:
     # FrogPilot variables
     self.frogpilot_toggles = get_frogpilot_toggles()
 
+    self.error_log = ERROR_LOGS_PATH / "error.txt"
+    self.random_events_directory = RANDOM_EVENTS_PATH / "sounds"
+
     self.openpilot_crashed_played = False
     self.restart_stream = False
 
     self.auto_volume = 0
 
     self.previous_sound_pack = None
-
-    self.error_log = ERROR_LOGS_PATH / "error.txt"
-    self.random_events_directory = RANDOM_EVENTS_PATH / "sounds"
 
     self.update_frogpilot_sounds()
 
@@ -162,7 +162,7 @@ class Soundd:
       params_memory.remove("TestAlert")
     elif not self.openpilot_crashed_played and self.error_log.is_file():
       if self.frogpilot_toggles.random_events:
-        self.update_alert(AudibleAlert.fart)
+        self.update_alert(FrogPilotAudibleAlert.fart)
       else:
         self.update_alert(AudibleAlert.prompt)
 
@@ -213,13 +213,16 @@ class Soundd:
         elif self.frogpilot_toggles.alert_volume_control and self.current_alert in self.volume_map:
           self.current_volume = self.volume_map[self.current_alert] / 100.0
           if self.current_volume == 1.01:
-            if self.current_alert == AudibleAlert.startup:
+            if self.current_alert == FrogPilotAudibleAlert.startup:
               self.current_volume = MAX_VOLUME
             else:
               self.current_volume = self.auto_volume
 
-        elif self.current_alert == AudibleAlert.startup:
+        elif self.current_alert == FrogPilotAudibleAlert.startup:
           self.current_volume = MAX_VOLUME
+
+        elif self.frogpilot_toggles.alert_volume_control:
+          self.current_volume = self.auto_volume
 
         self.get_audible_alert(sm)
 
@@ -253,8 +256,8 @@ class Soundd:
       AudibleAlert.warningSoft: self.frogpilot_toggles.warningSoft_volume,
       AudibleAlert.warningImmediate: self.frogpilot_toggles.warningImmediate_volume,
 
-      AudibleAlert.goat: self.frogpilot_toggles.prompt_volume,
-      AudibleAlert.startup: self.frogpilot_toggles.engage_volume,
+      FrogPilotAudibleAlert.goat: self.frogpilot_toggles.prompt_volume,
+      FrogPilotAudibleAlert.startup: self.frogpilot_toggles.engage_volume,
     }
 
     if self.frogpilot_toggles.sound_pack != "stock":

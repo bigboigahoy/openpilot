@@ -15,10 +15,6 @@
         <source>Reboot and Update</source>
         <translation>Güncelle ve Yeniden başlat</translation>
     </message>
-    <message>
-        <source>Disable Internet Check</source>
-        <translation type="gpt-4o-generated">İnternet Kontrolünü Devre Dışı Bırak</translation>
-    </message>
 </context>
 <context>
     <name>AdvancedNetworking</name>
@@ -890,12 +886,12 @@
         <translation type="gpt-4o-generated">saniye</translation>
     </message>
     <message>
-        <source>Disable Internet Requirement</source>
-        <translation type="gpt-4o-generated">İnternet Gereksinimini Devre Dışı Bırak</translation>
+        <source>High Bitrate Recording</source>
+        <translation type="gpt-4o-generated">Yüksek Bit Hızı Kaydı</translation>
     </message>
     <message>
-        <source>Allow the device to work indefinitely without an internet connection.</source>
-        <translation type="gpt-4o-generated">Cihazın internet bağlantısı olmadan süresiz çalışmasına izin ver.</translation>
+        <source>Record driving footage at double the standard bitrate for improved video quality in driving logs.</source>
+        <translation type="gpt-4o-generated">Sürüş günlüklerinde video kalitesini artırmak için sürüş görüntülerini standart bit hızının iki katında kaydedin.</translation>
     </message>
 </context>
 <context>
@@ -1968,56 +1964,120 @@
         <translation type="gpt-4o-generated">Hedef hız ofseti, 120 ile 140 km/s arasındaki ilan edilen limitler için uygulanır.</translation>
     </message>
     <message>
-        <source>Curve Speed Control</source>
-        <translation type="gpt-4o-generated">Viraj Hız Kontrolü</translation>
+        <source>Advanced Longitudinal Tuning</source>
+        <translation type="gpt-4o-generated">Gelişmiş Boylamsal Ayarlama</translation>
     </message>
     <message>
-        <source>Automatically slow down for upcoming curves using downloaded maps or the driving model.</source>
-        <translation type="gpt-4o-generated">Yaklaşan virajlar için indirilen haritaları veya sürüş modelini kullanarak otomatik olarak yavaşlayın.</translation>
+        <source>Advanced settings for customizing how openpilot handles acceleration and braking.</source>
+        <translation type="gpt-4o-generated">Openpilot'ın hızlanma ve frenlemeyi nasıl yönettiğini özelleştirmek için gelişmiş ayarlar.</translation>
     </message>
     <message>
-        <source>Curve Detection Method</source>
-        <translation type="gpt-4o-generated">Eğri Tespit Yöntemi</translation>
+        <source>Actuator Delay (Default: %1)</source>
+        <translation type="gpt-4o-generated">Aktüatör Gecikmesi (Varsayılan: %1)</translation>
     </message>
     <message>
-        <source>How curves are detected. &lt;b&gt;Map-Based&lt;/b&gt; uses downloaded map data to identify curves and determine the appropriate speed in which to handle them at, while &lt;b&gt;Vision&lt;/b&gt; relies solely on the driving model.</source>
-        <translation type="gpt-4o-generated">Kavisler nasıl algılanır. &lt;b&gt;Harita Tabanlı&lt;/b&gt;, kavisleri tanımlamak ve bunları ele almak için uygun hızı belirlemek amacıyla indirilen harita verilerini kullanırken, &lt;b&gt;Görüş&lt;/b&gt; yalnızca sürüş modeline dayanır.</translation>
+        <source>Actuator Delay</source>
+        <translation type="gpt-4o-generated">Aktüatör Gecikmesi</translation>
     </message>
     <message>
-        <source>Curve Detection Failsafe</source>
-        <translation type="gpt-4o-generated">Eğri Tespit Emniyeti</translation>
+        <source>Delay before throttle or brake takes effect. Higher values smooth slow actuators but can feel laggy; lower values react quicker but may overshoot.</source>
+        <translation type="gpt-4o-generated">Gecikme, gaz veya frenin etkili olmasından önce gerçekleşir. Daha yüksek değerler yavaş aktüatörleri yumuşatır ancak gecikmeli hissedilebilir; daha düşük değerler daha hızlı tepki verir ancak aşırıya kaçabilir.</translation>
     </message>
     <message>
-        <source>Only trigger &lt;b&gt;Curve Speed Control&lt;/b&gt; if a curve is detected with the model while using the &lt;b&gt;Map-Based&lt;/b&gt; method. Useful to help prevent false positives.</source>
-        <translation type="gpt-4o-generated">Yalnızca &lt;b&gt;Harita Tabanlı&lt;/b&gt; yöntemi kullanılırken model ile bir viraj algılandığında &lt;b&gt;Viraj Hız Kontrolü&lt;/b&gt; tetikleyin. Yanlış pozitifleri önlemeye yardımcı olmak için faydalıdır.</translation>
+        <source>Start Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">Başlangıç Hızlanması (Varsayılan: %1)</translation>
     </message>
     <message>
-        <source>Curve Detection Sensitivity</source>
-        <translation type="gpt-4o-generated">Eğri Algılama Hassasiyeti</translation>
+        <source>Start Acceleration</source>
+        <translation type="gpt-4o-generated">Hızlanmayı Başlat</translation>
     </message>
     <message>
-        <source>How sensitive openpilot is when detecting curves. Higher values trigger earlier responses at the risk of triggering too often, while lower values increase confidence at the risk of triggering too infrequently.</source>
-        <translation type="gpt-4o-generated">openpilot'ın virajları algılarken ne kadar hassas olduğu. Daha yüksek değerler, çok sık tetikleme riskiyle daha erken tepkiler tetiklerken, daha düşük değerler, çok seyrek tetikleme riskiyle güveni artırır.</translation>
+        <source>Extra acceleration applied when pulling away from a stop. Increase for snappier launches at the cost of smoothness; decrease for gentler starts.</source>
+        <translation type="gpt-4o-generated">Duruştan kalkarken ekstra ivme uygulanır. Daha hızlı kalkışlar için artırın, ancak pürüzsüzlükten ödün verin; daha yumuşak başlangıçlar için azaltın.</translation>
     </message>
     <message>
-        <source>Curve Speed Aggressiveness</source>
-        <translation type="gpt-4o-generated">Viraj Hızı Saldırganlığı</translation>
+        <source>Start Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">Başlangıç Hızı (Varsayılan: %1)</translation>
     </message>
     <message>
-        <source>How aggressive openpilot is when navigating through curves. Higher values result in faster turns but may reduce comfort or stability, while lower values result in slower, smoother turns at the risk of being overly cautious.</source>
-        <translation type="gpt-4o-generated">openpilot'ın virajlardan geçerken ne kadar agresif olduğu. Daha yüksek değerler, daha hızlı dönüşlere neden olabilir ancak konfor veya kararlılığı azaltabilirken, daha düşük değerler, aşırı temkinli olma riskiyle daha yavaş, daha yumuşak dönüşlere neden olur.</translation>
+        <source>Start Speed</source>
+        <translation type="gpt-4o-generated">Hız Başlat</translation>
     </message>
     <message>
-        <source>Map Based</source>
-        <translation type="gpt-4o-generated">Harita Tabanlı</translation>
+        <source>Speed where openpilot begins to exit the stopped state. Higher values avoid creeping but may feel sluggish; lower values move sooner but risk creeping.</source>
+        <translation type="gpt-4o-generated">openpilot'in durma durumundan çıkmaya başladığı hız. Daha yüksek değerler sürünmeyi önler ancak yavaş hissedilebilir; daha düşük değerler daha erken hareket eder ancak sürünme riski taşır.</translation>
     </message>
     <message>
-        <source>Vision</source>
-        <translation type="gpt-4o-generated">Vizyon</translation>
+        <source>Stop Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">Hızlanmayı Durdur (Varsayılan: %1)</translation>
     </message>
     <message>
-        <source>The &lt;b&gt;Map Based&lt;/b&gt; option is only available when some &lt;b&gt;Map Data&lt;/b&gt; has been downloaded!</source>
-        <translation type="gpt-4o-generated">&lt;b&gt;Harita Tabanlı&lt;/b&gt; seçeneği yalnızca bazı &lt;b&gt;Harita Verileri&lt;/b&gt; indirildiğinde kullanılabilir!</translation>
+        <source>Stop Acceleration</source>
+        <translation type="gpt-4o-generated">Hızlanmayı Durdur</translation>
+    </message>
+    <message>
+        <source>Brake force applied to hold the vehicle still. Larger values prevent creeping on hills but might jerk to a stop. Smaller values can feel smoother but may allow rolling.</source>
+        <translation type="gpt-4o-generated">Aracı sabit tutmak için uygulanan fren kuvveti. Daha büyük değerler, yokuşlarda kaymayı önler ancak ani durmalara neden olabilir. Daha küçük değerler daha pürüzsüz hissedilebilir ancak yuvarlanmaya izin verebilir.</translation>
+    </message>
+    <message>
+        <source>Stopping Rate (Default: %1)</source>
+        <translation type="gpt-4o-generated">Durdurma Oranı (Varsayılan: %1)</translation>
+    </message>
+    <message>
+        <source>Stopping Rate</source>
+        <translation type="gpt-4o-generated">Durdurma Oranı</translation>
+    </message>
+    <message>
+        <source>How quickly braking ramps up when stopping. Faster rates shorten stopping distance but can be harsh; slower rates are smoother but need more room.</source>
+        <translation type="gpt-4o-generated">Fren yaparken durmanın ne kadar hızlı arttığı. Daha hızlı oranlar durma mesafesini kısaltır ancak sert olabilir; daha yavaş oranlar daha pürüzsüzdür ancak daha fazla alan gerektirir.</translation>
+    </message>
+    <message>
+        <source>Stop Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">Hızı Durdur (Varsayılan: %1)</translation>
+    </message>
+    <message>
+        <source>Stop Speed</source>
+        <translation type="gpt-4o-generated">Hızı Durdur</translation>
+    </message>
+    <message>
+        <source>Speed where openpilot beings to enter the stopped state. Higher values brake earlier for smoother stops but might stop too soon; lower values wait longer and can overshoot.</source>
+        <translation type="gpt-4o-generated">Openpilot'in durma durumuna girmeye başladığı hız. Daha yüksek değerler daha erken fren yaparak daha yumuşak duruşlar sağlar ancak çok erken durabilir; daha düşük değerler daha uzun süre bekler ve aşırıya kaçabilir.</translation>
+    </message>
+    <message>
+        <source>Curve Speed Controller</source>
+        <translation type="gpt-4o-generated">Viraj Hız Kontrol Cihazı</translation>
+    </message>
+    <message>
+        <source>Automatically slows down for upcoming curves using data from your own driving, adapting to curves just like you would.</source>
+        <translation type="gpt-4o-generated">Kendi sürüş verilerinizi kullanarak yaklaşan virajlar için otomatik olarak yavaşlar, tıpkı sizin gibi virajlara uyum sağlar.</translation>
+    </message>
+    <message>
+        <source>Calibrated Lateral Acceleration</source>
+        <translation type="gpt-4o-generated">Kalibre Edilmiş Yanal İvme</translation>
+    </message>
+    <message>
+        <source>Displays the learned lateral acceleration target based on your driving.</source>
+        <translation type="gpt-4o-generated">Sürüşünüze dayalı olarak öğrenilen yanal ivme hedefini gösterir.</translation>
+    </message>
+    <message>
+        <source>Calibration Progress</source>
+        <translation type="gpt-4o-generated">Kalibrasyon İlerlemesi</translation>
+    </message>
+    <message>
+        <source>How much driving data has been collected to personalize the vehicle's curve handling behavior.</source>
+        <translation type="gpt-4o-generated">Aracın viraj alma davranışını kişiselleştirmek için ne kadar sürüş verisi toplandı.</translation>
+    </message>
+    <message>
+        <source>Reset Curve Data</source>
+        <translation type="gpt-4o-generated">Eğri Verilerini Sıfırla</translation>
+    </message>
+    <message>
+        <source>Reset collected user data for &lt;b&gt;Curve Speed Control&lt;/b&gt;.</source>
+        <translation type="gpt-4o-generated">&lt;b&gt;Viraj Hızı Kontrolü&lt;/b&gt; için toplanan kullanıcı verilerini sıfırla.</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to completely reset your curvature data?</source>
+        <translation type="gpt-4o-generated">Kavisellik verilerinizi tamamen sıfırlamak istediğinizden emin misiniz?</translation>
     </message>
 </context>
 <context>

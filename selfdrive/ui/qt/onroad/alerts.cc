@@ -103,7 +103,7 @@ void OnroadAlerts::paintEvent(QPaintEvent *event) {
   // draw background + gradient
   p.setPen(Qt::NoPen);
   p.setCompositionMode(QPainter::CompositionMode_SourceOver);
-  p.setBrush(QBrush(alert_colors[alert.status]));
+  p.setBrush(QBrush(frogpilot_alert_colors[static_cast<cereal::FrogPilotControlsState::AlertStatus>(alert.status)]));
   p.drawRoundedRect(r, radius, radius);
 
   QLinearGradient g(0, r.y(), 0, r.bottom());

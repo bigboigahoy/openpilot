@@ -37,9 +37,15 @@ public:
 
   float friction;
   float latAccelFactor;
+  float longitudinalActuatorDelay;
+  float startAccel;
   float steerActuatorDelay;
   float steerKp;
   float steerRatio;
+  float stopAccel;
+  float stoppingDecelRate;
+  float vEgoStarting;
+  float vEgoStopping;
 
   int tuningLevel;
 

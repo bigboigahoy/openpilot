@@ -15,10 +15,6 @@
         <source>Reboot and Update</source>
         <translation>إعادة التشغيل والتحديث</translation>
     </message>
-    <message>
-        <source>Disable Internet Check</source>
-        <translation type="gpt-4o-generated">تعطيل فحص الإنترنت</translation>
-    </message>
 </context>
 <context>
     <name>AdvancedNetworking</name>
@@ -890,12 +886,12 @@
         <translation type="gpt-4o-generated">ثوانٍ</translation>
     </message>
     <message>
-        <source>Disable Internet Requirement</source>
-        <translation type="gpt-4o-generated">تعطيل متطلبات الإنترنت</translation>
+        <source>High Bitrate Recording</source>
+        <translation type="gpt-4o-generated">تسجيل بمعدل بت مرتفع</translation>
     </message>
     <message>
-        <source>Allow the device to work indefinitely without an internet connection.</source>
-        <translation type="gpt-4o-generated">السماح للجهاز بالعمل إلى أجل غير مسمى بدون اتصال بالإنترنت.</translation>
+        <source>Record driving footage at double the standard bitrate for improved video quality in driving logs.</source>
+        <translation type="gpt-4o-generated">تسجيل لقطات القيادة بمعدل بتات مضاعف عن المعدل القياسي لتحسين جودة الفيديو في سجلات القيادة.</translation>
     </message>
 </context>
 <context>
@@ -1968,56 +1964,120 @@
         <translation type="gpt-4o-generated">تم تطبيق تعويض السرعة المستهدفة للحدود المنشورة بين 120 و140 كم/س.</translation>
     </message>
     <message>
-        <source>Curve Speed Control</source>
-        <translation type="gpt-4o-generated">التحكم في سرعة المنحنى</translation>
+        <source>Advanced Longitudinal Tuning</source>
+        <translation type="gpt-4o-generated">الضبط الطولي المتقدم</translation>
     </message>
     <message>
-        <source>Automatically slow down for upcoming curves using downloaded maps or the driving model.</source>
-        <translation type="gpt-4o-generated">استخدم الخرائط المحملة أو نموذج القيادة لتقليل السرعة تلقائيًا عند الاقتراب من المنحنيات.</translation>
+        <source>Advanced settings for customizing how openpilot handles acceleration and braking.</source>
+        <translation type="gpt-4o-generated">إعدادات متقدمة لتخصيص كيفية تعامل openpilot مع التسارع والفرملة.</translation>
     </message>
     <message>
-        <source>Curve Detection Method</source>
-        <translation type="gpt-4o-generated">طريقة اكتشاف المنحنى</translation>
+        <source>Actuator Delay (Default: %1)</source>
+        <translation type="gpt-4o-generated">تأخير المشغل (الافتراضي: %1)</translation>
     </message>
     <message>
-        <source>How curves are detected. &lt;b&gt;Map-Based&lt;/b&gt; uses downloaded map data to identify curves and determine the appropriate speed in which to handle them at, while &lt;b&gt;Vision&lt;/b&gt; relies solely on the driving model.</source>
-        <translation type="gpt-4o-generated">كيف يتم اكتشاف المنحنيات. &lt;b&gt;المستند إلى الخريطة&lt;/b&gt; يستخدم بيانات الخريطة المحملة لتحديد المنحنيات وتحديد السرعة المناسبة للتعامل معها، بينما يعتمد &lt;b&gt;الرؤية&lt;/b&gt; فقط على نموذج القيادة.</translation>
+        <source>Actuator Delay</source>
+        <translation type="gpt-4o-generated">تأخير المشغل</translation>
     </message>
     <message>
-        <source>Curve Detection Failsafe</source>
-        <translation type="gpt-4o-generated">فشل اكتشاف المنحنى</translation>
+        <source>Delay before throttle or brake takes effect. Higher values smooth slow actuators but can feel laggy; lower values react quicker but may overshoot.</source>
+        <translation type="gpt-4o-generated">تأخير قبل أن يبدأ تأثير الخنق أو الفرامل. القيم الأعلى تجعل المحركات البطيئة أكثر سلاسة ولكن قد تشعر بالتأخير؛ القيم الأقل تتفاعل بشكل أسرع ولكن قد تتجاوز الهدف.</translation>
     </message>
     <message>
-        <source>Only trigger &lt;b&gt;Curve Speed Control&lt;/b&gt; if a curve is detected with the model while using the &lt;b&gt;Map-Based&lt;/b&gt; method. Useful to help prevent false positives.</source>
-        <translation type="gpt-4o-generated">قم بتفعيل &lt;b&gt;التحكم في سرعة المنحنى&lt;/b&gt; فقط إذا تم اكتشاف منحنى باستخدام النموذج أثناء استخدام طريقة &lt;b&gt;المعتمدة على الخريطة&lt;/b&gt;. مفيد للمساعدة في منع الإيجابيات الكاذبة.</translation>
+        <source>Start Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">بدء التسارع (الافتراضي: %1)</translation>
     </message>
     <message>
-        <source>Curve Detection Sensitivity</source>
-        <translation type="gpt-4o-generated">حساسية اكتشاف المنحنى</translation>
+        <source>Start Acceleration</source>
+        <translation type="gpt-4o-generated">بدء التسارع</translation>
     </message>
     <message>
-        <source>How sensitive openpilot is when detecting curves. Higher values trigger earlier responses at the risk of triggering too often, while lower values increase confidence at the risk of triggering too infrequently.</source>
-        <translation type="gpt-4o-generated">مدى حساسية openpilot عند اكتشاف المنحنيات. القيم الأعلى تؤدي إلى استجابات مبكرة مع خطر التفعيل بشكل متكرر، بينما القيم الأقل تزيد الثقة مع خطر التفعيل بشكل غير متكرر.</translation>
+        <source>Extra acceleration applied when pulling away from a stop. Increase for snappier launches at the cost of smoothness; decrease for gentler starts.</source>
+        <translation type="gpt-4o-generated">تسارع إضافي يتم تطبيقه عند الانطلاق من التوقف. زيادة للحصول على انطلاقات أكثر حدة على حساب السلاسة؛ تقليل للحصول على بدايات أكثر لطفًا.</translation>
     </message>
     <message>
-        <source>Curve Speed Aggressiveness</source>
-        <translation type="gpt-4o-generated">حدة سرعة المنحنى</translation>
+        <source>Start Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">سرعة البدء (الافتراضي: %1)</translation>
     </message>
     <message>
-        <source>How aggressive openpilot is when navigating through curves. Higher values result in faster turns but may reduce comfort or stability, while lower values result in slower, smoother turns at the risk of being overly cautious.</source>
-        <translation type="gpt-4o-generated">مدى عدوانية openpilot عند التنقل عبر المنحنيات. تؤدي القيم الأعلى إلى انعطافات أسرع ولكن قد تقلل من الراحة أو الاستقرار، بينما تؤدي القيم الأقل إلى انعطافات أبطأ وأكثر سلاسة مع خطر أن تكون مفرطة في الحذر.</translation>
+        <source>Start Speed</source>
+        <translation type="gpt-4o-generated">بدء السرعة</translation>
     </message>
     <message>
-        <source>Map Based</source>
-        <translation type="gpt-4o-generated">مبني على الخريطة</translation>
+        <source>Speed where openpilot begins to exit the stopped state. Higher values avoid creeping but may feel sluggish; lower values move sooner but risk creeping.</source>
+        <translation type="gpt-4o-generated">السرعة التي يبدأ فيها openpilot بالخروج من حالة التوقف. القيم الأعلى تتجنب الزحف ولكن قد تشعر بالبطء؛ القيم الأدنى تتحرك في وقت أقرب ولكنها تخاطر بالزحف.</translation>
     </message>
     <message>
-        <source>Vision</source>
-        <translation type="gpt-4o-generated">رؤية</translation>
+        <source>Stop Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">إيقاف التسارع (الافتراضي: %1)</translation>
     </message>
     <message>
-        <source>The &lt;b&gt;Map Based&lt;/b&gt; option is only available when some &lt;b&gt;Map Data&lt;/b&gt; has been downloaded!</source>
-        <translation type="gpt-4o-generated">خيار &lt;b&gt;المستند إلى الخريطة&lt;/b&gt; متاح فقط عند تنزيل بعض &lt;b&gt;بيانات الخريطة&lt;/b&gt;!</translation>
+        <source>Stop Acceleration</source>
+        <translation type="gpt-4o-generated">إيقاف التسارع</translation>
+    </message>
+    <message>
+        <source>Brake force applied to hold the vehicle still. Larger values prevent creeping on hills but might jerk to a stop. Smaller values can feel smoother but may allow rolling.</source>
+        <translation type="gpt-4o-generated">يتم تطبيق قوة الفرامل لإبقاء المركبة ثابتة. القيم الأكبر تمنع الزحف على التلال ولكن قد تؤدي إلى توقف مفاجئ. القيم الأصغر قد تكون أكثر سلاسة ولكن قد تسمح بالتدحرج.</translation>
+    </message>
+    <message>
+        <source>Stopping Rate (Default: %1)</source>
+        <translation type="gpt-4o-generated">معدل الإيقاف (الافتراضي: %1)</translation>
+    </message>
+    <message>
+        <source>Stopping Rate</source>
+        <translation type="gpt-4o-generated">معدل التوقف</translation>
+    </message>
+    <message>
+        <source>How quickly braking ramps up when stopping. Faster rates shorten stopping distance but can be harsh; slower rates are smoother but need more room.</source>
+        <translation type="gpt-4o-generated">مدى سرعة زيادة الكبح عند التوقف. معدلات أسرع تقصر مسافة التوقف ولكن يمكن أن تكون قاسية؛ معدلات أبطأ تكون أكثر سلاسة ولكن تحتاج إلى مساحة أكبر.</translation>
+    </message>
+    <message>
+        <source>Stop Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">إيقاف السرعة (الافتراضي: %1)</translation>
+    </message>
+    <message>
+        <source>Stop Speed</source>
+        <translation type="gpt-4o-generated">إيقاف السرعة</translation>
+    </message>
+    <message>
+        <source>Speed where openpilot beings to enter the stopped state. Higher values brake earlier for smoother stops but might stop too soon; lower values wait longer and can overshoot.</source>
+        <translation type="gpt-4o-generated">السرعة التي يبدأ فيها openpilot بالدخول في حالة التوقف. القيم الأعلى تكبح في وقت مبكر لتوقفات أكثر سلاسة ولكن قد تتوقف في وقت مبكر جدًا؛ القيم الأدنى تنتظر لفترة أطول وقد تتجاوز النقطة المحددة.</translation>
+    </message>
+    <message>
+        <source>Curve Speed Controller</source>
+        <translation type="gpt-4o-generated">متحكم سرعة المنحنى</translation>
+    </message>
+    <message>
+        <source>Automatically slows down for upcoming curves using data from your own driving, adapting to curves just like you would.</source>
+        <translation type="gpt-4o-generated">يتباطأ تلقائيًا عند الاقتراب من المنحنيات باستخدام بيانات قيادتك الخاصة، ويتكيف مع المنحنيات تمامًا كما تفعل.</translation>
+    </message>
+    <message>
+        <source>Calibrated Lateral Acceleration</source>
+        <translation type="gpt-4o-generated">التسارع الجانبي المعاير</translation>
+    </message>
+    <message>
+        <source>Displays the learned lateral acceleration target based on your driving.</source>
+        <translation type="gpt-4o-generated">يعرض هدف التسارع الجانبي المكتسب بناءً على قيادتك.</translation>
+    </message>
+    <message>
+        <source>Calibration Progress</source>
+        <translation type="gpt-4o-generated">تقدم المعايرة</translation>
+    </message>
+    <message>
+        <source>How much driving data has been collected to personalize the vehicle's curve handling behavior.</source>
+        <translation type="gpt-4o-generated">كمية بيانات القيادة التي تم جمعها لتخصيص سلوك التعامل مع المنحنيات في السيارة.</translation>
+    </message>
+    <message>
+        <source>Reset Curve Data</source>
+        <translation type="gpt-4o-generated">إعادة تعيين بيانات المنحنى</translation>
+    </message>
+    <message>
+        <source>Reset collected user data for &lt;b&gt;Curve Speed Control&lt;/b&gt;.</source>
+        <translation type="gpt-4o-generated">إعادة تعيين البيانات المجمعة لمراقبة سرعة المنحنى.</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to completely reset your curvature data?</source>
+        <translation type="gpt-4o-generated">هل أنت متأكد أنك تريد إعادة تعيين بيانات الانحناء بالكامل؟</translation>
     </message>
 </context>
 <context>

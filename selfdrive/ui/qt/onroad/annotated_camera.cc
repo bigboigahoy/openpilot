@@ -475,11 +475,7 @@ void AnnotatedCameraWidget::drawLead(QPainter &painter, const cereal::RadarState
   float g_yo = sz / 10;
 
   QPointF glow[] = {{x + (sz * 1.35) + g_xo, y + sz + g_yo}, {x, y - g_yo}, {x - (sz * 1.35) - g_xo, y + sz + g_yo}};
-  if (lead_data.getFarLead()) {
-    painter.setBrush(QColor(0, 255, 255, 255));
-  } else {
-    painter.setBrush(QColor(218, 202, 37, 255));
-  }
+  painter.setBrush(QColor(218, 202, 37, 255));
   painter.drawPolygon(glow, std::size(glow));
 
   // chevron
@@ -568,19 +564,22 @@ void AnnotatedCameraWidget::paintEvent(QPaintEvent *event) {
 
     if (s->scene.longitudinal_control && sm.rcv_frame("radarState") > s->scene.started_frame && !frogpilot_toggles.value("hide_lead_marker").toBool()) {
       auto radar_state = sm["radarState"].getRadarState();
+      auto frogpilot_radar_state = fpsm["frogpilotRadarState"].getFrogpilotRadarState();
       update_leads(s, radar_state, model.getPosition());
+      update_leads_frogpilot(s, frogpilot_radar_state, model.getPosition());
       auto lead_one = radar_state.getLeadOne();
       auto lead_two = radar_state.getLeadTwo();
-      auto lead_left = radar_state.getLeadLeft();
-      auto lead_right = radar_state.getLeadRight();
+      auto lead_one_frogpilot = frogpilot_radar_state.getLeadOne();
+      auto lead_left = frogpilot_radar_state.getLeadLeft();
+      auto lead_right = frogpilot_radar_state.getLeadRight();
       if (lead_left.getStatus()) {
-        drawLead(painter, lead_left, frogpilotPlan, s->scene.lead_vertices[2], frogpilot_nvg->blueColor(), fs, true);
+        drawLead(painter, reinterpret_cast<const cereal::RadarState::LeadData::Reader &>(lead_left), frogpilotPlan, s->scene.lead_vertices[2], frogpilot_nvg->blueColor(), fs, true);
       }
       if (lead_right.getStatus()) {
-        drawLead(painter, lead_right, frogpilotPlan, s->scene.lead_vertices[3], frogpilot_nvg->purpleColor(), fs, true);
+        drawLead(painter, reinterpret_cast<const cereal::RadarState::LeadData::Reader &>(lead_right), frogpilotPlan, s->scene.lead_vertices[3], frogpilot_nvg->purpleColor(), fs, true);
       }
-      if (lead_one.getStatus()) {
-        drawLead(painter, lead_one, frogpilotPlan, s->scene.lead_vertices[0], fs->frogpilot_scene.lead_marker_color, fs);
+      if (lead_one_frogpilot.getStatus()) {
+        drawLead(painter, reinterpret_cast<const cereal::RadarState::LeadData::Reader &>(lead_one_frogpilot), frogpilotPlan, s->scene.lead_vertices[0], lead_one.getStatus() ? fs->frogpilot_scene.lead_marker_color : whiteColor(), fs);
       } else {
         frogpilot_nvg->leadTextRect = QRect();
       }

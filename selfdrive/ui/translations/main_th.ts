@@ -15,10 +15,6 @@
         <source>Reboot and Update</source>
         <translation>รีบูตและอัปเดต</translation>
     </message>
-    <message>
-        <source>Disable Internet Check</source>
-        <translation type="gpt-4o-generated">ปิดการตรวจสอบอินเทอร์เน็ต</translation>
-    </message>
 </context>
 <context>
     <name>AdvancedNetworking</name>
@@ -890,12 +886,12 @@
         <translation type="gpt-4o-generated">วินาที</translation>
     </message>
     <message>
-        <source>Disable Internet Requirement</source>
-        <translation type="gpt-4o-generated">ปิดการใช้งานข้อกำหนดอินเทอร์เน็ต</translation>
+        <source>High Bitrate Recording</source>
+        <translation type="gpt-4o-generated">การบันทึกบิตเรตสูง</translation>
     </message>
     <message>
-        <source>Allow the device to work indefinitely without an internet connection.</source>
-        <translation type="gpt-4o-generated">อนุญาตให้ใช้งานอุปกรณ์ได้อย่างไม่จำกัดโดยไม่ต้องเชื่อมต่ออินเทอร์เน็ต</translation>
+        <source>Record driving footage at double the standard bitrate for improved video quality in driving logs.</source>
+        <translation type="gpt-4o-generated">บันทึกภาพการขับขี่ที่บิตเรตเป็นสองเท่าของมาตรฐานเพื่อปรับปรุงคุณภาพวิดีโอในบันทึกการขับขี่</translation>
     </message>
 </context>
 <context>
@@ -1968,56 +1964,120 @@
         <translation type="gpt-4o-generated">ใช้การปรับความเร็วเป้าหมายสำหรับขีดจำกัดที่โพสต์ระหว่าง 120 และ 140 กม./ชม.</translation>
     </message>
     <message>
-        <source>Curve Speed Control</source>
-        <translation type="gpt-4o-generated">การควบคุมความเร็วในโค้ง</translation>
+        <source>Advanced Longitudinal Tuning</source>
+        <translation type="gpt-4o-generated">การปรับจูนตามยาวขั้นสูง</translation>
     </message>
     <message>
-        <source>Automatically slow down for upcoming curves using downloaded maps or the driving model.</source>
-        <translation type="gpt-4o-generated">ชะลอความเร็วโดยอัตโนมัติสำหรับโค้งที่กำลังจะมาถึงโดยใช้แผนที่ที่ดาวน์โหลดหรือโมเดลการขับขี่</translation>
+        <source>Advanced settings for customizing how openpilot handles acceleration and braking.</source>
+        <translation type="gpt-4o-generated">การตั้งค่าขั้นสูงสำหรับการปรับแต่งวิธีที่ openpilot จัดการกับการเร่งและการเบรก</translation>
     </message>
     <message>
-        <source>Curve Detection Method</source>
-        <translation type="gpt-4o-generated">วิธีการตรวจจับเส้นโค้ง</translation>
+        <source>Actuator Delay (Default: %1)</source>
+        <translation type="gpt-4o-generated">ความล่าช้าของตัวกระตุ้น (ค่าเริ่มต้น: %1)</translation>
     </message>
     <message>
-        <source>How curves are detected. &lt;b&gt;Map-Based&lt;/b&gt; uses downloaded map data to identify curves and determine the appropriate speed in which to handle them at, while &lt;b&gt;Vision&lt;/b&gt; relies solely on the driving model.</source>
-        <translation type="gpt-4o-generated">วิธีการตรวจจับโค้ง &lt;b&gt;แบบใช้แผนที่&lt;/b&gt; ใช้ข้อมูลแผนที่ที่ดาวน์โหลดมาเพื่อระบุโค้งและกำหนดความเร็วที่เหมาะสมในการจัดการกับโค้งเหล่านั้น ในขณะที่ &lt;b&gt;แบบใช้การมองเห็น&lt;/b&gt; พึ่งพารูปแบบการขับขี่เพียงอย่างเดียว</translation>
+        <source>Actuator Delay</source>
+        <translation type="gpt-4o-generated">ความล่าช้าของตัวกระตุ้น</translation>
     </message>
     <message>
-        <source>Curve Detection Failsafe</source>
-        <translation type="gpt-4o-generated">การตรวจจับเส้นโค้งที่ปลอดภัย</translation>
+        <source>Delay before throttle or brake takes effect. Higher values smooth slow actuators but can feel laggy; lower values react quicker but may overshoot.</source>
+        <translation type="gpt-4o-generated">ความล่าช้าก่อนที่คันเร่งหรือเบรกจะมีผล ค่าที่สูงขึ้นจะทำให้การทำงานของตัวกระตุ้นที่ช้าราบรื่นขึ้นแต่รู้สึกหน่วง ค่าที่ต่ำกว่าจะตอบสนองได้เร็วขึ้นแต่มีโอกาสเกินเป้าหมาย</translation>
     </message>
     <message>
-        <source>Only trigger &lt;b&gt;Curve Speed Control&lt;/b&gt; if a curve is detected with the model while using the &lt;b&gt;Map-Based&lt;/b&gt; method. Useful to help prevent false positives.</source>
-        <translation type="gpt-4o-generated">เรียกใช้ &lt;b&gt;การควบคุมความเร็วในโค้ง&lt;/b&gt; เฉพาะเมื่อมีการตรวจพบโค้งด้วยโมเดลขณะใช้วิธี &lt;b&gt;ตามแผนที่&lt;/b&gt; มีประโยชน์ในการช่วยป้องกันการแจ้งเตือนที่ผิดพลาด</translation>
+        <source>Start Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">เริ่มการเร่งความเร็ว (ค่าเริ่มต้น: %1)</translation>
     </message>
     <message>
-        <source>Curve Detection Sensitivity</source>
-        <translation type="gpt-4o-generated">ความไวในการตรวจจับเส้นโค้ง</translation>
+        <source>Start Acceleration</source>
+        <translation type="gpt-4o-generated">เริ่มการเร่งความเร็ว</translation>
     </message>
     <message>
-        <source>How sensitive openpilot is when detecting curves. Higher values trigger earlier responses at the risk of triggering too often, while lower values increase confidence at the risk of triggering too infrequently.</source>
-        <translation type="gpt-4o-generated">ความไวของ openpilot ในการตรวจจับโค้ง ค่าที่สูงขึ้นจะทำให้เกิดการตอบสนองเร็วขึ้นแต่เสี่ยงต่อการเกิดบ่อยเกินไป ในขณะที่ค่าที่ต่ำลงจะเพิ่มความมั่นใจแต่เสี่ยงต่อการเกิดไม่บ่อยพอ</translation>
+        <source>Extra acceleration applied when pulling away from a stop. Increase for snappier launches at the cost of smoothness; decrease for gentler starts.</source>
+        <translation type="gpt-4o-generated">เพิ่มความเร่งเพิ่มเติมเมื่อออกตัวจากการหยุด เพิ่มเพื่อการออกตัวที่รวดเร็วขึ้นแต่แลกกับความนุ่มนวลที่ลดลง; ลดเพื่อการออกตัวที่นุ่มนวลกว่า</translation>
     </message>
     <message>
-        <source>Curve Speed Aggressiveness</source>
-        <translation type="gpt-4o-generated">ความก้าวร้าวของความเร็วโค้ง</translation>
+        <source>Start Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">ความเร็วเริ่มต้น (ค่าเริ่มต้น: %1)</translation>
     </message>
     <message>
-        <source>How aggressive openpilot is when navigating through curves. Higher values result in faster turns but may reduce comfort or stability, while lower values result in slower, smoother turns at the risk of being overly cautious.</source>
-        <translation type="gpt-4o-generated">ความก้าวร้าวของ openpilot เมื่อขับผ่านโค้ง ค่าที่สูงขึ้นจะทำให้เลี้ยวได้เร็วขึ้นแต่ก็อาจลดความสบายหรือความเสถียร ในขณะที่ค่าที่ต่ำกว่าจะทำให้เลี้ยวได้ช้าลงและนุ่มนวลขึ้นแต่เสี่ยงที่จะระมัดระวังเกินไป</translation>
+        <source>Start Speed</source>
+        <translation type="gpt-4o-generated">เริ่มความเร็ว</translation>
     </message>
     <message>
-        <source>Map Based</source>
-        <translation type="gpt-4o-generated">ตามแผนที่</translation>
+        <source>Speed where openpilot begins to exit the stopped state. Higher values avoid creeping but may feel sluggish; lower values move sooner but risk creeping.</source>
+        <translation type="gpt-4o-generated">ความเร็วที่ openpilot เริ่มออกจากสถานะหยุด ค่าที่สูงขึ้นจะหลีกเลี่ยงการเคลื่อนที่ช้าแต่รู้สึกเฉื่อย; ค่าที่ต่ำกว่าจะเคลื่อนที่เร็วขึ้นแต่เสี่ยงต่อการเคลื่อนที่ช้า</translation>
     </message>
     <message>
-        <source>Vision</source>
-        <translation type="gpt-4o-generated">วิสัยทัศน์</translation>
+        <source>Stop Acceleration (Default: %1)</source>
+        <translation type="gpt-4o-generated">หยุดการเร่งความเร็ว (ค่าเริ่มต้น: %1)</translation>
     </message>
     <message>
-        <source>The &lt;b&gt;Map Based&lt;/b&gt; option is only available when some &lt;b&gt;Map Data&lt;/b&gt; has been downloaded!</source>
-        <translation type="gpt-4o-generated">ตัวเลือก &lt;b&gt;Map Based&lt;/b&gt; จะใช้ได้เฉพาะเมื่อมีการดาวน์โหลด &lt;b&gt;Map Data&lt;/b&gt; บางส่วนแล้ว!</translation>
+        <source>Stop Acceleration</source>
+        <translation type="gpt-4o-generated">หยุดการเร่งความเร็ว</translation>
+    </message>
+    <message>
+        <source>Brake force applied to hold the vehicle still. Larger values prevent creeping on hills but might jerk to a stop. Smaller values can feel smoother but may allow rolling.</source>
+        <translation type="gpt-4o-generated">แรงเบรกที่ใช้เพื่อหยุดรถให้อยู่กับที่ ค่าที่มากขึ้นจะป้องกันการไหลบนเนินเขาแต่ก็อาจทำให้หยุดกระตุกได้ ค่าที่น้อยลงอาจให้ความรู้สึกที่นุ่มนวลกว่าแต่ก็อาจทำให้รถไหลได้</translation>
+    </message>
+    <message>
+        <source>Stopping Rate (Default: %1)</source>
+        <translation type="gpt-4o-generated">อัตราการหยุด (ค่าเริ่มต้น: %1)</translation>
+    </message>
+    <message>
+        <source>Stopping Rate</source>
+        <translation type="gpt-4o-generated">อัตราการหยุด</translation>
+    </message>
+    <message>
+        <source>How quickly braking ramps up when stopping. Faster rates shorten stopping distance but can be harsh; slower rates are smoother but need more room.</source>
+        <translation type="gpt-4o-generated">ความเร็วในการเบรกเพิ่มขึ้นอย่างไรเมื่อหยุด การเบรกที่เร็วขึ้นจะทำให้ระยะหยุดสั้นลงแต่สามารถทำให้รู้สึกกระแทกได้; การเบรกที่ช้าลงจะนุ่มนวลกว่าแต่ต้องการพื้นที่มากขึ้น</translation>
+    </message>
+    <message>
+        <source>Stop Speed (Default: %1)</source>
+        <translation type="gpt-4o-generated">หยุดความเร็ว (ค่าเริ่มต้น: %1)</translation>
+    </message>
+    <message>
+        <source>Stop Speed</source>
+        <translation type="gpt-4o-generated">หยุดความเร็ว</translation>
+    </message>
+    <message>
+        <source>Speed where openpilot beings to enter the stopped state. Higher values brake earlier for smoother stops but might stop too soon; lower values wait longer and can overshoot.</source>
+        <translation type="gpt-4o-generated">ความเร็วที่ openpilot เริ่มเข้าสู่สถานะหยุด ค่าในระดับสูงจะเบรกก่อนเพื่อการหยุดที่นุ่มนวลขึ้นแต่ก็อาจหยุดเร็วเกินไป; ค่าในระดับต่ำจะรอนานขึ้นและอาจเลยจุดหยุดไป</translation>
+    </message>
+    <message>
+        <source>Curve Speed Controller</source>
+        <translation type="gpt-4o-generated">ตัวควบคุมความเร็วโค้ง</translation>
+    </message>
+    <message>
+        <source>Automatically slows down for upcoming curves using data from your own driving, adapting to curves just like you would.</source>
+        <translation type="gpt-4o-generated">ชะลอความเร็วโดยอัตโนมัติเมื่อเข้าใกล้โค้งโดยใช้ข้อมูลจากการขับขี่ของคุณเอง ปรับให้เข้ากับโค้งเหมือนที่คุณทำ</translation>
+    </message>
+    <message>
+        <source>Calibrated Lateral Acceleration</source>
+        <translation type="gpt-4o-generated">ความเร่งด้านข้างที่ปรับเทียบแล้ว</translation>
+    </message>
+    <message>
+        <source>Displays the learned lateral acceleration target based on your driving.</source>
+        <translation type="gpt-4o-generated">แสดงเป้าหมายการเร่งความเร็วด้านข้างที่เรียนรู้จากการขับขี่ของคุณ</translation>
+    </message>
+    <message>
+        <source>Calibration Progress</source>
+        <translation type="gpt-4o-generated">ความคืบหน้าการปรับเทียบ</translation>
+    </message>
+    <message>
+        <source>How much driving data has been collected to personalize the vehicle's curve handling behavior.</source>
+        <translation type="gpt-4o-generated">มีการรวบรวมข้อมูลการขับขี่มากเพียงใดเพื่อปรับแต่งพฤติกรรมการเข้าโค้งของรถยนต์ให้เป็นส่วนตัว</translation>
+    </message>
+    <message>
+        <source>Reset Curve Data</source>
+        <translation type="gpt-4o-generated">รีเซ็ตข้อมูลเส้นโค้ง</translation>
+    </message>
+    <message>
+        <source>Reset collected user data for &lt;b&gt;Curve Speed Control&lt;/b&gt;.</source>
+        <translation type="gpt-4o-generated">รีเซ็ตข้อมูลผู้ใช้ที่รวบรวมสำหรับ &lt;b&gt;การควบคุมความเร็วโค้ง&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to completely reset your curvature data?</source>
+        <translation type="gpt-4o-generated">คุณแน่ใจหรือไม่ว่าต้องการรีเซ็ตข้อมูลความโค้งของคุณทั้งหมด?</translation>
     </message>
 </context>
 <context>
