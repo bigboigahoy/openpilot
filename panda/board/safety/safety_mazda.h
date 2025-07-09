@@ -13,7 +13,7 @@
 #define MAZDA_CAM  2
 
 const SteeringLimits MAZDA_STEERING_LIMITS = {
-  .max_steer = 1500,
+  .max_steer = 2000,
   .max_rate_up = 10,
   .max_rate_down = 25,
   .max_rt_delta = 300,

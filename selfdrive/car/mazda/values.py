@@ -23,7 +23,7 @@ class CarControllerParams:
 
   def __init__(self, CP, vEgoRaw=100., frogpilot_toggles=None):
     # Increase steer_max when below 30mph
-    self.STEER_MAX = 1500 if vEgoRaw < 11.41 else 800 # theoretical max_steer 2047
+    self.STEER_MAX = 2000 if vEgoRaw < 11.41 else 800 # theoretical max_steer 2047
 
 
 @dataclass
