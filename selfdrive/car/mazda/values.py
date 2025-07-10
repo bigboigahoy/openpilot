@@ -74,7 +74,7 @@ class MazdaPlatformConfig(PlatformConfig):
   def init(self):
     if self.flags & MazdaFlags.GEN2:
       self.dbc_dict = dbc_dict('mazda_2019', None)
-    elif self.flags & MazdaFlags.GEN1 and self.flags & MazdaFlags.RADAR_INTERCEPTOR:
+    elif self.flags & MazdaFlags.GEN1:
       self.dbc_dict = dbc_dict('mazda_2017', 'mazda_radar')
 
 

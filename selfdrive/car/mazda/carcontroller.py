@@ -78,7 +78,7 @@ class CarController(CarControllerBase):
         if not self.CP.flags & MazdaFlags.NO_FSC:
           can_sends.append(mazdacan.create_alert_command(self.packer, CS.cam_laneinfo, ldw, steer_required))
 
-      if self.CP.flags & MazdaFlags.RADAR_INTERCEPTOR:
+      if True:
         hold = False
         if CS.out.standstill:
           hold = self.hold_timer.active()
