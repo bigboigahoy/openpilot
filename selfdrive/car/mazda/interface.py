@@ -8,11 +8,6 @@ from openpilot.selfdrive.car import create_button_events, get_safety_config
 from openpilot.selfdrive.car.interfaces import CarInterfaceBase, LatControlInputs, FRICTION_THRESHOLD, TorqueFromLateralAccelCallbackType
 from openpilot.common.params import Params
 from openpilot.selfdrive.controls.lib.drive_helpers import get_friction
-from selfdrive.car.isotp_parallel_query import IsoTpParallelQuery
-from openpilot.common.swaglog import cloudlog
-from panda.python.uds import CONTROL_TYPE, MESSAGE_TYPE
-from panda import Panda
-
 
 ButtonType = car.CarState.ButtonEvent.Type
 FrogPilotButtonType = custom.FrogPilotCarState.ButtonEvent.Type
@@ -72,8 +67,7 @@ class CarInterface(CarInterfaceBase):
         print("Torque Interceptor Installed")
         ret.flags |= MazdaFlags.TORQUE_INTERCEPTOR.value
         ret.safetyConfigs[0].safetyParam |= Panda.FLAG_MAZDA_TORQUE_INTERCEPTOR
-      # if p.get_bool("RadarInterceptorEnabled"): # Radar Interceptor Installed
-      if True: # TODO: PLACEHOLDER FOR TESTING
+      if p.get_bool("RadarInterceptorEnabled"): # Radar Interceptor Installed
         ret.flags |= MazdaFlags.RADAR_INTERCEPTOR.value
         ret.experimentalLongitudinalAvailable = True
         ret.radarUnavailable = False
@@ -143,31 +137,3 @@ class CarInterface(CarInterfaceBase):
     ret.events = events.to_msg()
 
     return ret, fp_ret
-
-
-  @staticmethod
-  def init(CP, logcan, sendcan):
-    if CP.openpilotLongitudinalControl:
-      # Disable radar
-      bus = 0
-      addr = 0x764
-
-      EXT_DIAG_REQUEST = b'\x10\x02'
-      EXT_DIAG_RESPONSE = b'\x50\02'
-      query = IsoTpParallelQuery(sendcan, logcan, bus, [addr], [EXT_DIAG_REQUEST], [EXT_DIAG_RESPONSE], debug=False)
-      resp = query.get_data(2)
-
-      if not len(resp):
-        cloudlog.warning("failed to enter diagnostic session...")
-        return
-
-      sub_function = CONTROL_TYPE.DISABLE_RX_DISABLE_TX
-      communication_type = MESSAGE_TYPE.NORMAL
-      COMM_CONT_REQUEST = b'\x28' + int.to_bytes(sub_function, 1, byteorder="big") + int.to_bytes(communication_type, 1, byteorder="big")
-      COM_CONT_RESPONSE = b' '
-      query = IsoTpParallelQuery(sendcan, logcan, bus, [addr], [COMM_CONT_REQUEST], [COM_CONT_RESPONSE], debug=False)
-      resp = query.get_data(2)
-
-      if not len(resp):
-        cloudlog.warning("failed to disable ecu...")
-        return

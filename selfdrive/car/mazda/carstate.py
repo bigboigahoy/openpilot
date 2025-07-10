@@ -262,8 +262,7 @@ class CarState(CarStateBase):
         ("BSM", 10),
       ]
 
-      # if not (CP.flags & MazdaFlags.RADAR_INTERCEPTOR) and not (CP.flags & MazdaFlags.NO_MRCC):
-      if False: # TODO: PLACEHOLDER FOR NOW
+      if not (CP.flags & MazdaFlags.RADAR_INTERCEPTOR) and not (CP.flags & MazdaFlags.NO_MRCC):
         messages += [
           ("CRZ_CTRL", 50),
         ]
@@ -292,8 +291,7 @@ class CarState(CarStateBase):
           ("CAM_LKAS", 16),
         ]
 
-      # if CP.flags & MazdaFlags.RADAR_INTERCEPTOR:
-      if True: # TODO: PLACEHOLDER
+      if CP.flags & MazdaFlags.RADAR_INTERCEPTOR:
         messages += [
           ("CRZ_INFO", 50),
           ("CRZ_CTRL", 50),

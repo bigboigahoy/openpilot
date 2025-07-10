@@ -7,10 +7,10 @@ from openpilot.selfdrive.car.interfaces import RadarInterfaceBase
 from openpilot.selfdrive.car.mazda.values import DBC, MazdaFlags
 
 def get_radar_can_parser(CP):
-  # if DBC[CP.carFingerprint]['radar'] is None:
-    # return None
-  # if not CP.flags & MazdaFlags.RADAR_INTERCEPTOR:
-    # return None
+  if DBC[CP.carFingerprint]['radar'] is None:
+    return None
+  if not CP.flags & MazdaFlags.RADAR_INTERCEPTOR:
+    return None
 
   messages = [(f"RADAR_TRACK_{addr}", 10) for addr in range(361,367)]
   return CANParser(DBC[CP.carFingerprint]['radar'], messages, 2)
