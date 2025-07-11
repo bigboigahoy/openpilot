@@ -85,8 +85,18 @@ class CarState(CarStateBase):
 
     # TODO: the signal used for available seems to be the adaptive cruise signal, instead of the main on
     #       it should be used for carState.cruiseState.nonAdaptive instead
-    ret.cruiseState.available = cp.vl["CRZ_CTRL"]["CRZ_AVAILABLE"] == 1
-    ret.cruiseState.enabled = cp.vl["CRZ_CTRL"]["CRZ_ACTIVE"] == 1
+    # ret.cruiseState.available = cp.vl["CRZ_CTRL"]["CRZ_AVAILABLE"] == 1
+    # ret.cruiseState.enabled = cp.vl["CRZ_CTRL"]["CRZ_ACTIVE"] == 1
+
+    # Attempt radar
+    if not self.CP.openpilotLongitudinalControl:
+      ret.cruiseState.available = cp.vl["CRZ_CTRL"]["CRZ_AVAILABLE"] == 1
+      ret.cruiseState.enabled = cp.vl["CRZ_CTRL"]["CRZ_ACTIVE"] == 1
+    elif self.CP.openpilotLongitudinalControl:
+      ret.cruiseState.available = cp.vl["CRZ_EVENTS"]["CRZ_AVAILABLE"] == 1
+      ret.cruiseState.enabled = cp.vl["CRZ_EVENTS"]["CRUISE_ACTIVE_CAR_MOVING"] == 1
+
+
     ret.cruiseState.standstill = cp.vl["PEDALS"]["STANDSTILL"] == 1
     ret.cruiseState.speed = cp.vl["CRZ_EVENTS"]["CRZ_SPEED"] * CV.KPH_TO_MS
 

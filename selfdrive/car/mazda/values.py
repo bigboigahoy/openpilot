@@ -25,7 +25,8 @@ class CarControllerParams:
   def __init__(self, CP, vEgoRaw=100., frogpilot_toggles=None):
     # # Increase steer_max when below 30mph
     # self.STEER_MAX = 1500 if vEgoRaw < 11.41 else 800 # theoretical max_steer 2047
-    pass
+    if self.flags & MazdaFlags.GEN1:
+      self.dbc_dict = dbc_dict('mazda_2017', 'mazda_radar')
 
 
 @dataclass
@@ -75,6 +76,7 @@ class CAR(Platforms):
   MAZDA_CX5_2022 = MazdaPlatformConfig(
     [MazdaCarDocs("Mazda CX-5 2022-24")],
     MAZDA_CX5.specs,
+    flags=MazdaFlags.GEN1,
   )
 
 
@@ -104,3 +106,4 @@ FW_QUERY_CONFIG = FwQueryConfig(
 )
 
 DBC = CAR.create_dbc_map()
+GEN1 = CAR.with_flags(MazdaFlags.GEN1)
