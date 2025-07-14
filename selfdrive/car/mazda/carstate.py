@@ -1,3 +1,4 @@
+import copy
 from cereal import car, custom
 from openpilot.common.conversions import Conversions as CV
 from opendbc.can.can_define import CANDefine
@@ -94,11 +95,18 @@ class CarState(CarStateBase):
       ret.cruiseState.enabled = cp.vl["CRZ_CTRL"]["CRZ_ACTIVE"] == 1
     elif self.CP.openpilotLongitudinalControl:
       ret.cruiseState.available = cp.vl["PEDALS"]["CRZ_AVAILABLE"] == 1
-      ret.cruiseState.enabled = cp.vl["CRZ_EVENTS"]["CRUISE_ACTIVE_CAR_MOVING"] == 1
+      ret.cruiseState.enabled = cp.vl["PEDALS"]["ACC_ACTIVE"] == 1
 
 
     ret.cruiseState.standstill = cp.vl["PEDALS"]["STANDSTILL"] == 1
     ret.cruiseState.speed = cp.vl["CRZ_EVENTS"]["CRZ_SPEED"] * CV.KPH_TO_MS
+
+    self.crz_info = copy.copy(cp_cam.vl["CRZ_INFO"])
+    self.crz_cntr = copy.copy(cp_cam.vl["CRZ_CTRL"])
+    self.cp_cam = cp_cam
+    ret.cruiseState.enabled = cp.vl["PEDALS"]["ACC_ACTIVE"] == 1
+    ret.cruiseState.available = cp.vl["PEDALS"]["CRZ_AVAILABLE"] == 1
+
 
     if ret.cruiseState.enabled:
       if not self.lkas_allowed_speed and self.acc_active_last:
@@ -164,5 +172,16 @@ class CarState(CarStateBase):
         ("CAM_LANEINFO", 2),
         ("CAM_LKAS", 16),
       ]
+
+      if CP.openpilotLongitudinalControl:
+        messages += [
+          ("CRZ_INFO", 50),
+          ("CRZ_CTRL", 50),
+        ]
+        for addr in range(361,367):
+          msg = f"RADAR_{addr}"
+          messages += [
+            (msg,10),
+          ]
 
     return CANParser(DBC[CP.carFingerprint]["pt"], messages, 2)

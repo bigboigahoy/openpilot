@@ -55,6 +55,26 @@ class CarController(CarControllerBase):
       steer_required = steer_required and CS.lkas_allowed_speed
       can_sends.append(mazdacan.create_alert_command(self.packer, CS.cam_laneinfo, ldw, steer_required))
 
+
+
+    if self.CP.openpilotLongitudinalControl:
+      hold = False
+      if CS.out.standstill:
+        hold = self.hold_timer.active()
+      else:
+        self.hold_timer.reset()
+
+      if CC.longActive:
+        raw_acc_output = CC.actuators.accel * 1150
+        raw_acc_output = max(-1000, min(raw_acc_output, 1000))
+
+        acc_output = raw_acc_output
+
+      if self.frame % 2 == 0:
+        can_sends.extend(mazdacan.create_radar_command(self.packer, self.frame, CC.longActive, CS, hold))
+
+
+
     # send steering command
     can_sends.append(mazdacan.create_steering_control(self.packer, self.CP,
                                                       self.frame, apply_steer, CS.cam_lkas))
