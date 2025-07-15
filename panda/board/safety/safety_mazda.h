@@ -5,6 +5,7 @@
 #define MAZDA_CRZ_BTNS      0x09d
 #define MAZDA_STEER_TORQUE  0x240
 #define MAZDA_ENGINE_DATA   0x202
+#define MAZDA_PEDALS        0x165
 
 // Radar
 #define MAZDA_CRZ_INFO      0x21B
