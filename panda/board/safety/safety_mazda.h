@@ -141,7 +141,7 @@ static int mazda_fwd_hook(int bus, int addr) {
 
 static safety_config mazda_init(uint16_t param) {
   UNUSED(param);
-  ret = BUILD_SAFETY_CFG(mazda_rx_checks, MAZDA_TX_MSGS);
+  safety_config ret = BUILD_SAFETY_CFG(mazda_rx_checks, MAZDA_TX_MSGS);
   SET_RX_CHECKS(mazda_rx_checks, ret);
   SET_TX_MSGS(MAZDA_RI_TX_MSGS, ret);
 
