@@ -3,7 +3,10 @@ from opendbc.can.packer import CANPacker
 from openpilot.selfdrive.car import apply_driver_steer_torque_limits
 from openpilot.selfdrive.car.interfaces import CarControllerBase
 from openpilot.selfdrive.car.mazda import mazdacan
-from openpilot.selfdrive.car.mazda.values import CarControllerParams, Buttons
+from openpilot.selfdrive.car.mazda.values import CarControllerParams, Buttons, MazdaFlags
+from openpilot.common.realtime import ControlsTimer as Timer, DT_CTRL
+from openpilot.common.filter_simple import FirstOrderFilter
+from openpilot.common.params import Params
 
 VisualAlert = car.CarControl.HUDControl.VisualAlert
 
@@ -12,9 +15,20 @@ class CarController(CarControllerBase):
   def __init__(self, dbc_name, CP, FPCP, VM):
     self.CP = CP
     self.apply_steer_last = 0
+    self.ti_apply_steer_last = 0
     self.packer = CANPacker(dbc_name)
     self.brake_counter = 0
     self.frame = 0
+    self.ccp = CarControllerParams(CP)
+    self.hold_timer = Timer(6.0)
+    self.hold_delay = Timer(.5) # delay before we start holding as to not hit the brakes too hard
+    self.resume_timer = Timer(0.5)
+    self.cancel_delay = Timer(0.07) # 70ms delay to try to avoid a race condition with stock system
+    self.acc_filter = FirstOrderFilter(0.0, .1, DT_CTRL, initialized=False)
+    self.filtered_acc_last = 0
+    self.long_active_last = False
+    self.params = Params()
+    self.params_memory = Params("/dev/shm/params")
 
   def update(self, CC, CS, now_nanos, frogpilot_toggles):
     can_sends = []
