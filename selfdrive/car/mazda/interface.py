@@ -29,7 +29,7 @@ class CarInterface(CarInterfaceBase):
     if candidate in GEN1:
       # ret.safetyConfigs[0].safetyParam |= Panda.FLAG_MAZDA_GEN1
       ret.experimentalLongitudinalAvailable = True
-      ret.radarUnavailable = False
+      # ret.radarUnavailable = False
       ret.startingState = True
       ret.longitudinalTuning.kpBP = [0., 5., 30.]
       ret.longitudinalTuning.kpV = [1.3, 1.0, 0.7]
