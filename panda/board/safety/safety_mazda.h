@@ -5,7 +5,17 @@
 #define MAZDA_CRZ_BTNS      0x09d
 #define MAZDA_STEER_TORQUE  0x240
 #define MAZDA_ENGINE_DATA   0x202
-#define MAZDA_PEDALS        0x165
+
+// Radar
+#define MAZDA_CRZ_INFO      0x21B
+#define MAZDA_CRZ_CTRL      0x21c
+#define MAZDA_RADAR_361     0x361
+#define MAZDA_RADAR_362     0x362
+#define MAZDA_RADAR_363     0x363
+#define MAZDA_RADAR_364     0x364
+#define MAZDA_RADAR_365     0x365
+#define MAZDA_RADAR_366     0x366
+#define MAZDA_RADAR_499     0x499
 
 // CAN bus numbers
 #define MAZDA_MAIN 0
@@ -24,6 +34,11 @@ const SteeringLimits MAZDA_STEERING_LIMITS = {
 };
 
 const CanMsg MAZDA_TX_MSGS[] = {{MAZDA_LKAS, 0, 8}, {MAZDA_CRZ_BTNS, 0, 8}, {MAZDA_LKAS_HUD, 0, 8}};
+const CanMsg MAZDA_RI_TX_MSGS[] = {{MAZDA_LKAS, 0, 8}, {MAZDA_CRZ_BTNS, 0, 8}, {MAZDA_LKAS_HUD, 0, 8},
+                                  {MAZDA_CRZ_CTRL, 0, 8}, {MAZDA_CRZ_INFO, 0, 8}, {MAZDA_RADAR_361, 0, 8}, {MAZDA_RADAR_362, 0, 8},
+                                  {MAZDA_RADAR_363, 0, 8}, {MAZDA_RADAR_364, 0, 8}, {MAZDA_RADAR_365, 0, 8}, {MAZDA_RADAR_366, 0, 8},
+                                  {MAZDA_RADAR_499, 0, 8}};
+
 
 RxCheck mazda_rx_checks[] = {
   {.msg = {{MAZDA_CRZ_CTRL,     0, 8, .frequency = 50U}, { 0 }, { 0 }}},
@@ -63,6 +78,8 @@ static void mazda_rx_hook(const CANPacket_t *to_push) {
 
     if (addr == MAZDA_PEDALS) {
       brake_pressed = (GET_BYTE(to_push, 0) & 0x10U);
+      bool cruise_engaged = GET_BYTE(to_push, 0) & 0x8U;
+      pcm_cruise_check(cruise_engaged);
     }
 
     generic_rx_checks((addr == MAZDA_LKAS));
@@ -106,6 +123,11 @@ static int mazda_fwd_hook(int bus, int addr) {
     bus_fwd = MAZDA_CAM;
   } else if (bus == MAZDA_CAM) {
     bool block = (addr == MAZDA_LKAS) || (addr == MAZDA_LKAS_HUD);
+    block |= (addr == MAZDA_CRZ_INFO) || (addr == MAZDA_CRZ_CTRL);
+    block |= (addr == MAZDA_RADAR_361) || (addr == MAZDA_RADAR_362);
+    block |= (addr == MAZDA_RADAR_363) || (addr == MAZDA_RADAR_364);
+    block |= (addr == MAZDA_RADAR_365) || (addr == MAZDA_RADAR_366);
+
     if (!block) {
       bus_fwd = MAZDA_MAIN;
     }
@@ -118,7 +140,11 @@ static int mazda_fwd_hook(int bus, int addr) {
 
 static safety_config mazda_init(uint16_t param) {
   UNUSED(param);
-  return BUILD_SAFETY_CFG(mazda_rx_checks, MAZDA_TX_MSGS);
+  ret = BUILD_SAFETY_CFG(mazda_rx_checks, MAZDA_TX_MSGS);
+  SET_RX_CHECKS(mazda_rx_checks, ret);
+  SET_TX_MSGS(MAZDA_RI_TX_MSGS, ret);
+
+  return ret;
 }
 
 const safety_hooks mazda_hooks = {
