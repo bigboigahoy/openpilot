@@ -23,11 +23,7 @@ class CarControllerParams:
   STEER_STEP = 1  # 100 Hz
 
   def __init__(self, CP, vEgoRaw=100., frogpilot_toggles=None):
-    # # Increase steer_max when below 30mph
-    # self.STEER_MAX = 1500 if vEgoRaw < 11.41 else 800 # theoretical max_steer 2047
-    if self.flags & MazdaFlags.GEN1:
-      self.dbc_dict = dbc_dict('mazda_2017', 'mazda_radar')
-
+    pass
 
 @dataclass
 class MazdaCarDocs(CarDocs):
@@ -50,7 +46,8 @@ class MazdaFlags(IntFlag):
 class MazdaPlatformConfig(PlatformConfig):
   dbc_dict: DbcDict = field(default_factory=lambda: dbc_dict('mazda_2017', None))
   flags: int = MazdaFlags.GEN1
-
+  def init(self):
+    self.dbc_dict = dbc_dict('mazda_2017', 'mazda_radar')
 
 class CAR(Platforms):
   MAZDA_CX5 = MazdaPlatformConfig(
