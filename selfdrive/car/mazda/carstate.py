@@ -133,6 +133,10 @@ class CarState(CarStateBase):
     self.lkas_previously_enabled = self.lkas_enabled
     self.lkas_enabled = not self.lkas_disabled
 
+    self.cp_cam = cp_cam
+    self.cp = cp
+
+
     return ret, fp_ret
 
   @staticmethod
