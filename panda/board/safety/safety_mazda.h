@@ -26,7 +26,8 @@ const SteeringLimits MAZDA_STEERING_LIMITS = {
 const CanMsg MAZDA_TX_MSGS[] = {{MAZDA_LKAS, 0, 8}, {MAZDA_CRZ_BTNS, 0, 8}, {MAZDA_LKAS_HUD, 0, 8}};
 
 RxCheck mazda_rx_checks[] = {
-  {.msg = {{MAZDA_CRZ_CTRL,     0, 8, .frequency = 50U}, { 0 }, { 0 }}},
+  // {.msg = {{MAZDA_CRZ_CTRL,     0, 8, .frequency = 50U}, { 0 }, { 0 }}},
+  {.msg = {{MAZDA_CRZ_EVENTS,   0, 8, .expected_timestep = 20000U}, { 0 }, { 0 }}},
   {.msg = {{MAZDA_CRZ_BTNS,     0, 8, .frequency = 10U}, { 0 }, { 0 }}},
   {.msg = {{MAZDA_STEER_TORQUE, 0, 8, .frequency = 83U}, { 0 }, { 0 }}},
   {.msg = {{MAZDA_ENGINE_DATA,  0, 8, .frequency = 100U}, { 0 }, { 0 }}},
@@ -51,9 +52,9 @@ static void mazda_rx_hook(const CANPacket_t *to_push) {
     }
 
     // enter controls on rising edge of ACC, exit controls on ACC off
-    if (addr == MAZDA_CRZ_CTRL) {
-      acc_main_on = GET_BIT(to_push, 17U);
-      bool cruise_engaged = GET_BYTE(to_push, 0) & 0x8U;
+    if (addr == MAZDA_PEDALS) {
+      // acc_main_on = GET_BIT(to_push, 17U);
+      bool cruise_engaged = GET_BYTE(to_push, 0) & 0x8;
       pcm_cruise_check(cruise_engaged);
     }
 

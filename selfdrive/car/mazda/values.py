@@ -73,6 +73,7 @@ class CAR(Platforms):
   MAZDA_CX5_2022 = MazdaPlatformConfig(
     [MazdaCarDocs("Mazda CX-5 2022-24")],
     MAZDA_CX5.specs,
+    flags=MazdaFlags.GEN1
   )
 
 
@@ -98,7 +99,19 @@ FW_QUERY_CONFIG = FwQueryConfig(
       [StdQueries.MANUFACTURER_SOFTWARE_VERSION_RESPONSE],
       bus=0,
     ),
+    Request(
+      [StdQueries.TESTER_PRESENT_REQUEST, StdQueries.MANUFACTURER_SOFTWARE_VERSION_REQUEST],
+      [StdQueries.TESTER_PRESENT_RESPONSE, StdQueries.MANUFACTURER_SOFTWARE_VERSION_RESPONSE],
+      whitelist_ecus=[Ecu.engine],
+    ),
+    Request(
+      [StdQueries.TESTER_PRESENT_REQUEST, StdQueries.MANUFACTURER_SOFTWARE_VERSION_REQUEST],
+      [StdQueries.TESTER_PRESENT_RESPONSE, StdQueries.MANUFACTURER_SOFTWARE_VERSION_RESPONSE],
+      bus=0,
+      whitelist_ecus=[Ecu.eps, Ecu.abs, Ecu.fwdRadar, Ecu.fwdCamera, Ecu.shiftByWire],
+    )
   ],
 )
 
 DBC = CAR.create_dbc_map()
+GEN1 = CAR.with_flags(MazdaFlags.GEN1)

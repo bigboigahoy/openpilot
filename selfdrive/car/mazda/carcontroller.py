@@ -3,7 +3,10 @@ from opendbc.can.packer import CANPacker
 from openpilot.selfdrive.car import apply_driver_steer_torque_limits
 from openpilot.selfdrive.car.interfaces import CarControllerBase
 from openpilot.selfdrive.car.mazda import mazdacan
-from openpilot.selfdrive.car.mazda.values import CarControllerParams, Buttons
+from openpilot.selfdrive.car.mazda.values import CarControllerParams, Buttons, GEN1
+from openpilot.common.realtime import ControlsTimer as Timer, DT_CTRL
+
+
 
 VisualAlert = car.CarControl.HUDControl.VisualAlert
 
@@ -15,6 +18,7 @@ class CarController(CarControllerBase):
     self.packer = CANPacker(dbc_name)
     self.brake_counter = 0
     self.frame = 0
+    self.hold_timer = Timer(6.0)
 
   def update(self, CC, CS, now_nanos, frogpilot_toggles):
     can_sends = []
@@ -44,6 +48,12 @@ class CarController(CarControllerBase):
         # Send Resume button when planner wants car to move
         can_sends.append(mazdacan.create_button_cmd(self.packer, self.CP, CS.crz_btns_counter, Buttons.RESUME))
 
+      # Send tester present for GEN0 to keep VCM/Radar disabled (Required for OP Long control)
+      if self.CP.carFingerprint in GEN1 and self.CP.openpilotLongitudinalControl:
+        if self.frame % 10 == 0:
+          can_sends.append((0x764, 0, b"\x02\x3E\x80\x00\x00\x00\x00\x00", 0))
+
+
     self.apply_steer_last = apply_steer
 
     # send HUD alerts
@@ -54,9 +64,23 @@ class CarController(CarControllerBase):
       steer_required = steer_required and CS.lkas_allowed_speed
       can_sends.append(mazdacan.create_alert_command(self.packer, CS.cam_laneinfo, ldw, steer_required))
 
+
+    if self.CP.openpilotLongitudinalControl:
+      hold = False
+      if CS.out.standstill:
+        hold = self.hold_timer.active()
+      else:
+        self.hold_timer.reset()
+
     # send steering command
     can_sends.append(mazdacan.create_steering_control(self.packer, self.CP,
                                                       self.frame, apply_steer, CS.cam_lkas))
+
+    # # # # # # #
+    # Radarless ACC command for GEN0
+    if self.CP.carFingerprint in GEN1 and self.CP.openpilotLongitudinalControl:
+      if self.frame % 2 == 0:
+        can_sends.extend(mazdacan.create_radar_command(self.packer, CS.CP.carFingerprint, self.frame, CC, CS, hold))
 
     new_actuators = CC.actuators.as_builder()
     new_actuators.steer = apply_steer / CarControllerParams.STEER_MAX

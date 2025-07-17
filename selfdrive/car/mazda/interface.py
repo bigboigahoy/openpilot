@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 from cereal import car, custom
 from openpilot.common.conversions import Conversions as CV
-from openpilot.selfdrive.car.mazda.values import CAR, LKAS_LIMITS
+from openpilot.selfdrive.car.mazda.values import CAR, LKAS_LIMITS, GEN1
 from openpilot.selfdrive.car import create_button_events, get_safety_config
 from openpilot.selfdrive.car.interfaces import CarInterfaceBase
+from openpilot.selfdrive.car.disable_ecu import disable_ecu
 
 ButtonType = car.CarState.ButtonEvent.Type
 FrogPilotButtonType = custom.FrogPilotCarState.ButtonEvent.Type
@@ -19,6 +20,17 @@ class CarInterface(CarInterfaceBase):
 
     ret.steerActuatorDelay = 0.1
     ret.steerLimitTimer = 0.8
+
+    ret.openpilotLongitudinalControl = True
+    if candidate in GEN1:
+      # ret.safetyConfigs[0].safetyParam |= Panda.FLAG_MAZDA_GEN1
+      ret.experimentalLongitudinalAvailable = True
+      # ret.radarUnavailable = False
+      ret.startingState = True
+      ret.longitudinalTuning.kpBP = [0., 5., 30.]
+      ret.longitudinalTuning.kpV = [1.3, 1.0, 0.7]
+      ret.longitudinalTuning.kiBP = [0., 5., 20., 30.]
+      ret.longitudinalTuning.kiV = [0.36, 0.23, 0.17, 0.1]
 
     CarInterfaceBase.configure_torque_tune(candidate, ret.lateralTuning)
 
@@ -52,3 +64,13 @@ class CarInterface(CarInterfaceBase):
     ret.events = events.to_msg()
 
     return ret, fp_ret
+
+
+  @staticmethod
+  def init(CP, logcan, sendcan):
+    if CP.openpilotLongitudinalControl:
+      # Disable radar
+      bus = 0
+      addr = 0x764
+      com_request = b'\x28\x03\x01' # Try 3 after this attempt
+      disable_ecu(logcan, sendcan, bus=bus, addr=addr, com_cont_req=com_request)
