@@ -91,16 +91,18 @@ class CarState(CarStateBase):
       ret.cruiseState.available = cp.vl["CRZ_CTRL"]["CRZ_AVAILABLE"] == 1
       ret.cruiseState.enabled = cp.vl["CRZ_CTRL"]["CRZ_ACTIVE"] == 1
     elif self.CP.openpilotLongitudinalControl:
-      ret.cruiseState.available = True
-      ret.cruiseState.enabled = cp.vl["PEDALS"]["ACC_ACTIVE"] == 1
+      if speed_kph > 5:
+        ret.cruiseState.available = True
+      else:
+        ret.cruiseState.available = False
 
-
+    ret.cruiseState.enabled = cp.vl["PEDALS"]["ACC_ACTIVE"] == 1
     ret.cruiseState.standstill = cp.vl["PEDALS"]["STANDSTILL"] == 1
     ret.cruiseState.speed = cp.vl["CRZ_EVENTS"]["CRZ_SPEED"] * CV.KPH_TO_MS
 
 
-    self.crz_info = copy.copy(cp_cam.vl["CRZ_INFO"])
-    self.crz_cntr = copy.copy(cp_cam.vl["CRZ_CTRL"])
+    # self.crz_info = copy.copy(cp_cam.vl["CRZ_INFO"])
+    # self.crz_cntr = copy.copy(cp_cam.vl["CRZ_CTRL"])
     self.cp_cam = cp_cam
 
 
@@ -146,7 +148,7 @@ class CarState(CarStateBase):
     if CP.flags & MazdaFlags.GEN1:
       messages += [
         ("ENGINE_DATA", 100),
-        ("CRZ_CTRL", 50),
+        # ("CRZ_CTRL", 50),
         ("CRZ_EVENTS", 50),
         ("CRZ_BTNS", 10),
         ("PEDALS", 50),
@@ -168,8 +170,8 @@ class CarState(CarStateBase):
         # sig_address, frequency
         ("CAM_LANEINFO", 2),
         ("CAM_LKAS", 16),
-        ("CRZ_INFO", 50),
-        ("CRZ_CTRL", 50),
+        # ("CRZ_INFO", 50),
+        # ("CRZ_CTRL", 50),
       ]
 
     return CANParser(DBC[CP.carFingerprint]["pt"], messages, 2)

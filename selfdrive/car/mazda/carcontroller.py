@@ -43,10 +43,10 @@ class CarController(CarControllerBase):
         can_sends.append(mazdacan.create_button_cmd(self.packer, self.CP, CS.crz_btns_counter, Buttons.CANCEL))
     else:
       self.brake_counter = 0
-      if CC.cruiseControl.resume and self.frame % 5 == 0:
+      # if CC.cruiseControl.resume and self.frame % 5 == 0:
         # Mazda Stop and Go requires a RES button (or gas) press if the car stops more than 3 seconds
         # Send Resume button when planner wants car to move
-        can_sends.append(mazdacan.create_button_cmd(self.packer, self.CP, CS.crz_btns_counter, Buttons.RESUME))
+        # can_sends.append(mazdacan.create_button_cmd(self.packer, self.CP, CS.crz_btns_counter, Buttons.RESUME))
 
       # Send tester present for GEN0 to keep VCM/Radar disabled (Required for OP Long control)
       if self.CP.carFingerprint in GEN1 and self.CP.openpilotLongitudinalControl:

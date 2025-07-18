@@ -7,6 +7,14 @@
 #define MAZDA_ENGINE_DATA   0x202
 #define MAZDA_PEDALS        0x165
 
+#define MAZDA_CRZ_EVENTS    0x21f
+
+// UDS TX/RX address for VCM/RADAR (GEN 0/1)
+#define MAZDA_RADAR         0x764
+// Cruise messages transmitted by VCM/Radar
+#define MAZDA_CRZ_INFO      0x21b
+#define MAZDA_CRZ_CTRL      0x21c
+
 // CAN bus numbers
 #define MAZDA_MAIN 0
 #define MAZDA_AUX  1
@@ -23,11 +31,11 @@ const SteeringLimits MAZDA_STEERING_LIMITS = {
   .type = TorqueDriverLimited,
 };
 
-const CanMsg MAZDA_TX_MSGS[] = {{MAZDA_LKAS, 0, 8}, {MAZDA_CRZ_BTNS, 0, 8}, {MAZDA_LKAS_HUD, 0, 8}};
+const CanMsg MAZDA_TX_MSGS[] = {{MAZDA_LKAS, 0, 8}, {MAZDA_CRZ_BTNS, 0, 8}, {MAZDA_LKAS_HUD, 0, 8}, {MAZDA_RADAR, 0, 8}, {MAZDA_CRZ_CTRL, 0, 8}, {MAZDA_CRZ_INFO, 0, 8}};
 
 RxCheck mazda_rx_checks[] = {
   // {.msg = {{MAZDA_CRZ_CTRL,     0, 8, .frequency = 50U}, { 0 }, { 0 }}},
-  {.msg = {{MAZDA_CRZ_EVENTS,   0, 8, .expected_timestep = 20000U}, { 0 }, { 0 }}},
+  {.msg = {{MAZDA_CRZ_EVENTS,   0, 8, .frequency = 20U}, { 0 }, { 0 }}},
   {.msg = {{MAZDA_CRZ_BTNS,     0, 8, .frequency = 10U}, { 0 }, { 0 }}},
   {.msg = {{MAZDA_STEER_TORQUE, 0, 8, .frequency = 83U}, { 0 }, { 0 }}},
   {.msg = {{MAZDA_ENGINE_DATA,  0, 8, .frequency = 100U}, { 0 }, { 0 }}},

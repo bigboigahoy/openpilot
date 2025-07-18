@@ -79,6 +79,10 @@ def create_alert_command(packer, cam_msg: dict, ldw: bool, steer_required: bool)
     "HANDS_WARN_3_BITS": 0b111 if steer_required else 0,
     "HANDS_ON_STEER_WARN": steer_required,
     "HANDS_ON_STEER_WARN_2": steer_required,
+    "LINE_VISIBLE":       1,
+    "LINE_NOT_VISIBLE":   0,
+    "LANE_LINES":         2,
+    "BIT1":               1,
 
     # TODO: right lane works, left doesn't
     # TODO: need to do something about L/R
