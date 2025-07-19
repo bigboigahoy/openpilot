@@ -48,10 +48,10 @@ class CarController(CarControllerBase):
         # Send Resume button when planner wants car to move
         # can_sends.append(mazdacan.create_button_cmd(self.packer, self.CP, CS.crz_btns_counter, Buttons.RESUME))
 
-      # Send tester present for GEN0 to keep VCM/Radar disabled (Required for OP Long control)
-      if self.CP.carFingerprint in GEN1 and self.CP.openpilotLongitudinalControl:
-        if self.frame % 10 == 0:
-          can_sends.append((0x764, 0, b"\x02\x3E\x80\x00\x00\x00\x00\x00", 0))
+    # Send tester present for GEN0 to keep VCM/Radar disabled (Required for OP Long control)
+    if self.CP.carFingerprint in GEN1 and self.CP.openpilotLongitudinalControl:
+      if self.frame % 10 == 0:
+        can_sends.append((0x764, 0, b"\x02\x3E\x80\x00\x00\x00\x00\x00", 0))
 
 
     self.apply_steer_last = apply_steer
