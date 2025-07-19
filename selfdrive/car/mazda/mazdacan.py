@@ -135,8 +135,8 @@ def create_button_cmd(packer, CP, counter, button):
 def create_radar_command(packer, car_fingerprint, frame, CC, CS, hold):
   #accel = 0
   ret = []
-  # crz_ctrl = CS.crz_cntr
-  # crz_info = CS.crz_info
+  crz_ctrl = CS.crz_cntr
+  crz_info = CS.crz_info
   # crz_ctrl = dict()
   # crz_info = dict()
   active = int(CC.longActive)
@@ -178,6 +178,8 @@ def create_radar_command(packer, car_fingerprint, frame, CC, CS, hold):
         "STATIC_2"          : 0,
         "NEW_SIGNAL_7"      : 0,
         "CTR1"              : frame % 6
+        "STOPPING_MAYBE"    : hold
+        "STOPPING_MAYBE2"   : hold
     }
 
     values_21C = {
