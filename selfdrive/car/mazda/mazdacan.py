@@ -177,9 +177,9 @@ def create_radar_command(packer, car_fingerprint, frame, CC, CS, hold):
         "STATIC_1"          : 0x7FF,
         "STATIC_2"          : 0,
         "NEW_SIGNAL_7"      : 0,
-        "CTR1"              : frame % 6
-        "STOPPING_MAYBE"    : hold
-        "STOPPING_MAYBE2"   : hold
+        "CTR1"              : frame % 6,
+        "STOPPING_MAYBE"    : hold,
+        "STOPPING_MAYBE2"   : hold,
     }
 
     values_21C = {
