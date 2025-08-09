@@ -68,6 +68,8 @@ private:
 
   bool panelOpen;
 
+  std::string carMake;
+
   FrogPilotButtonsControl *drivingPanelButtons;
   FrogPilotButtonsControl *systemPanelButtons;
   FrogPilotButtonsControl *togglePreset;
@@ -75,7 +77,6 @@ private:
 
   Params params;
   Params params_memory{"/dev/shm/params"};
-  Params params_tracking{"/cache/tracking"};
 
   QStackedLayout *mainLayout;
 
