@@ -58,8 +58,8 @@ class ModelSettings:
     if seconds > 0.0:
       action.desiredCurvature = float(smooth_value(action.desiredCurvature, prev_action.desiredCurvature, seconds))
 
-  def blendful_callback(self, model_output, v_ego: float, desire, lane_change_state) -> Callable[[float], float]:
-    active = desire == log.Desire.none and lane_change_state == log.LaneChangeState.off
+  def blendful_callback(self, model_output, v_ego: float, desire, lane_change_state, edge_detected) -> Callable[[float], float]:
+    active = desire == log.Desire.none and lane_change_state == log.LaneChangeState.off and edge_detected is False
     return partial(self.blendful.update, model_output, v_ego, active, enabled=self.blendful_enabled)
 
 

@@ -45,9 +45,10 @@ class TestModelSettings:
     settings = ModelSettings()
     settings.blendful.update = mock.Mock(return_value=0.0)
     settings.blendful_enabled = True
-    for desire, lane_change, active in ((log.Desire.none, log.LaneChangeState.off, True),
-                                        (log.Desire.laneChangeLeft, log.LaneChangeState.laneChangeStarting, False)):
-      settings.blendful_callback({}, 20.0, desire, lane_change)(0.001)
+    for desire, lane_change, edge_detected, active in ((log.Desire.none, log.LaneChangeState.off, False, True),
+                                        (log.Desire.laneChangeLeft, log.LaneChangeState.laneChangeStarting, False, False),
+                                        (log.Desire.none, log.LaneChangeState.off, True, False)):
+      settings.blendful_callback({}, 20.0, desire, lane_change, edge_detected)(0.001)
       settings.blendful.update.assert_called_with({}, 20.0, active, 0.001, enabled=True)
 
   def test_big_model_smoothing_reads_its_param(self):

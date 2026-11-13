@@ -507,7 +507,7 @@ def main(demo=False):
       if not sm['carControl'].latActive:
         prev_action.desiredCurvature = sm['controlsState'].curvature
       action = model.get_action_from_model(model_output, prev_action, lat_action_t, long_action_t, v_ego,
-                                           settings.blendful_callback(model_output, v_ego, desire, DH.lane_change_state))
+                                           settings.blendful_callback(model_output, v_ego, desire, DH.lane_change_state, DH.lane_edge_detected))
       settings.smooth_curvature(action, prev_action, big_lat_smooth)
       prev_action = action
       fill_model_msg(drivingdata_send, modelv2_send, model_output, action,
