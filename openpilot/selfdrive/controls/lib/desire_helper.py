@@ -76,6 +76,9 @@ class DesireHelper:
         edge_detected = ((left_edge_detected and self.lane_change_direction == LaneChangeDirection.left) or
                          (right_edge_detected and self.lane_change_direction == LaneChangeDirection.right))
 
+        # Forcing to False so I can keep RELC active for lane edge detection since I don't use the block lane change feature in this way
+        edge_detected = False
+
         self.alc.update_lane_change(blindspot_detected, edge_detected, carstate.brakePressed, torque_applied)
 
         if not one_blinker or below_lane_change_speed:

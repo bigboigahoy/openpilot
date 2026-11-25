@@ -62,7 +62,8 @@ class RoadEdgeLaneChangeController:
   def update(self, road_edge_stds, lane_line_probs, v_ego: float, road_edges=None) -> None:
     self.update_params()
 
-    if not self.enabled or v_ego < MIN_SPEED:
+    # if not self.enabled or v_ego < MIN_SPEED:
+    if v_ego < MIN_SPEED:
       self.reset()
       return
 
